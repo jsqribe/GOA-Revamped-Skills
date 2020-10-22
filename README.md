@@ -11,3 +11,6 @@ submodule with all the skills code
 # 3.) Bot will upload a link of the built game for you to download.
 
 # 4.) Download and run locally to test changes.
+
+
+##TODO Get the dmb to run in test mode if running locally
