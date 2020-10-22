@@ -25,6 +25,4 @@ Revamped
 
 ---
 ##TODO 
-	- Disable saving in test mode (done)
-	- Give All Skills in test mode (done)
 	- Move all Functions to seperate .dm files
