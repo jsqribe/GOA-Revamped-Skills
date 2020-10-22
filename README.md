@@ -14,6 +14,8 @@ submodule with all the skills code
 
 # 5.) Run locally to test changes.
 
+# 6.) let me know if you are happy to merge to master :)
+
 ---
 **Folder Structure**
 Revamped
