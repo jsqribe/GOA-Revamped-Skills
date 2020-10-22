@@ -12,5 +12,9 @@ submodule with all the skills code
 
 # 4.) Download and run locally to test changes.
 
+---
+**Folder Structure**
+
+
 
 ##TODO Get the dmb to run in test mode if running locally.
