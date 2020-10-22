@@ -14,7 +14,13 @@ submodule with all the skills code
 
 ---
 **Folder Structure**
+Revamped
+	- NarutoGOA.dmb
+	- NarutoGOA.rsc
+	- config.ini
+	- testconfig.ini
 
-
-
-##TODO Get the dmb to run in test mode if running locally.
+---
+##TODO 
+	- Disable saving in test mode
+	- Give All Skills in test mode
