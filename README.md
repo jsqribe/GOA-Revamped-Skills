@@ -10,7 +10,9 @@ submodule with all the skills code
 
 # 3.) Bot will upload a link of the built game for you to download.
 
-# 4.) Download and run locally to test changes.
+# 4.) Use 7zip to extract the archive file.
+
+# 5.) Run locally to test changes.
 
 ---
 **Folder Structure**
