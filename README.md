@@ -13,4 +13,4 @@ submodule with all the skills code
 # 4.) Download and run locally to test changes.
 
 
-##TODO Get the dmb to run in test mode if running locally
+##TODO Get the dmb to run in test mode if running locally.
