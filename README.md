@@ -10,5 +10,5 @@ submodule with all the skills code
 
 # 3.) Pull from git, the bot will have added a NarutoGOA.dmb with all updates that you can run locally.
 
-latest change
+latest changes
 
