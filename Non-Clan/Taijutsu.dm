@@ -38,8 +38,8 @@ skill
 			name = "Taijutsu: Leaf Gale"
 			description = "Swiftly kicks your enemy knocking them down."
 			icon_state = "gale"
-			default_stamina_cost = 800
-			default_cooldown = 60
+			default_stamina_cost = 600
+			default_cooldown = 100
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -86,7 +86,7 @@ skill
 						flick("hurt",etarget)
 					var/result=Roll_Against(user.str+user.strbuff-user.strneg,etarget.str+etarget.strbuff-etarget.strneg,60)
 					if(result>=6)
-						etarget.Timed_Stun(60)
+						etarget.Timed_Stun(25)
 						etarget.dir=turn(SOUTH,-90)
 						sleep(5)
 						etarget.dir=turn(WEST,-90)
@@ -98,7 +98,7 @@ skill
 						flick("Knockout", etarget)
 						etarget.icon_state = "Dead"
 					if(result==5)
-						etarget.Timed_Stun(55)
+						etarget.Timed_Stun(20)
 						etarget.dir=turn(SOUTH,-90)
 						sleep(5)
 						etarget.dir=turn(WEST,-90)
@@ -110,7 +110,7 @@ skill
 						flick("Knockout", etarget)
 						etarget.icon_state = "Dead"
 					if(result==4)
-						etarget.Timed_Stun(50)
+						etarget.Timed_Stun(15)
 						etarget.dir=turn(SOUTH,-90)
 						sleep(5)
 						etarget.dir=turn(WEST,-90)
@@ -122,7 +122,7 @@ skill
 						flick("Knockout", etarget)
 						etarget.icon_state = "Dead"
 					if(result==3)
-						etarget.Timed_Stun(45)
+						etarget.Timed_Stun(10)
 						etarget.dir=turn(SOUTH,-90)
 						sleep(5)
 						etarget.dir=turn(WEST,-90)
@@ -134,7 +134,7 @@ skill
 						flick("Knockout", etarget)
 						etarget.icon_state = "Dead"
 					if(result==2)
-						etarget.Timed_Stun(40)
+						etarget.Timed_Stun(5)
 						etarget.dir=turn(SOUTH,-90)
 						sleep(5)
 						etarget.dir=turn(WEST,-90)
@@ -1894,8 +1894,8 @@ skill
 			name = "Taijutsu: Achiever of Nirvana Fist"
 			description = "Blows your opponent back and slows their movements with a hard punch."
 			icon_state = "achiever_of_nirvana_fist"
-			default_stamina_cost = 150
-			default_cooldown = 10
+			default_stamina_cost = 250
+			default_cooldown = 40
 			stamina_damage_fixed = list(0, 450)
 			stamina_damage_con = list(0, 0)
 			stamina_damage_str = 1
@@ -1940,23 +1940,23 @@ skill
 							etarget.Damage(450+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(5,user.dir)
-								etarget.Timed_Move_Stun(40)
+								etarget.Timed_Move_Stun(20)
 
 						if(result==5)
 							etarget.Damage(400+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(3,user.dir)
-								etarget.Timed_Move_Stun(30)
+								etarget.Timed_Move_Stun(15)
 						if(result==4)
 							etarget.Damage(275+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(2,user.dir)
-								etarget.Timed_Move_Stun(20)
+								etarget.Timed_Move_Stun(10)
 						if(result==3)
 							etarget.Damage(200+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(1,user.dir)
-								etarget.Timed_Move_Stun(10)
+								etarget.Timed_Move_Stun(5)
 
 						if(result==2)
 							etarget.Damage(100+str_mod,0,user,"Nirvana Fist","Normal")
