@@ -21,9 +21,10 @@ Revamped
 	- NarutoGOA.rsc
 	- config.ini
 	- testconfig.ini
+	- libmysql.dll 
 
 ---
 ##TODO 
-	- Disable saving in test mode
-	- Give All Skills in test mode
+	- Disable saving in test mode (done)
+	- Give All Skills in test mode (done)
 	- Move all Functions to seperate .dm files
