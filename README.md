@@ -9,4 +9,5 @@ submodule with all the skills code
 # 2.) Check dev-channel on discord for bot to finish building
 
 # 3.) Pull from git, the bot will have added a NarutoGOA.dmb with all updates that you can run locally.
+.
 
