@@ -2,7 +2,11 @@
 submodule with all the skills code
 ---
 
-**Will try make this all standalone and importable to GOA Helper for testing purposes**
+# Method to test changes
 
+# 1.) Push updates to git
 
-# Test 
+# 2.) Check dev-channel on discord for bot to finish building
+
+# 3.) Pull from git, the bot will have added a NarutoGOA.dmb with all updates that you can run locally.
+
