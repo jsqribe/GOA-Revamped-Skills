@@ -25,4 +25,4 @@ Revamped
 
 ---
 ##TODO 
-	- Move all Functions to seperate .dm files
+	- Move all Functions to seperate .dm files.
