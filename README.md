@@ -2,7 +2,7 @@
 submodule with all the skills code
 ---
 
-# Method to test changes
+**Method to test changes**
 
 # 1.) Push updates to git.
 
