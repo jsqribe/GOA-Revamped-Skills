@@ -263,7 +263,7 @@ skill
 			//ORIG VALUES
 			//var/critdamx=round((con + conbuff) * rand(20, 60) / 10)
 			//var/critdamx = round((con + conbuff) * rand(50, 100) / 100) no crit
-			//var/wounddam=round(((rand(1, 4) / 2) * (con + conbuff - conneg)) / 150)
+			//var/wounddam=round(((rand(1, 4) / 2) * (con + conbuff - conneg)) / 200)
 
 
 			EstimateStaminaCritDamage(mob/user)
@@ -274,7 +274,7 @@ skill
 
 
 			EstimateWoundDamage(mob/user)
-				return list(0, 0.15*user.skillspassive[23])
+				return list(0, 0.05*user.skillspassive[23])
 
 
 			ChakraCost(mob/user)
