@@ -4,27 +4,12 @@ submodule with all the skills code
 
 **Method to test changes**
 
-# 1.) Push updates to git.
+ 1.) Push updates to git.
 
-# 2.) Check dev-channel on discord for bot to finish building.
+ 2.) Check dev-channel on discord for bot to finish building.
 
-# 3.) Bot will upload a link of the built game for you to download.
-
-# 4.) Use 7zip to extract the archive file.
-
-# 5.) Run locally to test changes.
-
-# 6.) let me know if you are happy to merge to master :)
-
----
-**Folder Structure**
-Revamped
-	- NarutoGOA.dmb
-	- NarutoGOA.rsc
-	- config.ini
-	- testconfig.ini
-	- libmysql.dll 
+ 3.) Bot will restart the test server with your updates included.
 
 ---
 ##TODO 
-	- Move all Functions to seperate .dm files
+	- Move all Functions to seperate .dm files,
