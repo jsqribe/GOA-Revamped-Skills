@@ -407,6 +407,14 @@ skill
 				skill/copied_skill
 
 
+			Cooldown(mob/user)
+				if(copied_skill)
+					return copied_skill.Cooldown(user)
+
+
+			ChakraCost(mob/user)
+				if(copied_skill)
+					return copied_skill.ChakraCost(user)
 
 			Activate(mob/user)
 				if(copied_skill)
@@ -431,9 +439,12 @@ skill
 					RemoveOverlay(overlay)
 
 
-
 			proc
 				CopySkill(id)
+					if(copied_skill)
+						if(!copied_skill.IsUsable(usr))
+							Error(usr, "You must wait for your current skills cooldown to finish.")
+							return 0
 					var/skill_type = SkillType(id)
 					var/skill/skill
 					if(!skill_type)
@@ -454,50 +465,10 @@ skill
 					return skill
 
 
-	/*		Activate(mob/user)
-				if(copied_skill)
-					return copied_skill.Activate(user)
-				else
-					Error(user, "You do not have a copied skill.")
-					return 0
-
-
-			IconStateChanged(skill/sk, new_state)
-				if(sk == copied_skill)
-					ChangeIconState(new_state)
-
-
-			OverlayAdded(skill/sk, overlay)
-				if(sk == copied_skill)
-					AddOverlay(overlay)
-
-
-			OverlayRemoved(skill/sk, overlay)
-				if(sk == copied_skill)
-					RemoveOverlay(overlay)
 
 
 
-			proc
-				CopySkill(id)
-					var/skill_type = SkillType(id)
-					var/skill/skill
-					if(!skill_type)
-						skill = new /skill()
-						skill.id = id
-						skill.name = "Unknown Skill ([id])"
-					else
-						skill = new skill_type()
-					skill.master = src
-					copied_skill = skill
-					icon_overlays = list(icon('icons/gui_badges.dmi', "sharingan_copy"))
-					icon = skill.icon
-					icon_state = skill.icon_state
-					for(var/skillcard/card in skillcards)
-						card.icon = icon
-						card.icon_state = icon_state
-						card.overlays = icon_overlays
-					return skill*/
+
 
 		mangekyou_itachi
 			id = ITACHI_MANGEKYOU

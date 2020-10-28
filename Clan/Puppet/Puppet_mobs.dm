@@ -1,8 +1,22 @@
+//need to clean this code out :l
 mob
 	var
 		Puppets[2]
 		puppetsave[][]
 		tmp/puppetsout
+
+
+mob/human/Puppet
+	Move(turf/new_loc,dirr)
+		. = ..()
+		var/area/A = loc.loc
+		if(!A.pkzone)
+			src.curwound=900
+			src.curstamina=0
+			src.Hostile()
+		return
+
+
 mob/human/Puppet/proc
 	Melee(mob/u)
 		var/nopk

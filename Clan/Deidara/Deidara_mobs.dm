@@ -25,13 +25,6 @@ mob/human/clay
 		icon_state = "spider"
 		mouse_drag_pointer = MOUSE_HAND_POINTER
 
-		Move()
-			if(src.icon||src.loc)
-				..()
-			else
-				src.icon=null
-				src.loc=null
-
 
 		MouseDrop(D, turf/Start, turf/getta)
 			if(usr == src.owner)
@@ -49,6 +42,26 @@ mob/human/clay
 		..()
 		src.power = p
 		src.owner = u
+
+
+	Move(turf/new_loc,dirr)
+		justwalk = 1
+		if(src.icon||src.loc)
+			..()
+		else
+			src.icon=null
+			src.loc=null
+
+		var/area/A = loc.loc
+		if(!A.pkzone)
+			var/mob/human/clay/spider/S = src
+			if(istype(S) && S.owner && istype(S.owner,/mob/human/player))
+				for(var/obj/trigger/exploding_spider/T in S.owner.triggers)
+					if(T.spider == src) S.owner.RemoveTrigger(T)
+			src.icon=null
+			src.loc=null
+		return
+
 
 	Hostile()
 		spawn() Explode()
