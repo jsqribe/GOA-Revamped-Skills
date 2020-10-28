@@ -1,4 +1,3 @@
-//need to clean this code out :l
 mob
 	var
 		Puppets[2]
