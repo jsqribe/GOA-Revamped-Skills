@@ -1889,8 +1889,8 @@ skill
 
 
 
-		
-		_fist
+
+		nirvana_fist
 			id = NIRVANA_FIST
 			name = "Taijutsu: Achiever of Nirvana Fist"
 			description = "Blows your opponent back and slows their movements with a hard punch."
