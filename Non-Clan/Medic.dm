@@ -171,11 +171,12 @@ skill
 							user.icon_state=""
 							if(etarget) etarget.overlays-='icons/base_chakra.dmi'
 							return
-						var/conroll=rand(1,2*(user.con+user.conbuff-user.conneg))
+
 						var/poisonroll=rand(round((etarget.Poison)/3),(etarget.Poison))
-						if(conroll>poisonroll && poisonroll)
-							var/effect=round(conroll/(poisonroll))//*pick(1,2,3)
-							if(user.skillspassive[23])effect*=(1 + 0.15*user.skillspassive[23])
+
+						if(user.skillspassive[23])
+							var/effect = 1 + ((user.skillspassive[23]/50) * poisonroll) //at most you can remove half your poison at full med passives
+
 							if(effect>etarget.Poison)
 								effect=etarget.Poison
 

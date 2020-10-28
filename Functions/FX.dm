@@ -1,92 +1,3 @@
-proc
-
-	Iswater(turf/xloc)
-		if(xloc)
-			var/turf/X1 = xloc
-			var/obj/water = locate(/obj/water) in X1
-			if(water) return water
-
-			var/turf/A = xloc
-			if(istype(A,/turf/water))
-				return A
-
-	Isbattlefire(turf/xloc)
-		if(xloc)
-			var/turf/A = xloc
-			if(istype(A,/turf/fireroyale))
-				return A
-
-
-	Islava(turf/xloc)
-		if(xloc)
-			var/turf/X1 = xloc
-			var/obj/lava = locate(/obj/lava) in X1
-			if(lava) return lava
-
-
-	Iselec(xloc)
-		var/turf/X1 = xloc
-		return (locate(/obj/elec) in X1)
-
-	Issmoke(xloc)
-		var/turf/X1 = xloc
-		return (locate(/obj/smoke) in X1)
-
-	Ismist(xloc)
-		var/turf/X1 = xloc
-		for(var/obj/mistobj/mist in X1)
-			if(mist.muser == usr)
-				return mist
-/*	Isswamp(xloc)
-		var/turf/X1 = xloc
-		for(var/obj/swampobj/swamp in X1)
-			if(swamp.muser == usr)
-				return swamp*/
-	Isswamp(turf/xloc)
-		if(xloc)
-			var/turf/X1 = xloc
-			var/obj/swampobj/swamp = locate(/obj/swampobj) in X1
-			if(swamp) return swamp
-mob
-	proc/Earthquake(max_steps = 5, offset_min = -2, offset_max = 2)
-		for(var/mob/M in viewers())
-			if(M.client)
-				spawn()
-					var/steps = 0
-					while(M && M.client && steps < max_steps)
-						M.client.pixel_y = rand(offset_min, offset_max)
-						sleep(1)
-						++steps
-	proc/BurnDOT(mob/human/attacker,burndmg,id)
-		if(src.IsProtected() || src.chambered) return
-		if(src.burning)
-			if(src.burnid == "nail" && src.burner == attacker)
-				src.burning += burndmg
-				src.burndur = 100
-				return 1
-			else if(burndmg >= src.burning)	//stronger flames take over (or equal flames reset duration)
-				src.burning = burndmg	//setting burning (the damage) to the new damage
-				src.burndur = 100	//and resetting the burn duration
-				src.burner = attacker
-				src.burnid = id
-				return 1
-			else				//weaker, squelched by the previous flames
-				return 0		//returning here
-		else
-			src.burning = burndmg
-			src.burndur = 100
-			src.burner = attacker
-			src.burnid = id
-			src.overlays += 'icons/base_m_fire.dmi'
-			spawn()
-				while(src && !src.IsProtected() && src.burndur)
-					src.burndur -= 10
-					sleep 10
-				src.overlays -= 'icons/base_m_fire.dmi'
-				src.burning = 0
-				src.burndur = 0
-
-
 obj
 	dense
 		density = 1
@@ -1241,15 +1152,6 @@ proc/Poof(dx, dy, dz)
 
 
 
-obj/entertrigger
-    proc/SteppedOn(o)
-        return
-
-turf/Entered(o)
-    for(var/obj/entertrigger/t in src) t.SteppedOn(o)
-    .=..()
-
-
 obj/entertrigger/poisonsmoke
 	icon = 'icons/smoke2.dmi'
 	icon_state = "poison"
@@ -1541,36 +1443,7 @@ obj/mistobj
 				else
 					mist.loc = null
 
-obj/swampobj
-	icon = 'icons/swamp.dmi'
-	icon_state = ""
-	var/tmp/mob/human/muser
-	New()
-		..()
-		underlays += image(icon='icons/swamp.dmi', icon_state = "up", pixel_y=32)
-		underlays += image(icon='icons/swamp.dmi', icon_state = "down", pixel_y=-32)
-		underlays += image(icon='icons/swamp.dmi', icon_state = "left", pixel_x=-32)
-		underlays += image(icon='icons/swamp.dmi', icon_state = "right", pixel_x=32)
-		spawn(200)
-			if(muser in src.loc)
-				muser.Affirm_Icon()
-				muser.Load_Overlays()
-			loc = null
-	proc/spread2(turf/source, size=3, delay=2)
-		var/list/dirs = list(NORTH,,EAST,SOUTH,WEST,NORTHWEST,NORTHEAST,SOUTHEAST,SOUTHWEST)
-		for(var/xdir in dirs)
-			var/doit = 1
-			for(var/obj/swampobj/mo in get_step(src,xdir))
-				if(mo.muser == src.muser) doit = 0
-			if(doit)
-				var/obj/swampobj/swamp = new/obj/swampobj(src.loc)
-				swamp.muser = src.muser
-				var/stepcheck = step(swamp, xdir)
-				if(stepcheck)
-					if(size > get_dist(swamp,source)) spawn(delay) swamp.spread2(source, size=size, delay=delay)
-					sleep(1)
-				else
-					swamp.loc = null
+
 
 obj/floor
 	icon = 'flooc.dmi'
@@ -1630,15 +1503,7 @@ proc/MistSpread(mob/user, turf/source, size=3, delay=2)
 	mist.muser = user
 	mist.spread(source, size, delay)
 
-proc/SwampField(mob/human/user, turf/source, size=3, delay=2)
-	var/obj/swampobj/swamp = new/obj/swampobj(source)
-	swamp.muser = user
-	swamp.spread2(source, size, delay)
-	user.onswamp=0
-	if(!user.onswamp) user.SwampDmg()
-	user.UsrOnSwamp=1
-	sleep(15)
-	user.UsrOnSwamp=0
+
 
 proc/FloorField(mob/human/user, turf/source, size=3, delay=2)
 	var/obj/floor/flo = new/obj/floor(source)
@@ -1653,54 +1518,7 @@ obj/jashin_circle
 	density = 0
 	icon = 'icons/jashinsymbol.dmi'
 
-proc/Blood2(mob/X, mob/human/U)
-	spawn()
-		if(!X || (X && X.chambered)) return
-		if(U && U.HasSkill(BLOOD_BIND))
-			spawn() U.Blood_Add(X)
-		var/obj/o = new /obj/effect(locate(X.x, X.y, X.z))
-		o.icon = 'icons/blood.dmi'
-		var/r = rand(1, 7)
-		flick("[r]", o)
 
-		var/obj/undereffect/x = new /obj/undereffect(locate(X.x, X.y, X.z))
-		spawn()
-			x.uowner = X
-			for(var/obj/undereffect/G in locate(X))
-				var/nopk = 0
-				for(var/area/O in orange(0, src))
-					if(!O.pkzone)
-						nopk = 1
-
-				if(!nopk)
-					G.uowner = X
-				else
-					G.uowner = 0
-
-		spawn(9)
-			o.loc = null
-			if(!x) return
-			x.icon = 'icons/blood.dmi'
-			var/v = rand(1,7)
-			x.icon_state = "l[v]"
-			spawn(600)
-				x.loc = null
-
-proc/Blood(dx, dy, dz)
-	spawn()
-		var/obj/o = new /obj/effect(locate(dx, dy, dz))
-		o.icon = 'icons/blood.dmi'
-		var/r = rand(1, 7)
-		flick("[r]", o)
-		var/obj/x = new /obj/undereffect(locate(dx, dy, dz))
-		spawn(9)
-			o.loc = null
-			if(!x) return
-			x.icon = 'icons/blood.dmi'
-			var/v = rand(1,7)
-			x.icon_state = "l[v]"
-			spawn(600)
-				x.loc = null
 
 proc/ChidoriFX(mob/human/o)
 	var/obj/c = new/obj/effect()
