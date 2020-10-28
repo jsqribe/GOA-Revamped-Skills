@@ -1889,14 +1889,15 @@ skill
 
 
 
-		nirvana_fist
+		
+		_fist
 			id = NIRVANA_FIST
 			name = "Taijutsu: Achiever of Nirvana Fist"
 			description = "Blows your opponent back and slows their movements with a hard punch."
 			icon_state = "achiever_of_nirvana_fist"
 			default_stamina_cost = 250
 			default_cooldown = 40
-			stamina_damage_fixed = list(0, 450)
+			stamina_damage_fixed = list(650, 1250)
 			stamina_damage_con = list(0, 0)
 			stamina_damage_str = 1
 
