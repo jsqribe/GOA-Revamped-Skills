@@ -26,10 +26,11 @@ mob/human/clay
 		mouse_drag_pointer = MOUSE_HAND_POINTER
 
 		Move()
-			if(src.icon)
+			if(src.icon||src.loc)
 				..()
-			//else
-				//world<<"No icon"
+			else
+				src.icon=null
+				src.loc=null
 
 
 		MouseDrop(D, turf/Start, turf/getta)
