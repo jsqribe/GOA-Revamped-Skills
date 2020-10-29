@@ -162,6 +162,7 @@ skill
 					walk(sw,0)
 					user.client.eye=sw
 					user.Primary=sw
+					user.controlmob=sw
 
 
 		human_puppet
