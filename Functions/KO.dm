@@ -149,6 +149,10 @@ mob
 					world.log << "Dropped [TS]"
 					TS.Drop(src)
 
+				for(var/obj/entertrigger/CTF_Flag/F in contents)
+					src<<"You dropped the [F.flagname] flag."
+					F.Drop(src)
+
 				// TODO: These vars are calculated and recalcualted all over the place, when they shouldn't even change much!
 				var/maxwound1 = 100
 				if(clan == "Will of Fire")
