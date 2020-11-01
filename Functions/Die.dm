@@ -2,9 +2,28 @@ mob
 	proc
 		Die()
 
+			if(inctf)
+				src << "You will respawn in 30 seconds if you're not healed"
+				var/count=0
+				while(curwound>=maxwound)
+					//src.stunned=1000 //redundant since they should be KO'd at this point?
+					count++
+					if(count>30)
+						src.loc=locate_tag("[ctfteam]")
+						curstamina = stamina/2
+						return
+					sleep(10)
+				curstamina = stamina/2
+				return
+
+			for(var/obj/entertrigger/CTF_Flag/F in contents)
+				//src<<"You dropped the [F.flagname] flag."
+				F.Drop(src) //incase they die with it just reset.
+
 			if(inbattleroyale)
 				inbattlefire=0
 				inbattleroyale=0
+				inevent=0 //remove them from the spectate list.
 				Reset_Stun()
 				curwound = 0
 				curstamina = stamina
@@ -30,6 +49,7 @@ mob
 				// TODO: CSS-ify this message
 				if(!LobbyManager.Lobbies.len) world<<"<font color=Blue size= +1>[src] Has lost!</font>"
 				inarena = 0
+				inevent=0 //remove them from the spectate list.
 				Reset_Stun()
 				curwound = 0
 				curstamina = stamina
