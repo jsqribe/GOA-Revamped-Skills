@@ -152,6 +152,8 @@ mob
 				for(var/obj/entertrigger/CTF_Flag/F in contents)
 					src<<"You dropped the [F.flagname] flag."
 					F.Drop(src)
+				has_flag=0
+				overlays-='icons/faction_icons/star-mouse.dmi'
 
 				// TODO: These vars are calculated and recalcualted all over the place, when they shouldn't even change much!
 				var/maxwound1 = 100
