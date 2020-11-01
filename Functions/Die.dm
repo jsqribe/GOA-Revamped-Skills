@@ -13,7 +13,9 @@ mob
 						curstamina = stamina/2
 						return
 					sleep(10)
-				curstamina = stamina/2
+				var/Lobby/L = LobbyManager.GetLobbyByName("[lobby_real_name]")
+				if(L && L.Active)
+					L.HealPlayer(src)
 				return
 
 			for(var/obj/entertrigger/CTF_Flag/F in contents)
