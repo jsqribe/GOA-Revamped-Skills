@@ -137,7 +137,7 @@ skill
 			description = "Removes any debuffs from your body."
 			icon_state = "delicate_extraction"
 			default_chakra_cost = 80
-			default_cooldown = 5
+			default_cooldown = 30
 			/*
 			IsUsable(mob/user)
 				. = ..()
