@@ -83,7 +83,7 @@ skill
 				var/uy=user.y
 				var/uz=user.z
 				var/startdir=user.dir
-				user.removeswords()
+				//user.removeswords()
 				flick("Throw1",user)
 				var/eicon='icons/projectiles.dmi'
 				var/estate="explkunai"
@@ -114,7 +114,7 @@ skill
 					projectile_to(eicon,estate,user,locate(ex,ey,ez))
 					spawn()explosion(1200,ex,ey,ez,user,dist=2)
 
-				user.addswords()
+				//user.addswords()
 
 
 
@@ -135,7 +135,7 @@ skill
 				var/uy=user.y
 				var/uz=user.z
 				var/startdir=user.dir
-				user.removeswords()
+				//user.removeswords()
 				var/eicon='icons/projectiles.dmi'
 				var/estate="explkunai"
 
@@ -176,7 +176,7 @@ skill
 						sleep(1)
 
 
-				user.addswords()
+				//user.addswords()
 
 
 

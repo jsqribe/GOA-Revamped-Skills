@@ -7,6 +7,8 @@ mob
 			//if(usr.inslymind==1)
 			//	return
 
+
+
 			if(usr.inmap == 1)
 				usr.inmap = 0
 
@@ -130,6 +132,10 @@ mob
 				usr.tajuu=0
 				usr.RecalculateStats()
 				usr.controlmob=0
+
+			if(inctf || inbattleroyale) //in event don't let them space respawn
+				return
+
 			spawn(30)
 				usr.Respawn()
 			for(var/obj/interactable/oxe in oview(1))
