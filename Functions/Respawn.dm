@@ -52,6 +52,7 @@ mob
 				src.ko=0
 				src.stunned=0
 				src.icon_state=""
+				src.inevent=0
 				//RESPAWN
 				killer = null
 				for(var/mob/M in world)
