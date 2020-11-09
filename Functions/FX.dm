@@ -1169,7 +1169,7 @@ obj/entertrigger/poisonsmoke
 			M.Poison += 1 + muser.skillspassive[23]*0.25
 			//M.combat("You have been affected by posion")
 			//world << "Affected Mob([M.x],[M.y]) by Object([src.x],[src.y])"
-			spawn() M.Timed_Move_Stun(1) //lags out?
+			spawn() M.Timed_Move_Stun(10) //lags out?
 			M.Hostile(muser)
 			M.Damage(200,0,muser,"Medical: Poison Mist","Normal")
 
@@ -2869,6 +2869,7 @@ proc/AOEcc(xx, xy, xz, radius, stamdamage, stamdamage2, duration, mob/human/atta
 mob/proc/Knockback(k, xdir)
 	//if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.stunned && !src.ko && !src.mane && !src.chambered)
 	if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.ko && !src.noknock && !src.mane && !src.chambered && !src.sandshield && !src.incombo && !src.IsProtected())
+		spawn src.Timed_Move_Stun(20)
 		if(!src.icon_state)
 			src.icon_state = "hurt"
 		if(!src.cantreact)

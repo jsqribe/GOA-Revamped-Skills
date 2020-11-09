@@ -182,9 +182,9 @@ skill
 			default_chakra_cost = 250
 			default_cooldown = 100
 			default_seal_time = 5
-			stamina_damage_fixed = list(3000, 3000)
+			stamina_damage_fixed = list(6000, 6000)
 			stamina_damage_con = list(0, 0)
-			wound_damage_fixed = list(15, 30)
+			wound_damage_fixed = list(25, 30)
 			wound_damage_con = list(0, 0)
 
 			IsUsable(mob/user)

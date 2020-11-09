@@ -31,6 +31,7 @@ skill
 					var/turf/p=etarget.loc
 					var/turf/q=user.loc
 					user.icon_state="Throw2"
+					user.Begin_Stun()
 					user.usemove=1
 					//while(user.usemove && etarget.curwound && etarget && etarget.x==p.x && etarget.y==p.y && user.x==q.x && user.y==q.y)
 					var/conroll=rand(1,2*(user.con+user.conbuff-user.conneg))
@@ -104,32 +105,11 @@ skill
 					user.icon_state=""
 					user.overlays-='icons/Healing.dmi'
 					if(etarget) etarget.overlays-='icons/base_chakra.dmi'
-	/*				user.Timed_Stun(5)
-					user.usemove=1
-					var/sleeptime = 20
-					while(sleeptime > 0 && etarget && etarget.x==p.x && etarget.y==p.y && user.x==q.x && user.y==q.y)
-						sleep(2)
-						sleeptime -= 2
-					if(!user.usemove)
-						user.combat("Your healing was interrupted!")
-						user.icon_state=""
-						if(etarget) etarget.overlays-='icons/base_chakra.dmi'
-						return
-					if(etarget && etarget.x==p.x && etarget.y==p.y && user.x==q.x && user.y==q.y)
-						if(!etarget.curwound)
-							user.combat("[etarget] has no wounds")
-							user.icon_state=""
-							etarget.overlays-='icons/base_chakra.dmi'
-							return
-						etarget.overlays+='icons/base_chakra.dmi'
-						sleep(3)
-						user.icon_state=""
-						if(etarget) etarget.overlays-='icons/base_chakra.dmi'
-						if(!etarget || !user.usemove)
-							user.combat("Your healing was interrupted!")
-							user.icon_state=""
-							if(etarget) etarget.overlays-='icons/base_chakra.dmi'
-							return*/
+
+				spawn(10)
+					user.End_Stun()
+					user.icon_state = ""
+
 
 		delicate_extraction
 			id = DELICATE_EXTRACTION
@@ -148,12 +128,12 @@ skill
 						return 0
 			*/
 			Use(mob/user)
-				var/mob/human/player/etarget = user.
+				var/mob/human/player/etarget = user
 
 				if(etarget)
 					user.icon_state="Throw2"
 
-					user.Timed_Stun(5)
+					user.Begin_Stun()
 					user.usemove=1
 
 					if(!etarget.Poison)
@@ -192,6 +172,9 @@ skill
 						else
 							user.combat("You failed to extract any poison!")
 						user.icon_state=""
+				spawn(10)
+					etarget.End_Stun()
+					etarget.icon_state = ""
 
 
 

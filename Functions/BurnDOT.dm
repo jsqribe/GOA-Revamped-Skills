@@ -20,6 +20,7 @@ mob
 			src.burner = attacker
 			src.burnid = id
 			src.overlays += 'icons/base_m_fire.dmi'
+			src.Timed_Move_Stun(burndur/10)
 			spawn()
 				while(src && !src.IsProtected() && src.burndur)
 					src.burndur -= 10

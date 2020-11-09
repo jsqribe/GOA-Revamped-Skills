@@ -28,10 +28,10 @@ obj/entertrigger/swampobj
 	SteppedOn(mob/human/player/M)
 		if(istype(M,/mob/human/player) && M.client && !M.ko && !M.IsProtected())
 			//M.Poison += 1 + muser.skillspassive[23]*0.25
-			//M.combat("You have been affected by posion")
+			//M.combat("You have been affected by swamp")
 			//world << "Affected Mob([M.x],[M.y]) by Object([src.x],[src.y])"
 			if(M!=muser)
-				spawn() M.Timed_Move_Stun(5) //lags out?
+				M.Timed_Move_Stun(30) //lags out?
 				M.Hostile(muser)
 				M.Damage(500,0,muser,"Swamp of the Underworld","Normal")
 
