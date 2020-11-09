@@ -153,6 +153,8 @@ mob
 					src<<"You dropped the [F.flagname] flag."
 					F.Drop(src)
 				has_flag=0
+				move_stun=0
+				movepenalty = 0
 				overlays-='icons/faction_icons/star-mouse.dmi'
 
 				// TODO: These vars are calculated and recalcualted all over the place, when they shouldn't even change much!

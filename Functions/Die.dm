@@ -10,18 +10,20 @@ mob
 					count++
 					if(count>30)
 						src.loc=locate_tag("[ctfteam]")
-						curstamina = stamina/2
+						var/Lobby/L = LobbyManager.GetLobbyByName("[lobby_real_name]")
+						if(L && L.Active)
+							L.HealPlayer(src)
 						return
 					sleep(10)
-				var/Lobby/L = LobbyManager.GetLobbyByName("[lobby_real_name]")
-				if(L && L.Active)
-					L.HealPlayer(src)
+
 				return
 
 			for(var/obj/entertrigger/CTF_Flag/F in contents)
 				//src<<"You dropped the [F.flagname] flag."
 				F.Drop(src) //incase they die with it just reset.
 			has_flag=0
+			move_stun=0
+			movepenalty = 0
 			overlays-='icons/faction_icons/star-mouse.dmi'
 
 			if(inbattleroyale)

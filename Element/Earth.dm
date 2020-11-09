@@ -212,6 +212,8 @@ skill
 						for(var/mob/human/m in ohearers(0,o))
 							m.chambered = 0
 							m.Crush(user)
+							m.End_Stun()
+							m.Reset_Stun()
 							o.crushed = 1
 
 
