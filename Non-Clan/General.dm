@@ -613,71 +613,79 @@ skill
 
 		IsUsable(mob/user)
 			. = ..()
-			if(.)
-				var/mob/human/etarget = user.MainTarget()
-				var/distance = get_dist(user, etarget)
-				if(etarget && !etarget.ko && distance > 1)
-					Error(user, "Target too far ([distance]/1 tiles)")
-					return 0
-				if(!etarget || (etarget && etarget.ko))
-					for(var/mob/human/eX in get_step(user,user.dir))
-						if(!eX.ko && !eX.IsProtected())
-							return 1 //target found
-					Error(user, "No Valid Target")
+			var/mob/human/target = user.NearestTarget()
+			if(. && target)
+				var/distance = get_dist(user, target)
+				if(distance > 3)
+					Error(user, "Target too far ([distance]/3 tiles)")
 					return 0
 
 		Use(mob/human/player/user)
-			user.Timed_Stun(20)
+
+			viewers(user) << output("[user]: Chakra Leech!", "combat_output")
+
 			user.icon_state="Throw2"
 			user.overlays+='icons/leech.dmi'
+
+			var/mob/human/player/etarget = user.NearestTarget()
+
+			var/dmg_mult = 1
+			if(etarget)
+				var/dist = get_dist(user, etarget)
+				if(dist == 2)
+					dmg_mult = 0.5
+				else if(dist != 1)
+					etarget = null
+			else
+				for(var/mob/human/X in get_step(user,user.dir))
+					if(!X.ko && !X.IsProtected())
+						etarget=X
+
 			var/mob/gotcha=0
 			var/turf/getloc=0
-
-			var/mob/human/etarget = user.MainTarget()
-			if(etarget && !etarget.ko && !(get_dist(user, etarget) > 1))
-				user.FaceTowards(etarget)
-			else
-				for(var/mob/human/eX in get_step(user,user.dir))
-					if(!eX.ko && !eX.IsProtected())
-						etarget = eX
-						break
-
-			if(!etarget)
-				user.overlays-='icons/leech.dmi'
-				world << "BUG: Chakra leech should not have gotten this far without a target"
-				return
-			gotcha=etarget.Replacement_Start(user)
-			gotcha.overlays+='icons/leech.dmi'
-			gotcha.Timed_Move_Stun(30)
-			if(gotcha != etarget)
-				spawn() user.Timed_Stun(20)
-				sleep(20)
-				gotcha.overlays-='icons/leech.dmi'
-				user.overlays-='icons/leech.dmi'
-				user.icon_state=""
-				spawn(5) if(gotcha) gotcha.Replacement_End()
-				return
-			getloc=locate(etarget.x,etarget.y,etarget.z)
-
-			sleep(5)
-			user.Timed_Stun(5)
-			var/turf/q=user.loc
-			while(user && !user.ko && gotcha && !gotcha.ko && gotcha.loc==getloc && (abs(user.x-gotcha.x)*abs(user.y-gotcha.y))<=1 && user.x==q.x && user.y==q.y)
-				var/conmult = user.ControlDamageMultiplier()
-				gotcha.curchakra-= round(20*conmult)
-				user.curchakra+=round(20*conmult)
-				gotcha.Hostile(user)
-				if(gotcha.curchakra<0)
+			if(etarget)
+				gotcha=etarget.Replacement_Start(user)
+				gotcha.overlays+='icons/leech.dmi'
+				user.Timed_Stun(5)
+				gotcha.Begin_Stun()
+				if(gotcha != etarget)
+					gotcha.End_Stun()
+					spawn() user.Timed_Stun(20)
+					sleep(20)
 					gotcha.overlays-='icons/leech.dmi'
-					gotcha.curstamina=0
-					spawn() gotcha.KO()
-					gotcha=0
+					user.overlays-='icons/leech.dmi'
+					user.icon_state=""
+					spawn(5) if(gotcha) gotcha.Replacement_End()
+					return
+				getloc=locate(etarget.x,etarget.y,etarget.z)
 
-				if(user.curchakra>user.chakra*1.5) user.curchakra=user.chakra*1.5
 				sleep(5)
-			user.overlays-='icons/leech.dmi'
-			if(gotcha) gotcha.overlays-='icons/leech.dmi'
-			user.icon_state=""
+				user.Timed_Stun(5)
+
+				var/max = 0
+				var/turf/q=user.loc
+				while(user && !user.ko && gotcha && !gotcha.ko && gotcha.loc==getloc && (abs(user.x-gotcha.x)*abs(user.y-gotcha.y))<=1 && user.x==q.x && user.y==q.y)
+					var/conmult = user.ControlDamageMultiplier()
+					gotcha.curchakra-= round(20*conmult*dmg_mult)
+					user.curchakra+=round(20*conmult*dmg_mult)
+					gotcha.Hostile(user)
+
+					max += round(20*conmult*dmg_mult)
+
+					if(max > 400 && gotcha)
+						gotcha.End_Stun()
+
+					if(gotcha.curchakra<0)
+						gotcha.overlays-='icons/leech.dmi'
+						gotcha.curstamina=0
+						spawn() gotcha.KO()
+						gotcha=0
+
+					if(user.curchakra>user.chakra*1.5) user.curchakra=user.chakra*1.5
+					sleep(5)
+				user.overlays-='icons/leech.dmi'
+				if(gotcha) gotcha.overlays-='icons/leech.dmi'
+				user.icon_state=""
 
 
 

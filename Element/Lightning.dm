@@ -334,8 +334,9 @@ skill
 					for(var/turf/x in oview(2,eloc))
 						if(!(locate(/obj/four_pillar) in x))
 							spawn() Electricity(x.x,x.y,x.z,40)
-					spawn() AOEcc(eloc.x,eloc.y,eloc.z,2,(rand(600,800)+150*conmult),(40+20*conmult),40,user,0,1.5,0)
-					Electricity(eloc.x,eloc.y,eloc.z,40)
+					spawn()
+						AOEcc(eloc.x,eloc.y,eloc.z,2,(rand(600,800)+150*conmult),(40+20*conmult),40,user,0,1.5,0)
+						Electricity(eloc.x,eloc.y,eloc.z,40)
 
 		false_darkness
 			id = FALSE_DARKNESS

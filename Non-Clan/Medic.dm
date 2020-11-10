@@ -574,8 +574,6 @@ skill
 			viewers(user) << output("[user]: Medic: Menacing Palms!", "combat_output")
 
 
-			user.Timed_Stun(10)
-
 			var/mob/human/player/etarget = user.NearestTarget()
 
 			var/dmg_mult = 1

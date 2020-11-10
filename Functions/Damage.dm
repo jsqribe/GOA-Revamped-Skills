@@ -50,7 +50,7 @@ mob
 						var/mob/human/sandmonster/S = locate() in (pet & loc.contents)
 						if(S)
 							flick("hurt", S)
-							--S.hp
+							S.hp -= stamina_dmg/100
 							if(S.hp <= 0)
 								S.loc = null
 							return
@@ -92,7 +92,7 @@ mob
 						gaaramass-=9
 					else if(stamina_dmg<=5000)
 						gaaramass-=10
-						world.log<<"-10"
+						//world.log<<"-10"
 						if(gaaramass <= 0)
 							gaaramass = 0
 							protected=0

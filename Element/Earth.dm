@@ -1031,7 +1031,7 @@ mob/human/proc
 		if(src.shukaku==1 || src.yonbi==1)
 			src.Damage(4200,rand(15,30),u,"Doton: Earth Split", "Normal")
 		else
-			src.Damage(3000,rand(15,30),u,"Doton: Earth Split", "Normal")
+			src.Damage(6000,rand(15,30),u,"Doton: Earth Split", "Normal")
 		spawn()Blood2(src,u)
 		spawn()src.Hostile(u)
 
