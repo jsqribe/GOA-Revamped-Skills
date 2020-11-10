@@ -1851,7 +1851,7 @@ skill
 					ChangeIconState("gate[user.gate+1]")
 				else
 					ChangeIconState("cancelgates")
-				spawn((user.str+user.rfx)*time_multiplier)
+				spawn( ((user.str+user.rfx)*time_multiplier)/2 )
 					if(user && user.gate==curgate)
 						viewers(user) << output("[user] exhausts gate [user.gate].", "combat_output")
 						user.CloseGates(cooldown=1)
@@ -2042,7 +2042,7 @@ mob/proc
 				src.strbuff=0
 				src.rfxbuff=0
 			if(gateclosed == 7)
-				src.Damage(24000,"",src,"Gate Stress","Internal")
+				src.Damage(5000,"",src,"Gate Stress","Internal")
 			else if(gateclosed == 8)
 				src.Damage(24000,300,src,"Gate Stress","Internal")
 			src.underlays=0
