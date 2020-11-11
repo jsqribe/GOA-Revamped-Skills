@@ -182,7 +182,7 @@ skill
 			default_chakra_cost = 250
 			default_cooldown = 100
 			default_seal_time = 5
-			stamina_damage_fixed = list(6000, 6000)
+			stamina_damage_fixed = list(4000, 4000)
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(25, 30)
 			wound_damage_con = list(0, 0)
@@ -1031,7 +1031,7 @@ mob/human/proc
 		if(src.shukaku==1 || src.yonbi==1)
 			src.Damage(4200,rand(15,30),u,"Doton: Earth Split", "Normal")
 		else
-			src.Damage(6000,rand(15,30),u,"Doton: Earth Split", "Normal")
+			src.Damage(4000,rand(15,30),u,"Doton: Earth Split", "Normal")
 		spawn()Blood2(src,u)
 		spawn()src.Hostile(u)
 

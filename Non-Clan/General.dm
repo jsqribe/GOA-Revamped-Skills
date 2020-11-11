@@ -643,24 +643,22 @@ skill
 
 			var/mob/gotcha=0
 			var/turf/getloc=0
+
 			if(etarget)
 				gotcha=etarget.Replacement_Start(user)
 				gotcha.overlays+='icons/leech.dmi'
-				user.Timed_Stun(5)
+				user.Timed_Stun(20)
 				gotcha.Begin_Stun()
+
 				if(gotcha != etarget)
 					gotcha.End_Stun()
-					spawn() user.Timed_Stun(20)
-					sleep(20)
 					gotcha.overlays-='icons/leech.dmi'
 					user.overlays-='icons/leech.dmi'
 					user.icon_state=""
-					spawn(5) if(gotcha) gotcha.Replacement_End()
 					return
+
 				getloc=locate(etarget.x,etarget.y,etarget.z)
 
-				sleep(5)
-				user.Timed_Stun(5)
 
 				var/max = 0
 				var/turf/q=user.loc
@@ -683,10 +681,12 @@ skill
 
 					if(user.curchakra>user.chakra*1.5) user.curchakra=user.chakra*1.5
 					sleep(5)
-				user.overlays-='icons/leech.dmi'
-				if(gotcha) gotcha.overlays-='icons/leech.dmi'
-				user.icon_state=""
 
+				if(gotcha)
+					gotcha.End_Stun()
+					gotcha.overlays-='icons/leech.dmi'
+				user.icon_state=""
+				user.overlays-='icons/leech.dmi'
 
 
 
