@@ -68,9 +68,15 @@ skill
 
 		Cooldown(mob/user)
 			if(user && user.skillspassive[6])
-				return round(default_cooldown * (1 - user.skillspassive[6] * 0.03))
+				if(user.inevent && urf_mod)
+					return (round(default_cooldown * (1 - user.skillspassive[6] * 0.03)))*0.20//80%
+				else
+					return round(default_cooldown * (1 - user.skillspassive[6] * 0.03))
 			else
-				return default_cooldown
+				if(user.inevent && urf_mod)
+					return default_cooldown*0.20//80%
+				else
+					return default_cooldown
 
 
 		ChakraCost(mob/user)
@@ -78,9 +84,15 @@ skill
 			//	return base_charge
 			//else
 			if(user && user.skillspassive[5])
-				return round(default_chakra_cost * (1 - user.skillspassive[5] * 0.04))
+				if(user.inevent && urf_mod)
+					return (round(default_chakra_cost * (1 - user.skillspassive[5] * 0.04)))*0.20//80%
+				else
+					return round(default_chakra_cost * (1 - user.skillspassive[5] * 0.04))
 			else
-				return default_chakra_cost
+				if(user.inevent && urf_mod)
+					return default_chakra_cost*0.20//80%
+				else
+					return default_chakra_cost
 
 
 		StaminaCost(mob/user)
