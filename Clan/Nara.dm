@@ -83,7 +83,7 @@ skill
 								else // Replacement changed the target around, leave it for just a bit then end it when it becomes obvious
 									user.curchakra-=cost
 									sleep(20)
-								del(o)
+								o.loc=null
 								if(result)
 									result.underlays-='icons/shadow.dmi'
 									result.maned=0
@@ -140,7 +140,7 @@ skill
 								user.curchakra-=cost
 								sleep(20)
 
-							del(o)
+							o.loc=null
 
 							if(result)
 								result.underlays-='icons/shadow.dmi'
@@ -161,7 +161,7 @@ skill
 						user.icon_state=""
 						user.End_Stun()
 						user.mane=0
-						del(o)
+						o.loc=null
 
 
 
@@ -171,7 +171,7 @@ skill
 			name = "Shadow Neck Bind"
 			description = "Chokes your enemies with shadows dealing damage over time. While this is active your shadow bind will consume more chakra."
 			icon_state = "shadow_neck_bind"
-			default_chakra_cost = 0
+			default_chakra_cost = 100
 			default_cooldown = 5
 			stamina_damage_fixed = list(1000, 1000)
 			stamina_damage_con = list(500, 500)
@@ -188,8 +188,24 @@ skill
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Shadow Neck Bind!", "combat_output")
 				var/conmult = user.ControlDamageMultiplier()
+
 				for(var/mob/human/x in ohearers(8))
 					if(x.maned==user.key)
+						var/cost=10
+						var/resultx=Roll_Against(user.con+user.conbuff-user.conneg,x.str+x.strbuff-x.strneg,100)
+						if(resultx>=6)
+							cost=user.chakra/6
+						if(resultx==5)
+							cost=user.chakra/5
+						if(resultx==4)
+							cost=user.chakra/4
+						if(resultx==3)
+							cost=user.chakra/3
+						if(resultx==2)
+							cost=user.chakra/2
+						if(resultx==1)
+							cost=user.chakra/1.5
+
 						var/obj/o =new/obj(locate(x.x,x.y,x.z))
 						o.layer=MOB_LAYER+1
 						o.icon='icons/shadowneckbind.dmi'
@@ -199,7 +215,9 @@ skill
 						flick("choke",o)
 						spawn(20)
 							o.loc = null
-						if(x) x.Damage((1000+(500*conmult)),0,user,"Shadow Neck Bind","Normal")
+						if(x)
+							x.Damage((1000+(500*conmult)),0,user,"Shadow Neck Bind","Normal")
+							user.curchakra-=cost
 						spawn(50)if(x) x.Hostile(user)
 
 
