@@ -32,7 +32,6 @@ skill
 		charge2 = 0
 
 
-
 	proc
 		IsUsable(mob/user)
 			if(cooldown > 0)
