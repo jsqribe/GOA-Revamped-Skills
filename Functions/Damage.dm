@@ -425,14 +425,14 @@ mob
 				spawn() KO()
 
 			if(attacker && attacker.clan == "Ruthless")
-
-				if(total_stamina_dmg < 250)//probably tai/low dmg
-					if(prob(33)) //33% chance to boost
-						attacker.adren += round(total_stamina_dmg / min(125,total_stamina_dmg)) + wound_dmg
-						//attacker<<"Ruthy Boost+:[round(total_stamina_dmg / 100) + wound_dmg]"
-				else
-					attacker.adren += round(total_stamina_dmg / 250) + wound_dmg
-					//attacker<<"Ruthy Boost+:[round(total_stamina_dmg / 250) + wound_dmg]"
+				if(total_stamina_dmg > 0)//stop division by 0 error
+					if(total_stamina_dmg < 250)//probably tai/low dmg
+						if(prob(33)) //33% chance to boost
+							attacker.adren += round(total_stamina_dmg / min(125,total_stamina_dmg)) + wound_dmg
+							//attacker<<"Ruthy Boost+:[round(total_stamina_dmg / 100) + wound_dmg]"
+					else
+						attacker.adren += round(total_stamina_dmg / 250) + wound_dmg
+						//attacker<<"Ruthy Boost+:[round(total_stamina_dmg / 250) + wound_dmg]"
 
 				attacker.statBoost()
 
