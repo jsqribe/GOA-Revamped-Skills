@@ -2869,7 +2869,7 @@ proc/AOEcc(xx, xy, xz, radius, stamdamage, stamdamage2, duration, mob/human/atta
 mob/proc/Knockback(k, xdir, slow=1)
 	//if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.stunned && !src.ko && !src.mane && !src.chambered)
 	if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.ko && !src.noknock && !src.mane && !src.chambered && !src.sandshield && !src.incombo && !src.IsProtected())
-		if(slow) spawn src.Timed_Move_Stun(20)
+		//if(slow) spawn src.Timed_Move_Stun(20)
 		if(!src.icon_state)
 			src.icon_state = "hurt"
 		if(!src.cantreact)
