@@ -2866,10 +2866,10 @@ proc/AOEcc(xx, xy, xz, radius, stamdamage, stamdamage2, duration, mob/human/atta
 		spawn(5) if(O && !O.ko && O.icon_state == "hurt") O.icon_state = ""
 	M.loc = null
 
-mob/proc/Knockback(k, xdir)
+mob/proc/Knockback(k, xdir, slow=1)
 	//if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.stunned && !src.ko && !src.mane && !src.chambered)
 	if(!istype(src, /mob/human/npc) && src.paralysed == 0 && !src.ko && !src.noknock && !src.mane && !src.chambered && !src.sandshield && !src.incombo && !src.IsProtected())
-		spawn src.Timed_Move_Stun(20)
+		if(slow) spawn src.Timed_Move_Stun(20)
 		if(!src.icon_state)
 			src.icon_state = "hurt"
 		if(!src.cantreact)
@@ -3024,7 +3024,7 @@ proc/WaveDamage(mob/human/u, mag, dam, knockback, xdist, burn=0)
 				if(!istype(M, /mob/human/npc) && !(M in hit))
 					M = M.Replacement_Start(u)
 					hit += M
-					spawn() if(M) M.Knockback(knockback,dir)
+					spawn() if(M) M.Knockback(knockback,dir,0)//donn't slow
 					M.Damage(dam, 0, u, "WaveDamage", "Normal")
 					if(burn) M.BurnDOT(u,13*u.ControlDamageMultiplier())
 					spawn() if(M) M.Hostile(u)
