@@ -679,13 +679,13 @@ skill
 			id = DOTON_EARTH_SHAKING_PALM
 			name = "Earth Release: Earth Shaking Palm"
 			icon_state = "earth_palm"
-			default_chakra_cost = 1000
-			default_cooldown = 180
+			default_chakra_cost = 500
+			default_cooldown = 90
 			default_seal_time = 4
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Shaking Palm!", "combat_output")
-				var/earth_damage = user.ControlDamageMultiplier()*2
+				var/earth_damage = user.ControlDamageMultiplier()*3
 				user.icon_state="Seal"
 				spawn(15)
 					user.icon_state=""
@@ -693,11 +693,9 @@ skill
 			//	user.protected=4
 				var/obj/x=new/obj/ground_destruction(user.loc)
 				spawn()AOExk(user.x,user.y,user.z,3,earth_damage*user.blevel,6,user,0,1,1)
-				spawn(5) del(x)
-				for(var/stun = user.blevel/10,stun>0,stun--)
-					user.Reset_Stun()
-					spawn(10)
-						user.movepenalty+=5
+				spawn(5)
+					x.loc=null
+
 
 		doton_prison_dome
 			id = DOTON_PRISON_DOME

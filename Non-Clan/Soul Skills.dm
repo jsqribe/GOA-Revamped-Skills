@@ -8,7 +8,7 @@ skill
 			name = "Doton: Swamp Field"
 			description = "Create a Swamp."
 			icon_state = "doton_swamp_of_the_underworld"
-			default_chakra_cost = 900
+			default_chakra_cost = 450
 			//base_charge = 100
 			stamina_damage_fixed = list(233.3, 2800)
 			description = "Creates a swamp that slows and damages everyone in it"
