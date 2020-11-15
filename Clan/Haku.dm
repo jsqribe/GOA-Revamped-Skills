@@ -72,8 +72,10 @@ skill
 				Q.loc = null
 				Q = null
 
-				for(var/obj/M in EX)
+				for(var/obj/iceneedle/M in EX)
+					M.muser=user
 					M.FaceTowards(P)
+
 
 				spawn(1)
 					for(var/obj/M in EX)
@@ -86,8 +88,9 @@ skill
 						O.loc = null
 					return
 
-				var/conmult = user.ControlDamageMultiplier()
+				//var/conmult = user.ControlDamageMultiplier()
 
+				/*
 				for(var/mob/human/O in P)
 					O = O.Replacement_Start(user)
 					O.Timed_Move_Stun(30)
@@ -98,17 +101,7 @@ skill
 					O.Hostile(user)
 					Blood2(O,user)
 					spawn(5) if(O) O.Replacement_End()
-
-				for(var/mob/human/O in ohearers(1,P))
-					if(O != user)
-						O = O.Replacement_Start(user)
-						O.Timed_Move_Stun(10)
-						//O.move_stun+=3
-						O.Damage((rand(200,300)+70*conmult), 0, user, "Ice Needles", "Normal")
-						//O.Dec_Stam((rand(200,300)+70*conmult),0,user)
-						O.Hostile(user)
-						spawn(5) if(O) O.Replacement_End()
-
+				*/
 				spawn(30)
 					for(var/obj/O in EX)
 						O.loc = null
@@ -1169,9 +1162,26 @@ obj
 		icon_state="Needles"
 		layer=MOB_LAYER+3
 		density=0
-
+		var/tmp/mob/human/muser
 
 
 		New()
 			..()
 			flick("formNeedles",src)
+
+		Move()
+			..()
+			for(var/mob/human/player/O in src.loc)
+				if(istype(O, /mob/human/player))
+					if(O != muser)
+						O = O.Replacement_Start(muser)
+						O.Timed_Move_Stun(10)
+						//O.move_stun+=3
+						var/conmult = muser.ControlDamageMultiplier()
+						O.Damage((rand(200,300)+70*conmult), 0, muser, "Ice Needles", "Normal")
+						//O.Dec_Stam((rand(200,300)+70*conmult),0,user)
+						O.Hostile(muser)
+						Blood2(O,muser)
+						spawn(5) if(O) O.Replacement_End()
+
+

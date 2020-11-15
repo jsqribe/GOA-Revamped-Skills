@@ -37,7 +37,7 @@ skill
 				else if(user.con >= 450 && user.con >= 450) size = 10
 
 				if(etarget)
-					SwampField(etarget, etarget.loc, size=size, delay=3)
+					SwampField(user, etarget.loc, size=size, delay=3)
 				else
 					user.icon_state = "Swamp"
 					SwampField(user, user.loc, size=size, delay=3)

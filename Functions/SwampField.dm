@@ -1,12 +1,8 @@
-proc/SwampField(mob/human/user, turf/source, size=3, delay=2)
+proc/SwampField(mob/human/user, turf/source, size=3, delay=1)
 	var/obj/entertrigger/swampobj/swamp = new/obj/entertrigger/swampobj(source)
 	swamp.muser = user
 	swamp.spread2(source, size, delay)
-	user.onswamp=0
-	//if(!user.onswamp) user.SwampDmg()
-	user.UsrOnSwamp=1
-	sleep(15)
-	user.UsrOnSwamp=0
+
 
 
 obj/entertrigger/swampobj

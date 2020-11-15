@@ -978,8 +978,8 @@ skill
 			id = FRONT_LOTUS
 			name = "Taijutsu: Front Lotus"
 			icon_state = "primary_lotus"
-			default_stamina_cost = 6000
-			default_cooldown = 280
+			default_stamina_cost = 1000
+			default_cooldown = 120
 			copyable=0
 
 			IsUsable(mob/user)
