@@ -1,4 +1,5 @@
-mob/var/skillbypass=0
+mob/var/skillbypass=0 // used for ctr currently
+
 skill
 	var
 		name
