@@ -3,6 +3,8 @@ mob
 		dash()
 			set name="Dash"
 			set hidden = 1
+			if (usr.is_dashing) usr.is_dashing=0
+			/*
 			if(!usr.is_dashing || !usr.is_jumping || !usr.pk || !usr.stunned||!usr.handseal_stun||!usr.kstun||!usr.ko||!usr.Size||!usr.Tank||!usr.mole||!usr.skillusecool||!usr.Fly)
 				var/mob/etarget = usr.MainTarget()
 				var/ei=7
@@ -33,3 +35,4 @@ mob
 						walk(usr,0)
 					sleep(100)
 					usr.is_dashing=0
+			*/
