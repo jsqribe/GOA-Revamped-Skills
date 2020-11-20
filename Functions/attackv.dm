@@ -129,10 +129,8 @@ mob/human
 							spawn(2)
 								etarget = etarget.Replacement_Start(usr)
 								etarget.Damage(strmult/2,0,usr,"Twin Lions","Normal")
-					//	spawn() AOE(ex, ey, ez, 1, (strmult/2), 50, usr, 0, 0)
 						sleep(30)
-/*						spawn() Fire(ex, ey, ez, 2, 50)
-						spawn() FireAOE(ex, ey, ez, 2, (strmult/2), 50, usr, 3, 0)*/
+
 
 
 			var/r = 0
