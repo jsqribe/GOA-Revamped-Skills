@@ -140,6 +140,7 @@ skill
 						user.combat("You're not poisoned")
 						user.icon_state=""
 						etarget.overlays-='icons/base_chakra.dmi'
+						etarget.End_Stun()
 						return
 					else
 						etarget.overlays+='icons/base_chakra.dmi'
