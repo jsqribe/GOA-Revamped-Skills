@@ -24,7 +24,7 @@ mob/proc
 			protected = 0
 
 	IsProtected() //Proc to consolidate some protect stuff so that the code doesn't need to be littered with similar vars. (Mainly for puppet shield though)
-		if(protected || mole)
+		if(protected || mole || using_crow)
 			return 1
 		for(var/obj/Shield/s in oview(1,src))
 			if(istype(src, /mob/human/Puppet))

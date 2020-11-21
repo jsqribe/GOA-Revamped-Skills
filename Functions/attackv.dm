@@ -33,16 +33,6 @@ mob/human
 				Affirm_Icon()
 				Load_Overlays()
 
-			// I don't get the point of this, nothing calls combo() except for this right?
-			// Why bother preparing the whole CTR-punch thing like this then?
-			if(sakpunch)
-				sakpunch = 0
-				sakpunch2 = 1
-
-			spawn(10)
-				sakpunch2=0
-				RecalculateStats()
-
 			if(leading)
 				leading.stop_following()
 				return
@@ -140,107 +130,22 @@ mob/human
 				src.Chodan_Bakugeki()
 				return
 
-			// For that matter all these attack-override skills need better handling
-			// It's a bit annoying to have to get into here or combo to do the hit logic.
+
 			if(rasengan)
-				// And a bit more specific to the rasengans: They all do the exact same thing except with different overlays and proc calls.
-				if(!M && NearestTarget()) FaceTowards(NearestTarget())
-				if(rasengan == 1)
-					overlays -= /obj/rasengan
-					overlays += /obj/rasengan2
-			//		sleep(1)
-					flick("PunchA-1", src)
-					//sound = 'sounds/right_hook.wav'
-
-					var/i = 0
-					for(var/mob/human/o in get_step(src, dir))
-						if(!o.ko && !o.IsProtected())
-							i = 1
-							if(rasengan == 1)
-								Rasengan_Hit(o, src, dir)
-					if(!i)
-						Rasengan_Fail()
-					return
-
-			if(rasengan == 2)
-				overlays -= /obj/oodamarasengan
-				overlays += /obj/oodamarasengan2
-		//		sleep(1)
-				flick("PunchA-1", src)
-				//sound = 'sounds/right_hook.wav'
-				var/i = 0
-				for(var/mob/human/o in get_step(src, dir))
-					if(!o.ko && !o.IsProtected())
-						i = 1
-						if(rasengan == 2)
-							ORasengan_Hit(o, src, dir)
-				if(!i)
-					ORasengan_Fail()
+				onHit(M,"rasengan")
 				return
 
-			if(rasengan == 3)
-				sleep(1)
-				flick("PunchA-1", src)
-				//sound = 'sounds/right_hook.wav'
-				var/i = 0
-				for(var/mob/human/o in get_step(src, dir))
-					if(!o.ko && !o.IsProtected())
-						i = 1
-						if(rasengan == 3)
-							Rasenshuriken_Hit(o, src, dir)
-				if(!i)
-					Rasenshuriken_Fail()
+			if(sakpunch)
+				onHit(M,"sakpunch")
 				return
 
-			if(rasengan == 4)
-				sleep(1)
-				flick("PunchA-1", src)
-				//sound = 'sounds/right_hook.wav'
-				var/i = 0
-				for(var/mob/human/o in get_step(src, dir))
-					if(!o.ko && !o.IsProtected())
-						i = 1
-						if(rasengan == 4)
-							Rasenshuriken_Hit2(o, src, dir)
-				if(!i)
-					Rasenshuriken_Fail2()
+			if(tsupunch)
+				onHit(M,"tsupunch")
 				return
 
-				if(usr.intiger2)
-					var/mob/human/player/t = usr.MainTarget()
-					usr:AppearBefore(t)
-					flick("PunchA-1",usr)
-					flick("PunchA-2",usr)
-					t.Knockback(rand(15,15),t.dir)
-					usr:AppearBefore(t)
-					flick("PunchA-1",usr)
-					flick("PunchA-2",usr)
-					t.Knockback(rand(20,20),t.dir)
-					usr:AppearBefore(t)
-					flick("PunchA-1",usr)
-					flick("PunchA-2",usr)
-					t.curstamina-=rand(usr.str+usr.strbuff+usr.rfxbuff-usr.strneg-usr.rfxneg*4.5,usr.str*5.5+usr.strbuff+usr.rfxbuff-usr.rfxneg-usr.strneg)
-					sleep(5)
-
-			if(rasengan == 6)
-				// And a bit more specific to the rasengans: They all do the exact same thing except with different overlays and proc calls.
-				if(!M && NearestTarget()) FaceTowards(NearestTarget())
-				if(rasengan == 6)
-					overlays -= /obj/rasengan
-					overlays += /obj/rasengan2
-			//		sleep(1)
-					flick("PunchA-1", src)
-					//sound = 'sounds/right_hook.wav'
-
-					var/i = 0
-					for(var/mob/human/o in get_step(src, dir))
-						if(!o.ko && !o.IsProtected())
-							i = 1
-							if(rasengan == 6)
-								SRasengan_Hit(o, src, dir)
-					if(!i)
-						SRasengan_Fail()
-					return
+			if(Partial || Size)
+				onHit(M,"Size")
+				return
 
 			// And this arbitrary distinction between having a mob argument or not is weird.
 			// It pretty much exists for the AI to explictly specify a target but there's no real reason it needs to.

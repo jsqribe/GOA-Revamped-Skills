@@ -262,12 +262,6 @@ skill
 				return list(0, 0.05*user.skillspassive[23])
 
 
-			ChakraCost(mob/user)
-				if(!user.scalpol)
-					return ..(user)
-				else
-					return 0
-
 
 			Cooldown(mob/user)
 				if(!user.scalpol)
