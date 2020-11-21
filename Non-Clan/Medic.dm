@@ -252,14 +252,17 @@ skill
 
 
 			EstimateStaminaCritDamage(mob/user)
-				return list( round(user.con + user.conbuff * (0.2*user.skillspassive[23])/10) , round(user.con + user.conbuff * (4*user.skillspassive[23])/10) )
+				var/medic_passive = user.skillspassive[23]
+				return list(round(user.con + user.conbuff * (1+((0.2*medic_passive) / 10))), round(user.con + user.conbuff * (1+((4*medic_passive) / 10))))
 
 			EstimateStaminaDamage(mob/user)
-				return list(round(user.con + user.conbuff * (3.5*user.skillspassive[23])/100), round(user.con + user.conbuff * (6*user.skillspassive[23])/100))
+				var/medic_passive = user.skillspassive[23]
+				return list(round(user.con + user.conbuff * (1+((3.5*medic_passive) / 100))), round(user.con + user.conbuff * (1+((6*medic_passive) / 100))))
 
 
 			EstimateWoundDamage(mob/user)
-				return list(0, 0.05*user.skillspassive[23])
+				var/medic_passive = user.skillspassive[23]
+				return list( 1 , 1 + (0.2*medic_passive) )
 
 
 
