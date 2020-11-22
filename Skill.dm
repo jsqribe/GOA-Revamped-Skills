@@ -115,164 +115,165 @@ skill
 
 
 		Activate(mob/human/user)
-			if(!((src in user.skills) || (master && (master in user.skills))))
-				usr << "Nice try using a skill you don't have."
-				world.log << "\"[user.realname]\"[user.client?"([user.client.address] - [user.client.computer_id])":""] attempted to use skill \"[src]\", which they do not have."
-				return
-
-
-
-			if(user.leading)
-				user.leading.following = 0
-				user.leading = 0
-				return
-
-			//allow rasengan,ctr,chidori through shunshin once!
-			if (( user.rasengan || user.sakpunch || user.chidori ) &&!user.skillbypass && istype(src,/skill/body_flicker))
-			//if ( user.sakpunch  &&!user.skillbypass && istype(src,/skill/body_flicker)) only ctr
-				//user.combat("[src] bypass")
-				user.skillbypass=1
-			else
-				//user.combat("[src] no bypass")
-				if ( user.rasengan || user.sakpunch || user.chidori )
+			spawn(0)
+				if(!((src in user.skills) || (master && (master in user.skills))))
+					usr << "Nice try using a skill you don't have."
+					world.log << "\"[user.realname]\"[user.client?"([user.client.address] - [user.client.computer_id])":""] attempted to use skill \"[src]\", which they do not have."
 					return
+
+
+
+				if(user.leading)
+					user.leading.following = 0
+					user.leading = 0
+					return
+
+				//allow rasengan,ctr,chidori through shunshin once!
+				if (( user.rasengan || user.sakpunch || user.chidori ) &&!user.skillbypass && istype(src,/skill/body_flicker))
+				//if ( user.sakpunch  &&!user.skillbypass && istype(src,/skill/body_flicker)) only ctr
+					//user.combat("[src] bypass")
+					user.skillbypass=1
 				else
-					user.skillbypass=0//reset
+					//user.combat("[src] no bypass")
+					if ( user.rasengan || user.sakpunch || user.chidori )
+						return
+					else
+						user.skillbypass=0//reset
 
 
-			if(user.rasengan==1 && !istype(src,/skill/body_flicker) )
-				user.Rasengan_Fail()
-			else if(user.rasengan==2)
-				user.ORasengan_Fail()
-			else if(user.rasengan == 6)
-				user.SRasengan_Fail()
+				if(user.rasengan==1 && !istype(src,/skill/body_flicker) )
+					user.Rasengan_Fail()
+				else if(user.rasengan==2)
+					user.ORasengan_Fail()
+				else if(user.rasengan == 6)
+					user.SRasengan_Fail()
 
 
-			if(user.qued==1)
-				user.Deque()
-			else if(user.qued2==1)
-				user.Deque2()
+				if(user.qued==1)
+					user.Deque()
+				else if(user.qued2==1)
+					user.Deque2()
 
-			if(user.isguard)
-				user.icon_state=""
-				user.isguard=0
+				if(user.isguard)
+					user.icon_state=""
+					user.isguard=0
 
-			if(user.madarasusano==1)
-				user.overlays-=image('icons/MadaraDef.dmi',pixel_x=-8,pixel_y=-8)
+				if(user.madarasusano==1)
+					user.overlays-=image('icons/MadaraDef.dmi',pixel_x=-8,pixel_y=-8)
 
-			if(user.sasukesusano == 1)
-				user.overlays-=image('icons/SasukeDef.dmi',pixel_x=-8,pixel_y=-8)
-				user.overlays-=image('icons/SasAttck.dmi',pixel_x=-96,pixel_y=-96)
+				if(user.sasukesusano == 1)
+					user.overlays-=image('icons/SasukeDef.dmi',pixel_x=-8,pixel_y=-8)
+					user.overlays-=image('icons/SasAttck.dmi',pixel_x=-96,pixel_y=-96)
 
-			if(user.itachisusano==1)
-				user.overlays-=image('icons/ItachiDef.dmi',pixel_x=-8,pixel_y=-8)
+				if(user.itachisusano==1)
+					user.overlays-=image('icons/ItachiDef.dmi',pixel_x=-8,pixel_y=-8)
 
-			if(user.ironmass == 1)
-				user.overlays-=image('icons/magnetdef.dmi',pixel_x=-32,pixel_y=-32)
+				if(user.ironmass == 1)
+					user.overlays-=image('icons/magnetdef.dmi',pixel_x=-32,pixel_y=-32)
 
-			if(user.camo)
-				user.camo=0
-				user.Affirm_Icon()
-				user.Load_Overlays()
+				if(user.camo)
+					user.camo=0
+					user.Affirm_Icon()
+					user.Load_Overlays()
 
-			if(charging)
-				charging = 0
-				return
+				if(charging)
+					charging = 0
+					return
 
 
-			//user.combat("Here1 [src]")
-			//user.combat("[user.startclash],[user.stakes],[user.skillusecool],[bypass],[!user.CanUseSkills()],[!IsUsable(user)],[user.mane]")
-			if(user.startclash || user.stakes || (user.skillusecool && !user.skillbypass) || (!user.CanUseSkills() && !istype(src,/skill/namikaze/hiraishin_1)) || (!IsUsable(user) && !istype(src,/skill/namikaze/hiraishin_1)) || (user.mane && !istype(src,/skill/nara)))
-				return
-			//user.combat("Here2 [src]")
-			user.skillusecool = 1
-			AddOverlay('icons/selected.dmi')
+				//user.combat("Here1 [src]")
+				//user.combat("[user.startclash],[user.stakes],[user.skillusecool],[bypass],[!user.CanUseSkills()],[!IsUsable(user)],[user.mane]")
+				if(user.startclash || user.stakes || (user.skillusecool && !user.skillbypass) || (!user.CanUseSkills() && !istype(src,/skill/namikaze/hiraishin_1)) || (!IsUsable(user) && !istype(src,/skill/namikaze/hiraishin_1)) || (user.mane && !istype(src,/skill/nara)))
+					return
+				//user.combat("Here2 [src]")
+				user.skillusecool = 1
+				AddOverlay('icons/selected.dmi')
 
-			if(user.naturechakra > 0)
-				user.naturechakra -= ChakraCost(user)
-				if(user.naturechakra < 0)
-					user.curchakra += user.naturechakra
-					user.naturechakra = 0
-			else user.curchakra -= ChakraCost(user)
+				if(user.naturechakra > 0)
+					user.naturechakra -= ChakraCost(user)
+					if(user.naturechakra < 0)
+						user.curchakra += user.naturechakra
+						user.naturechakra = 0
+				else user.curchakra -= ChakraCost(user)
 
-			user.curstamina -= StaminaCost(user)
-			if(user.clan == "Weaponist")
-				user.supplies -= SupplyCost(user)/2
-			else
-				user.supplies -= SupplyCost(user)
+				user.curstamina -= StaminaCost(user)
+				if(user.clan == "Weaponist")
+					user.supplies -= SupplyCost(user)/2
+				else
+					user.supplies -= SupplyCost(user)
 
-			if(base_charge)
-				user.combat("[src]: Use this skill again to stop charging.")
-				charge = base_charge
-				charging = 1
-				var/chakra_charge = 1
-				while(charging && user && user.CanUseSkills())
-					if(chakra_charge && (!max_charge || charge < max_charge))
-						var/charge_amt = min(base_charge, user.curchakra)
-						var/charge_amt_n = min(base_charge, user.naturechakra)
-						if(user.naturechakra > 0)
-							user.curchakra -= charge_amt_n
-						else user.curchakra -= charge_amt
-						charge += charge_amt
-						user.combat("[src]: Charged [charge] chakra.")
-						if(user.curchakra <= 0)
-							user.combat("[src]: Out of chakra. Use this skill again to finish charging.")
-							chakra_charge = 0
-					sleep(5)
+				if(base_charge)
+					user.combat("[src]: Use this skill again to stop charging.")
+					charge = base_charge
+					charging = 1
+					var/chakra_charge = 1
+					while(charging && user && user.CanUseSkills())
+						if(chakra_charge && (!max_charge || charge < max_charge))
+							var/charge_amt = min(base_charge, user.curchakra)
+							var/charge_amt_n = min(base_charge, user.naturechakra)
+							if(user.naturechakra > 0)
+								user.curchakra -= charge_amt_n
+							else user.curchakra -= charge_amt
+							charge += charge_amt
+							user.combat("[src]: Charged [charge] chakra.")
+							if(user.curchakra <= 0)
+								user.combat("[src]: Out of chakra. Use this skill again to finish charging.")
+								chakra_charge = 0
+						sleep(5)
+					if(!user)
+						RemoveOverlay('icons/selected.dmi')
+						return
+					else if(!user.CanUseSkills())
+						user.skillusecool = 0
+						RemoveOverlay('icons/selected.dmi')
+						return
+
+				if(face_nearest)
+					if(user.NearestTarget()) user.FaceTowards(user.NearestTarget())
+				else
+					if(user.MainTarget()) user.FaceTowards(user.MainTarget())
+
+
+	/*			var/witnessing_time = world.time
+				for(var/mob/human/player/XE in ohearers(8))
+					if(copyable && XE.sharingan && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
+						XE.combat("<font color=#faa21b>{Sharingan} [user] used [src]. Press <b>Space</b> within 5 Seconds to copy this skill.</font>")
+						XE.lastwitnessing=id
+						XE.lastwitnessing_time = witnessing_time
+						spawn(50)
+							if(XE && XE.lastwitnessing_time == witnessing_time) XE.lastwitnessing=0
+					else if(XE.sharingan)
+						XE.combat("<font color=#faa21b>{Sharingan} [user] used [src].</font>")
+	*/
+
+				for(var/mob/human/player/XE in oview(8))
+					var/can_copy = 0
+					if(copyable && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
+						can_copy = 1
+						XE.lastwitnessing=id
+						spawn(50)
+							if(XE) XE.lastwitnessing=0
+					if(XE.sharingan || XE.impsharingan)
+						XE.combat("<font color=#faa21b>{Sharingan} [user] used [src].[can_copy?" Press <b>Space</b> within 5 Seconds to copy this skill.":""]</font>")
+
+
+				user.lastskill = id
+				++uses
+				DoSeals(user)
+				var/incomplete
+				if(user && user.CanUseSkills())
+					if(Use(user)) incomplete = 1
+
+				RemoveOverlay('icons/selected.dmi')
+
 				if(!user)
-					RemoveOverlay('icons/selected.dmi')
-					return
-				else if(!user.CanUseSkills())
-					user.skillusecool = 0
-					RemoveOverlay('icons/selected.dmi')
 					return
 
-			if(face_nearest)
-				if(user.NearestTarget()) user.FaceTowards(user.NearestTarget())
-			else
-				if(user.MainTarget()) user.FaceTowards(user.MainTarget())
+				spawn(2)
+					if(user) user.skillusecool = 0
 
-
-/*			var/witnessing_time = world.time
-			for(var/mob/human/player/XE in ohearers(8))
-				if(copyable && XE.sharingan && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
-					XE.combat("<font color=#faa21b>{Sharingan} [user] used [src]. Press <b>Space</b> within 5 Seconds to copy this skill.</font>")
-					XE.lastwitnessing=id
-					XE.lastwitnessing_time = witnessing_time
-					spawn(50)
-						if(XE && XE.lastwitnessing_time == witnessing_time) XE.lastwitnessing=0
-				else if(XE.sharingan)
-					XE.combat("<font color=#faa21b>{Sharingan} [user] used [src].</font>")
-*/
-
-			for(var/mob/human/player/XE in oview(8))
-				var/can_copy = 0
-				if(copyable && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
-					can_copy = 1
-					XE.lastwitnessing=id
-					spawn(50)
-						if(XE) XE.lastwitnessing=0
-				if(XE.sharingan || XE.impsharingan)
-					XE.combat("<font color=#faa21b>{Sharingan} [user] used [src].[can_copy?" Press <b>Space</b> within 5 Seconds to copy this skill.":""]</font>")
-
-
-			user.lastskill = id
-			++uses
-			DoSeals(user)
-			var/incomplete
-			if(user && user.CanUseSkills())
-				if(Use(user)) incomplete = 1
-
-			RemoveOverlay('icons/selected.dmi')
-
-			if(!user)
-				return
-
-			spawn(2)
-				if(user) user.skillusecool = 0
-
-			if(!istype(src, /skill/medic/heal) && !istype(src, /skill/earth/mole_hiding)) user.CombatFlag("offense")
-			if(!incomplete) DoCooldown(user)
+				if(!istype(src, /skill/medic/heal) && !istype(src, /skill/earth/mole_hiding)) user.CombatFlag("offense")
+				if(!incomplete) DoCooldown(user)
 
 
 		DoSeals(mob/human/user)
@@ -303,32 +304,36 @@ skill
 
 
 		DoCooldown(mob/user, resume = 0, passthrough = 0)
-			if(!resume) cooldown = Cooldown(user)
+			spawn(0)
+				if(!resume) cooldown = Cooldown(user)
 
-			for(var/skillcard/card in skillcards)
-				card.overlays -= 'icons/dull.dmi'
-			if(master)
-				for(var/skillcard/card in master.skillcards)
-					card.overlays -= 'icons/dull.dmi'
+				spawn()
+					for(var/skillcard/card in skillcards)
+						card.overlays -= 'icons/dull.dmi'
+					if(master)
+						for(var/skillcard/card in master.skillcards)
+							card.overlays -= 'icons/dull.dmi'
 
-			if(!cooldown) return
+				if(!cooldown) return
 
-			for(var/skillcard/card in skillcards)
-				card.overlays += 'icons/dull.dmi'
-			if(master)
-				for(var/skillcard/card in master.skillcards)
-					card.overlays += 'icons/dull.dmi'
+				spawn()
+					for(var/skillcard/card in skillcards)
+						card.overlays += 'icons/dull.dmi'
+					if(master)
+						for(var/skillcard/card in master.skillcards)
+							card.overlays += 'icons/dull.dmi'
 
-			while(cooldown > 0)
-				sleep(10)
-				--cooldown
+				while(cooldown > 0)
+					sleep(10)
+					--cooldown
 
-			for(var/skillcard/card in skillcards)
-				card.overlays -= 'icons/dull.dmi'
-			if(master)
-				for(var/skillcard/card in master.skillcards)
-					card.overlays -= 'icons/dull.dmi'
-			modified = 0
+				spawn()
+					for(var/skillcard/card in skillcards)
+						card.overlays -= 'icons/dull.dmi'
+					if(master)
+						for(var/skillcard/card in master.skillcards)
+							card.overlays -= 'icons/dull.dmi'
+				modified = 0
 
 
 		Error(mob/user, message)
