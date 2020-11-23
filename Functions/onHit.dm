@@ -160,3 +160,45 @@ mob/proc
 						spawn(5) if(M) M.Replacement_End()
 						return
 
+			if("chidori")
+				if(chidori)
+					if(hit)
+						var/mob/M=hit
+						M = M.Replacement_Start(src)
+						var/result=Roll_Against(src.rfx+src.rfxbuff-src.rfxneg,M.rfx+M.rfxbuff-M.rfxneg,70)
+
+						switch(result)
+							if(5)
+								src.combat("[src] Critically hit [M] with the Chidori")
+								M.combat("[src] Critically hit [M] with the Chidori")
+								M.Damage(rand(1200,2000),rand(20,50),src,"Lightning: Chidori","Normal")
+
+							if(4)
+								src.combat("[src] Managed to partially hit [M] with the Chidori")
+								M.combat("[src] Managed to partially hit [M] with the Chidori")
+								M.Damage(rand(400,800),rand(10,20),src,"Lightning: Chidori","Normal")
+
+							if(3)
+								src.combat("[src] Managed to partially hit [M] with the Chidori")
+								M.combat("[src] Managed to partially hit [M] with the Chidori")
+								M.Damage(rand(300,500),rand(5,10),src,"Lightning: Chidori","Normal")
+
+							else
+								src.combat("You Missed!!!")
+								if(!src.icon_state)
+									flick("hurt",src)
+
+						if(result>=3)
+							spawn()ChidoriFX(src)
+							M.Timed_Move_Stun(50)
+							spawn()Blood2(M,src)
+							spawn()M.Hostile(src)
+							spawn()src.Taijutsu(M)
+
+
+						spawn(5)
+							if(M) M.Replacement_End()
+
+					src.overlays-='icons/chidori.dmi'
+					src.usemove=0
+					src.chidori=0

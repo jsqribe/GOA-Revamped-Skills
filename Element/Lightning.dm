@@ -19,26 +19,18 @@ skill
 			wound_damage_con = list(0, 0)
 
 
-
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Lightning: Chidori!", "combat_output")
-				var/conmult = user.ControlDamageMultiplier()
+
 				user.overlays+='icons/chidori.dmi'
 
-				/*var/mob/human/etarget = user.MainTarget()*/
 				var/mob/human/etarget = user.hasTarget()
-				//user.Begin_Stun()
-				if(!etarget)
-					//snd(user,'sounds/chidori_run.wav',vol=30)
-					//user<<sound('sounds/chidori_run.wav',volume=50)
-					//user.End_Stun()
+
+
+				if(!etarget) //if no target
 					user.usemove=1
 					user.chidori=1
-					sleep(10)
-					if(!user.usemove)
-						return
-					user.usemove=0
-					user.chidori=0
+
 					var/ei=7
 					while(!etarget && ei>0)
 						for(var/mob/human/o in get_step(user,user.dir))
@@ -49,40 +41,13 @@ skill
 						sleep(1)
 						walk(user,0)
 
-					if(etarget)
-						etarget = etarget.Replacement_Start(user)
-						var/result=Roll_Against(user.rfx+user.rfxbuff-user.rfxneg,etarget.rfx+etarget.rfxbuff-etarget.rfxneg,70)
-						if(result>=5)
-							user.combat("[user] Critically hit [etarget] with the Chidori")
-							etarget.combat("[user] Critically hit [etarget] with the Chidori")
-							etarget.Damage(rand(1200,2000),rand(20,50),user,"Lightning: Chidori","Normal")
-							if(istype(etarget,/mob/human/ironsand))
-								del(etarget)
-						if(result==4||result==3)
-							user.combat("[user] Managed to partially hit [etarget] with the Chidori")
-							etarget.combat("[user] Managed to partially hit [etarget] with the Chidori")
-							etarget.Damage(rand(300,500),rand(10,20),user,"Lightning: Chidori","Normal")
-							if(istype(etarget,/mob/human/ironsand))
-								del(etarget)
-						if(result>=3)
-							spawn()ChidoriFX(user)
-							etarget.Timed_Move_Stun(50)
-							spawn()Blood2(etarget,user)
-							spawn()etarget.Hostile(user)
-							spawn()user.Taijutsu(etarget)
-						if(result<3)
-							user.combat("You Missed!!!")
-							if(!user.icon_state)
-								flick("hurt",user)
-						spawn(5) if(etarget) etarget.Replacement_End()
-					user.overlays-='icons/chidori.dmi'
-				else if(etarget)
-					//snd(user,'sounds/chidori.wav',vol=30)
+					if(etarget)//running chidori
+						user.onHit(etarget,"chidori")
+
+
+				else//teleport chidori
 					user.usemove=1
 					user.chidori=1
-					spawn(20)
-						user.overlays-='icons/chidori.dmi'
-					sleep(17)
 					user.canmove = 0
 					for(var/i=3; i>0; i--)
 						etarget = user.MainTarget()
@@ -90,59 +55,15 @@ skill
 						if(etarget in ohearers(1,user)) break
 						sleep(1)
 					user.canmove = 1
+
 					etarget = user.MainTarget()
+
 					var/inrange=(etarget in ohearers(user, 1))
+
 					user.Timed_Stun(5)
 
 					if(etarget && user.usemove && inrange)
-
-						if(etarget.ko)
-							return
-
-						else if(etarget.IsProtected())
-							if(user.client) user.combat("[etarget] blocked your Chidori!")
-							return
-
-						user.usemove=0
-						user.chidori=0
-						etarget = etarget.Replacement_Start(user)
-						var/result=Roll_Against(user.rfx+user.rfxbuff-user.rfxneg,etarget.rfx+etarget.rfxbuff-etarget.rfxneg,70)
-						if(result>=5)
-							user.combat("[user] Critically hit [etarget] with the Chidori")
-							etarget.combat("[user] Critically hit [etarget] with the Chidori")
-							etarget.Damage(rand(1500,2000)+conmult*650,rand(5,20),user,"Lightning: Chidori","Normal")
-							if(istype(etarget,/mob/human/ironsand))
-								del(etarget)
-						if(result==4||result==3)
-							user.combat("[user] Managed to partially hit [etarget] with the Chidori")
-							etarget.combat("[user] Managed to partially hit [etarget] with the Chidori")
-							etarget.Damage(rand(1500,2000)+conmult*500,rand(2,5),user,"Lightning: Chidori","Normal")
-							if(istype(etarget,/mob/human/ironsand))
-								del(etarget)
-						if(result<3)
-							user.combat("[user] Partially Missed [etarget] with the Chidori,[etarget] is damaged by the electricity!")
-							etarget.combat("[user] Partially Missed [etarget] with the Chidori,[etarget] is damaged by the electricity!")
-							etarget.Damage(rand(750,1250)+conmult*250,0,user,"Lightning: Chidori","Normal")
-							if(istype(etarget,/mob/human/ironsand))
-								del(etarget)
-						//if(user.AppearMyDir(etarget))
-						if(result>=3)
-							spawn()ChidoriFX(user)
-							etarget.Timed_Move_Stun(50)
-							spawn()Blood2(etarget,user)
-							spawn()etarget.Hostile(user)
-							spawn()user.Taijutsu(etarget)
-						if(result<3)
-							user.combat("You Missed!!!")
-							if(!user.icon_state)
-								flick("hurt",user)
-						spawn(5) if(etarget) etarget.Replacement_End()
-
-
-				//reset chidori flags
-				spawn(10)
-					user.usemove=0
-					user.chidori=0
+						user.onHit(etarget,"chidori")
 
 
 
