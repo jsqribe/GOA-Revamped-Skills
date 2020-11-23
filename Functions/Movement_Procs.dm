@@ -6,7 +6,7 @@ mob/var/tmp
 
 
 mob/proc
-	//Everytimr  mob moves, this get's called.
+	//Everytime  mob moves, this get's called.
 	Movement_Procs(turf/new_loc,dirr,dir)
 		//newloc = where they will be
 		//dirr = the new direction
