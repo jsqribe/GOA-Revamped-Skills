@@ -55,7 +55,7 @@ mob
 				src.inevent=0
 				//RESPAWN
 				killer = null
-				for(var/mob/M in world)
+				for(var/mob/M in gameLists["mobiles"])
 					if(M.client)
 						if(M.key == lasthostile)
 							killer = M

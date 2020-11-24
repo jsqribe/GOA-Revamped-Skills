@@ -1,7 +1,7 @@
 mob/proc
 	relieve_bounty()
 		var/mob/jerk=0
-		for(var/mob/ho in world)
+		for(var/mob/ho in gameLists["mobiles"])
 			if(ho.client)
 				if(ho.key==src.lasthostile)
 					jerk=ho
