@@ -711,27 +711,33 @@ obj
 				yamanaka
 					clan_reqs = list("Yamanaka")
 					Mind_Transfer_Jutsu
+						icon_state="mindtransfer"
 						sindex = MIND_TRANSFER
 						cost = 500
-					Petals
-						sindex = PETAL_ESCAPE
-						cost = 1500
-						skill_reqs = list(PETAL_DANCE)
+					Wolfbane
+						sindex = WOLFBANE
+						icon_state=""
+						cost = 1000
 					Flower_Bomb
 						sindex = FLOWER_BOMB
-						cost = 1000
-						skill_reqs = list(PETAL_ESCAPE)
-					Mind_Tag
-						sindex = MIND_TAG
+						icon_state="flower_bomb"
 						cost = 1400
-						skill_reqs = list(MIND_TRANSFER)
+						skill_reqs = list(WOLFBANE)
 					Mind_Disturbance
+						icon_state="minddisturbance"
 						sindex = MIND_DISTURBANCE
 						cost = 800
 						skill_reqs = list(MIND_TRANSFER)
-					Petal_Dance
-						sindex = PETAL_DANCE
-						cost = 1750
+					Mind_Read
+						icon_state="mindtag"
+						sindex = MIND_READ
+						cost = 400
+						skill_reqs = list(MIND_TRANSFER)
+					Cursed_Doll
+						icon_state=""
+						sindex = CURSED_DOLL
+						cost = 2000
+						skill_reqs = (MIND_DISTURBANCE)
 			elements
 				Earth_Elemental_Control
 					element = "Earth"

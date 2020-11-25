@@ -1,8 +1,10 @@
 mob/var
-	Transfered=0
+	Transfered = 0
 	petals=0
 	mind_attack=0
 	controlling_yamanaka=0
+	cursing = 0
+
 skill
 	yamanaka
 		copyable = 0
@@ -17,7 +19,7 @@ skill
 			Use(mob/user)
 				if(user.Transfered)
 					user.combat("Remove!")
-					user.Transfered=0
+					user.client.Controling=0
 					user.client:hellno=0
 					ChangeIconState("mindtransfer")
 					return
@@ -33,22 +35,24 @@ skill
 						if(result)
 							spawn(1)
 								del(o)
+								//result.Begin_Stun()
 								flick("Knockout",user)
 								user.icon_state="Dead"
 								user.client.eye = result
 								user.controlmob= result
-								user.client:perspective = etarget
+							//	user.client:perspective = etarget
 								result.controlmob = user
-								result.Transfered=result
+								result.client.Controling=result
 								user.controlling_yamanaka=1
-								sleep(200)
+								sleep(100 + (user.int/4))
 								user.client:eye = user
 								user.controlmob = user
 								result.controlmob = result
-								user.client:perspective = user
-								result.Transfered=0
+							//	user.client:perspective = user
+								result.client.Controling=0
 								user.controlling_yamanaka=0
 								user.icon_state=""
+								result.Reset_Stun()
 								user.Reset_Stun()
 						else
 							user.Reset_Stun()
@@ -57,201 +61,185 @@ skill
 					user.Reset_Stun()
 					user.icon_state=""
 
-		mind_tag
-			id = MIND_TAG
-			name = "Yamanaka: Mind Tag"
-			icon_state="mindtag"
-			default_chakra_cost=5
-			default_cooldown = 60
-
-			IsUsable(mob/user)
-				. = ..()
-				var/mob/human/target = user.NearestTarget()
-				if(.)
-					if(!target)
-						Error(user, "No Target")
-						return 0
-					var/distance = get_dist(user, target)
-					if(distance > 2)
-						Error(user, "Target too far ([distance]/2 tiles)")
-						return 0
-
-			Use(mob/user)
-				var/mob/human/player/etarget = user.NearestTarget()
-				if(!etarget)
-					for(var/mob/human/M in get_step(user,user.dir))
-						etarget=M
-						break
-
-				if(etarget&&(etarget in oview(user,2)))
-					var/turf/p=etarget.loc
-					user.icon_state="Throw2"
-
-//					user.stunned=2
-//					sleep(20)
-					if(etarget && etarget.x==p.x && etarget.y==p.y)
-						etarget.mindtag=1
-						sleep(3)
-						if(!etarget)
-							return
-						user.icon_state=""
-
-						user.combat("If you press <b>z</b> or <b>click</b> the tag icon on the left side of your screen within the next 1 minute, you will take control of your target you set the tag on.")
-
-						for(var/obj/trigger/mind_tag/T in user.triggers)
-							user.RemoveTrigger(T)
-
-						var/obj/trigger/mind_tag/T = new/obj/trigger/mind_tag(user, user.x, user.y, user.z)
-						user.AddTrigger(T)
-
-						spawn(600)
-							etarget.mindtag=0
-							if(user) user.RemoveTrigger(T)
-
 
 		mind_disturbance
 			id = MIND_DISTURBANCE
 			name = "Yamanaka: Mind Disturbance"
 			icon_state = "minddisturbance"
 			default_chakra_cost = 140
-			default_cooldown = 170
+			default_cooldown = 50
 
-			Use(mob/human/user)
-				if(!user) return
+			Use(mob/user)
 				viewers(user) << output("[user]: Mind Disturbance!", "combat_output")
-				for(var/mob/human/M in oview(8))
-					if(M!=user)
-						M.stunned=2
-						M.movepenalty+=20
-						spawn(200)
-							if(M)
-								M.movepenalty=0
-								M.Reset_Stun()
+				user.icon_state="Seal"
+				spawn(20)
+					user.icon_state=""
+				var/mob/human/etarget = user.MainTarget()
+				var/user_effective_int = (user.int+user.intbuff-user.intneg)*(1 + 0.3*user.skillspassive[20])
+				if(etarget)
+					var/result=Roll_Against(user_effective_int,(etarget.int+etarget.intbuff-etarget.intneg)*(1 + 0.3*etarget.skillspassive[20]),80)
+					var/d=0
+					if(result>=6)
+						d=15
+					if(result==5)
+						d=12
+					if(result==4)
+						d=10
+					if(result==3)
+						d=8
+					if(result==2)
+						d=5
+					if(result==1)
+						d=2
+					if(d > 0)
+						spawn()
+							etarget.Drunk(d)
 
 
 		flower_bomb
 			id = FLOWER_BOMB
 			name = "Flower Bomb"
 			icon_state = "flower_bomb"
-			default_chakra_cost = 300
-			default_cooldown = 45
-			face_nearest = 1
+			default_chakra_cost = 500
+			default_cooldown = 95
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Flower Bomb!", "combat_output")
-				var/damage = (user.int+user.intbuff-user.intneg/200)*2
-				var/damageX2 = (user.int+user.intbuff-user.intneg/200)*4
-				var/obj/trailmaker/o=new/obj/trailmaker/Flower_Bomb()
-				user.stunned=8
-				user.icon_state="Throw1"
-				if(user.dir==NORTH)
-					spawn(2)explosion(damage,user.x,user.y+3,user.z,user,0,2)
-					spawn(2)
-						explosion(damage,user.x,user.y+6,user.z,user,0,2)
-				else if(user.dir==SOUTH)
-					spawn(2)explosion(damage,user.x,user.y-3,user.z,user,0,2)
-					spawn(2)
-						explosion(damage,user.x,user.y-6,user.z,user,0,2)
-				else if(user.dir==EAST)
-					spawn(2)explosion(damage,user.x+3,user.y,user.z,user,0,2)
-					spawn(2)
-						explosion(damage,user.x+6,user.y,user.z,user,0,2)
-				else if(user.dir==WEST)
-					spawn(2)explosion(damage,user.x-3,user.y,user.z,user,0,2)
-					spawn(2)
-						explosion(damage,user.x-6,user.y,user.z,user,0,2)
-				var/mob/result=Trail_Straight_Projectile(user.x,user.y,user.z,user.dir,o,10,user)
-				if(result)
-					spawn(1) del(o)
-					spawn(5)
-						user.icon_state=""
-						user.stunned=0
-					spawn()explosion(damageX2,result.x,result.y,result.z,user,0,4)
-					spawn()result.Hostile(user)
-					result.movepenalty+=5
 
-				else
-					spawn(5) del(o)
-					if(user.dir==NORTH)
-						explosion(damageX2,user.x,user.y+8,user.z,user,0,4)
-					if(user.dir==SOUTH)
-						explosion(damageX2,user.x,user.y-8,user.z,user,0,4)
-					if(user.dir==EAST)
-						explosion(damageX2,user.x+8,user.y,user.z,user,0,4)
-					if(user.dir==WEST)
-						explosion(damageX2,user.x-8,user.y,user.z,user,0,4)
-					spawn(5)
-						user.stunned=0
-						user.icon_state=""
+				var/eicon='icons/note.dmi'
+				var/estate="flower"
+
+				spawn()
+					user.overlays+='icons/senpuu.dmi'
+					spawn(8)
+						user.overlays-='icons/senpuu.dmi'
+					sleep(4)
+					user.dir=turn(user.dir,90)
+					sleep(4)
+					user.dir=turn(user.dir,90)
+
+				var/angle
+				var/speed = 48
+				var/spread = 18
+				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
+				else angle = dir2angle(user.dir)
+
+				var/damage = 50
 
 
-		petal_dance
-			id = PETAL_DANCE
-			name = "Petal Dance"
-			icon_state = "petal_dance"
-			default_chakra_cost = 400
-			default_cooldown = 50
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*3, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*2, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*2, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*3, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*4, distance=10, damage=damage, wounds=0)
 
-			Use(mob/human/user)
-				viewers(user) << output("[user]: Petal Dance", "combat_output")
-				user.icon_state="Seal"
-				user.stunned=20
-				var/obj/petal/x=new/obj/petal(user.loc)
-				sleep(6)
-				del(x)
-				user.overlays+='icons/petal_dance.dmi'
-				var/ammo=rand(((user.int/10)/4),((user.int/10)/2))
-				var/icon='icons/projectiles.dmi'
-				var/state="petal"
-				var/petal_pierce=user.int+user.intbuff-user.intneg * 5
-				while(ammo>0)
-					sleep(1)
-					var/angle = rand(0, 360)
-					var/speed = rand(48, 80)
-					spawn() advancedprojectile_angle(icon, state, user, speed, angle, distance=10, damage=petal_pierce, wounds=rand(0,2), radius=20)
-					ammo--
-				user.icon_state=""
-				user.overlays-='icons/petal_dance.dmi'
-				user.stunned=0
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*7, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*6, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*5, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*5, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*6, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*7, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*10, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*8, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*9, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*9, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*8, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*10, distance=10, damage=damage, wounds=0)
 
-		petal_escape
-			id = PETAL_ESCAPE
-			name = "Petals"
-			icon_state = "petals"
-			default_chakra_cost = 200
-			default_cooldown = 180
+
+		wolfbane
+			id = WOLFBANE
+			name = "Wolfbane"
+			icon_state = "need an icon"
+			default_chakra_cost = 300
+			default_cooldown = 65
 
 			Use(mob/user)
-				viewers(user) << output("[user]: Petals!", "combat_output")
-				user.combat("For 10 seconds you will completly evade attacks (YOU ARE NOT INVULNERABLE!) and teleport behind your targeted person")
-				user.petals=1
-				spawn(100)
-					user.petals=0
-				if(user)
-					user.Affirm_Icon()
-					user.Load_Overlays()
-					user.camo=0
+				viewers(user) << output("[user]: Wolfbane!", "combat_output")
+
+				var/eicon='note.dmi'
+				var/estate="wolfbane"
+
+				////user,'sounds/chidori_static1sec.wav',vol=30)
+				var/mob/human/player/etarget = user.NearestTarget()
+				if(etarget)
+					user.dir = angle2dir_cardinal(get_real_angle(user, etarget))
+
+				var/angle
+				var/speed = 48
+				var/spread = 9
+				if(etarget) angle = get_real_angle(user, etarget)
+				else angle = dir2angle(user.dir)
+
+				var/damage = 50
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2))
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2))
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2))
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2))
+
+
+
+
 
 		mind_read
 			id = MIND_READ
-			name = "Yamanaka: Mind Read"
+			name = "Yamanaka: Sensing Transmission"
 			icon_state="mindread"
-			default_chakra_cost=5
-			default_cooldown = 60
+			default_chakra_cost=100
+			default_cooldown = 120
 
 			Use(mob/user)
-				var/mob/human/player/etarget = user.NearestTarget()
-				viewers(user) << output("[user]: Yamanaka: Mind Read!", "combat_output")
-				if(etarget)
-					user<<"<font size=2><font color=red>[etarget]<font color=yellow> Info:"
-					user<<"<font size=1><font color=blue>-----------------------------"
-					user<<"<font size=2><font color=red>Name:<font color=yellow> [etarget.name]"
-					user<<"<font size=2><font color=red>Clan:<font color=yellow> [etarget.clan]"
-					user<<"<font size=2><font color=red>Level:<font color=yellow> [etarget.blevel]"
-					user<<"<font size=2><font color=red>Strength:<font color=yellow> [etarget.str]"
-					user<<"<font size=2><font color=red>Control:<font color=yellow> [etarget.con]"
-					user<<"<font size=2><font color=red>Reflex:<font color=yellow> [etarget.rfx]"
-					user<<"<font size=2><font color=red>Intelligence:<font color=yellow> [etarget.int]"
+				viewers(user) << output("[user]: Sensing Transmission!", "combat_output")
+				var/targets[] = user.NearestTargets(num=3)
+				spawn()
+					if(targets && targets.len)
+						for(var/mob/human/player/etarget in targets)
+							if(etarget in oview(1,user))
+								if(!etarget.byakugan)
+									etarget.byakugan = 1
+									sleep((100 + (user.int/4))/2)
+									etarget.byakugan = 0
+				if(!user.byakugan)
+					user.byakugan = 1
+					spawn(100 + (user.int/4))
+						user.byakugan = 0
+
+
+
+
+		cursed_doll
+			id = CURSED_DOLL
+			name = "Yamanaka: Cursed Doll"
+			icon_state="mindread"
+			default_chakra_cost=700
+			default_cooldown = 200
+
+			Use(mob/user)
+				user.cursing = 1
+				spawn(50)
+					user.cursing = 0
+
+
 
 
 obj
@@ -277,45 +265,38 @@ obj/flick
 
 
 client
-	var/mob/Controling
+	var/mob/Controling=0
 	var/mob/hellno=0
 	North()
 		if(hellno)
 			return
 		if(Controling) step(Controling,NORTH)
-		else return ..()
 	South()
 		if(hellno)
 			return
 		if(Controling) step(Controling,SOUTH)
-		else return ..()
 	East()
 		if(hellno)
 			return
 		if(Controling) step(Controling,EAST)
-		else return ..()
 	West()
 		if(hellno)
 			return
 		if(Controling) step(Controling,WEST)
-		else return ..()
 	Northwest()
 		if(hellno)
 			return
 		if(Controling) step(Controling,NORTHWEST)
-		else return ..()
 	Northeast()
 		if(hellno)
 			return
 		if(Controling) step(Controling,NORTHEAST)
-		else return ..()
 	Southeast()
 		if(hellno)
 			return
 		if(Controling) step(Controling,SOUTHEAST)
-		else return ..()
 	Southwest()
 		if(hellno)
 			return
 		if(Controling) step(Controling,SOUTHWEST)
-		else return ..()
+

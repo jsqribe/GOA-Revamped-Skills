@@ -199,6 +199,11 @@ skill
 				user<<"To detonate the tag, press <b>Z</b> or <b>click</b> the tag icon on the left side of your screen."
 				x.owner=user
 				var/obj/trigger/explosive_tag/T = new(user, x)
+				if(user.clan == "Yamanaka")
+					if(T) T.icon_state = "blank"
+					var/obj/o = new /obj/trip(user.loc)
+					o.owner = user
+					if(o) o.dir = user.dir
 				user.AddTrigger(T)
 				spawn(14000)
 					if(x && user)
