@@ -107,7 +107,7 @@ skill
 						return
 					if(p)
 						user.pet-=p
-						del(p)
+						p.loc=null
 
 						var/obj/x=new/obj/sandshield(user.loc)
 						var/count = 100//should we make it drain chakra and end when they activate it again?
@@ -184,8 +184,9 @@ skill
 							etarget = etarget.Replacement_Start(user)
 							etarget.sandcoffined=1
 							p.loc = etarget.loc
-							p.icon_state="burial"
-							flick("crush",p)
+							p.icon_state="D-funeral"
+							flick("D-Funeral-flick",p)
+
 
 							etarget.Timed_Stun(50)
 							sleep(20)
@@ -203,8 +204,8 @@ skill
 							etarget = etarget.Replacement_Start(user)
 							etarget.sandcoffined=1
 							p.loc = etarget.loc
-							p.icon_state="" //Dipic: This will be changed to a half hitting state
-							flick("crush",p) //Dipic: and half hitting flick
+							p.icon_state="partial" //Dipic: This will be changed to a half hitting state
+							flick("partial",p) //Dipic: and half hitting flick
 							Blood2(p)//some fx
 
 							etarget.Timed_Stun(10)
@@ -220,8 +221,8 @@ skill
 								etarget.Damage(rand(300,750)+750*conmult,rand(4,9),user,"Desert Funeral","Normal")
 							etarget.Hostile(user)
 						else //Dipic: damn, they teleported; miss
-							p.icon_state="" //Dipic: This will be changed to a half hitting state
-							flick("crush",p) //Dipic: and half hitting flick
+							p.icon_state="partial" //Dipic: This will be changed to a half hitting state
+							flick("partial",p) //Dipic: and half hitting flick
 							Blood2(p)//some fx
 						sleep(10)
 						if(p)

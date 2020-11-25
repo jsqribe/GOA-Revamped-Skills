@@ -242,8 +242,14 @@ obj
 						icon_state="minddisturbance"
 					Mind_Tag
 						icon_state="mindtag"
+					Mind_Read
+						icon_state="mindtag"
 					Petal_Dance
 						icon_state="petal_dance"
+					Wolfbane
+						icon_state="petals"
+					Cursed_Doll
+						icon_state="cursed_doll"
 				akimichi
 					Size_Multiplication
 						icon_state="sizeup1"
