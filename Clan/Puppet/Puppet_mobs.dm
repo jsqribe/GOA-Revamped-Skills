@@ -141,6 +141,17 @@ mob
 					meleedamage = 600
 
 
+			Cursed_Doll
+				var/connected_mob = null
+				icon='MPSKF.dmi'
+				str = 120
+				con = 120
+				rfx = 120
+				int = 120
+				stamina = 10000
+				curstamina = 10000
+				chakra = 10000
+				meleedamage = 10000
 
 
 
@@ -148,6 +159,8 @@ mob
 mob/human/Puppet
 	KO()
 		Poof(src.x,src.y,src.z)
+		if(istype(src,/mob/human/Puppet/Cursed_Doll))
+			del(src)
 		if(owner.Puppet1==src)
 			var/skill/puppet_skill = owner.GetSkill(PUPPET_SUMMON1)
 			owner.Puppet1 = null

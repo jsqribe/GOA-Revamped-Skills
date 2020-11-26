@@ -11,6 +11,21 @@ mob
 
 			if(ko || (!pk && !istype(src,/mob/human/Puppet)) || mole) return
 
+
+			if(src.cursing)
+				var/mob/human/Puppet/Cursed_Doll/puppet = new/mob/human/Puppet/Cursed_Doll(src.loc)
+				Poof(src.x,src.y,src.z)
+
+				puppet.realname = "[attacker]'s Cursed Doll"
+				puppet.name = "[attacker]'s Cursed Doll"
+				puppet.faction = src.faction
+				puppet.CreateName(255, 255, 255)
+				puppet.connected_mob = attacker
+				spawn() puppet.PuppetRegen(src)
+				spawn(src.int)
+					if(puppet)
+						puppet = null
+
 			if(istype(attacker, /mob/human/player/npc/kage_bunshin))
 				stamina_dmg /= 4
 				wound_dmg /= 4
@@ -417,6 +432,14 @@ mob
 
 			if(istype(src,/mob/human/player/npc/creep) && (total_stamina_dmg||wound_dmg) && attacker && attacker.client)
 				src:lasthurtme = attacker
+
+			if(istype(src,/mob/human/Puppet/Cursed_Doll))
+				var/mob/human/Puppet/Cursed_Doll/CD = src
+				if(CD.connected_mob)
+					var/mob/human/player/P = CD.connected_mob
+					P.curstamina -= total_stamina_dmg
+					P.curwound += wound_dmg
+
 
 			curstamina -= total_stamina_dmg
 			curwound += wound_dmg
