@@ -160,7 +160,7 @@ mob/human/Puppet
 	KO()
 		Poof(src.x,src.y,src.z)
 		if(istype(src,/mob/human/Puppet/Cursed_Doll))
-			del(src)
+			src.loc=null
 		if(owner.Puppet1==src)
 			var/skill/puppet_skill = owner.GetSkill(PUPPET_SUMMON1)
 			owner.Puppet1 = null
@@ -172,9 +172,7 @@ mob/human/Puppet
 			owner.puppetsout--
 			spawn() puppet_skill.DoCooldown(owner)
 		spawn(3)
-			CHECK_TICK
-			del(src)
-
+			src.loc=null
 	proc
 		PuppetRegen(mob/u)
 			while(u)
@@ -190,6 +188,6 @@ mob/human/Puppet
 				if(src.curwound > 50)
 					KO()
 				sleep(5)
-			CHECK_TICK
-			del(src)
+			spawn(3)
+				src.loc=null
 

@@ -1058,7 +1058,7 @@ obj
 						skill_reqs = list(IAI_BEHEADING)
 				Body_Flicker
 					sindex = SHUNSHIN
-					cost = 100
+					cost = 50
 				Body_Replacement
 					sindex = KAWARIMI
 					cost = 100
