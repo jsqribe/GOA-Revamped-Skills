@@ -16,7 +16,8 @@ mob
 				wound_dmg /= 4
 
 			if(attacker && attacker != src)
-				lasthostile = attacker.key
+				if(attacker.client)
+					lasthostile = attacker.key
 
 				if(src.using_crow)
 					//M.using_crow = 0
