@@ -12,6 +12,8 @@ submodule with all the skills and passives code
  3.) Bot will restart the test server with your updates included.
 
 
+**You can also start a build manually by sending build now to the dev-channel**
+
 ---
 ##TODO 
 	- Move all Functions to seperate .dm files
