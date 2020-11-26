@@ -19,13 +19,13 @@ skill
 			Use(mob/user)
 				if(user.Transfered)
 					user.combat("Remove!")
-					user.client.Controling=0
+					user.client:Controling=0
 					user.client:hellno=0
 					ChangeIconState("mindtransfer")
 					return
 				user.icon_state="Seal"
 				user.stunned=10
-				sleep(15)
+				sleep(5)
 				viewers(user) << output("[user]: Mind Transfer!", "combat_output")
 				var/mob/human/etarget=user.NearestTarget()
 				if(etarget)

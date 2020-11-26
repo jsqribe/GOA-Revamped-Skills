@@ -148,7 +148,8 @@ mob/proc
 
 		for(var/obj/trip/x in oview(1))
 			if(istype(x))
-				x:E(src)
+				if(x.owner != src)
+					x:E(src)
 
 		for(var/obj/trip2/x in oview(1))
 			if(istype(x))

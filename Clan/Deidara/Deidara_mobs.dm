@@ -83,3 +83,4 @@ mob/human/clay
 						spawn(world.tick_lag) owner.RemoveTrigger(P)
 				walk(src,0)
 				loc = null
+			loc = null
