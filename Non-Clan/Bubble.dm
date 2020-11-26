@@ -7,7 +7,7 @@ skill
 			id = BLINDING_BUBBLES
 			name = "Bubble Jutsu: Blinding Bubbles"
 			icon_state = "blinding"
-			default_chakra_cost = 1000
+			default_chakra_cost = 150
 			default_cooldown = 120
 
 			IsUsable(mob/user)
@@ -46,7 +46,7 @@ skill
 			id = BUBBLE_BARRAGE
 			name = "Bubble Jutsu: Bubble Control"
 			icon_state = "barrage"
-			default_chakra_cost = 700
+			default_chakra_cost = 200
 			default_cooldown = 180
 
 			Use(mob/human/user)
@@ -285,7 +285,7 @@ skill
 			name = "Bubble Dome"
 		//	description = "Creates a barrier of rapidly spinning chakra."
 			icon_state = "kaiten"
-			default_chakra_cost = 500
+			default_chakra_cost = 200
 			default_cooldown = 500
 
 
