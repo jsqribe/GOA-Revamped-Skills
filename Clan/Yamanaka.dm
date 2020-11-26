@@ -159,7 +159,7 @@ skill
 		wolfbane
 			id = WOLFBANE
 			name = "Wolfbane"
-			icon_state = "need an icon"
+			icon_state = "petals"
 			default_chakra_cost = 300
 			default_cooldown = 65
 
@@ -204,7 +204,7 @@ skill
 		mind_read
 			id = MIND_READ
 			name = "Yamanaka: Sensing Transmission"
-			icon_state="mindread"
+			icon_state="mindtag"
 			default_chakra_cost=100
 			default_cooldown = 120
 
@@ -230,7 +230,7 @@ skill
 		cursed_doll
 			id = CURSED_DOLL
 			name = "Yamanaka: Cursed Doll"
-			icon_state="mindread"
+			icon_state="cursed_doll"
 			default_chakra_cost=700
 			default_cooldown = 200
 
@@ -259,7 +259,7 @@ obj/flick
 			dependants+=new/obj/petal(locate(src.x,src.y,src.z))
 	Del()
 		for(var/obj/x in src.dependants)
-			del(x)
+			x.loc=null //del is expensive so just set to null and let gc take care of it.
 		..()
 
 

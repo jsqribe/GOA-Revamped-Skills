@@ -67,7 +67,7 @@ skill
 									M.Begin_Stun()
 									M.icon_state = "Dead"
 									M.asleep = 1
-									var/sleep_time = 200
+									var/sleep_time = 100
 									spawn()
 										while(M && (sleep_time > 0) && M.asleep && !M.ko)
 											sleep_time--
@@ -118,19 +118,19 @@ skill
 						var/duration
 						if(result >= 6)
 							//T.move_stun = 100
-							duration = 120
+							duration = 80
 						if(result == 5)
 							//T.move_stun = 80
-							duration = 100
+							duration = 50
 						if(result == 4)
 							//T.move_stun = 50
-							duration = 70
+							duration = 30
 						if(result == 3)
 							//T.move_stun = 30
-							duration = 50
+							duration = 15
 						if(result == 2)
 							//T.move_stun = 10
-							duration = 30
+							duration = 10
 						T.Timed_Move_Stun(duration)
 						spawn()
 							while(T && duration > 0 && !T.ko)

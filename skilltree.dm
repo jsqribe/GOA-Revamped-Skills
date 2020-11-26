@@ -711,30 +711,24 @@ obj
 				yamanaka
 					clan_reqs = list("Yamanaka")
 					Mind_Transfer_Jutsu
-						icon_state="mindtransfer"
 						sindex = MIND_TRANSFER
 						cost = 500
 					Wolfbane
 						sindex = WOLFBANE
-						icon_state=""
 						cost = 1000
 					Flower_Bomb
 						sindex = FLOWER_BOMB
-						icon_state="flower_bomb"
 						cost = 1400
 						skill_reqs = list(WOLFBANE)
 					Mind_Disturbance
-						icon_state="minddisturbance"
 						sindex = MIND_DISTURBANCE
 						cost = 800
 						skill_reqs = list(MIND_TRANSFER)
 					Mind_Read
-						icon_state="mindtag"
 						sindex = MIND_READ
 						cost = 400
-						skill_reqs = list(MIND_TRANSFER)
+						skill_reqs = list(MIND_DISTURBANCE)
 					Cursed_Doll
-						icon_state=""
 						sindex = CURSED_DOLL
 						cost = 2000
 						skill_reqs = (MIND_DISTURBANCE)

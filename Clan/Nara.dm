@@ -206,19 +206,23 @@ skill
 						if(resultx==1)
 							cost=user.chakra/1.5
 
-						var/obj/o =new/obj(locate(x.x,x.y,x.z))
-						o.layer=MOB_LAYER+1
-						o.icon='icons/shadowneckbind.dmi'
-						spawn(18)
-							if(x && !x.icon_state)
-								flick("hurt",x)
-						flick("choke",o)
-						spawn(20)
-							o.loc = null
-						if(x)
-							x.Damage((1000+(500*conmult)),0,user,"Shadow Neck Bind","Normal")
-							user.curchakra-=cost
-						spawn(50)if(x) x.Hostile(user)
+						if(user.curchakra >= cost)
+							var/obj/o =new/obj(locate(x.x,x.y,x.z))
+							o.layer=MOB_LAYER+1
+							o.icon='icons/shadowneckbind.dmi'
+							spawn(18)
+								if(x && !x.icon_state)
+									flick("hurt",x)
+							flick("choke",o)
+							spawn(20)
+								o.loc = null
+							if(x)
+								x.Damage((1000+(500*conmult)),0,user,"Shadow Neck Bind","Normal")
+								user.curchakra-=cost
+
+							spawn(50)if(x) x.Hostile(user)
+						else
+							Error(user, "You do not have enough chakra left to do this!")
 
 
 

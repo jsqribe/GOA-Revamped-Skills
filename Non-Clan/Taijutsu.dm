@@ -2018,11 +2018,11 @@ skill
 
 mob/proc
 	CloseGates(cooldown=1)
-		if(!src.gate) return
+		if(!src || !src.gate) return
 		var/gateclosed = src.gate
 		src.gate=0
-		if(cooldown && usr.client)
-			var/mob/human/M = usr
+		if(cooldown && src.client)
+			var/mob/human/M = src
 			var/skill/taijutsu/gates/s = M.GetSkill(GATE1)
 			s.ChangeIconState("gate1")
 			spawn() s.DoCooldown(M)
