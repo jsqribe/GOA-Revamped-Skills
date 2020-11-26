@@ -88,8 +88,8 @@ skill
 			name = "Genjutsu: Fear"
 			description = "Slows the actions of anyone looking at you."
 			icon_state = "paralyse_genjutsu"
-			default_chakra_cost = 100
-			default_cooldown = 60
+			default_chakra_cost = 300
+			default_cooldown = 80
 
 
 
@@ -205,8 +205,8 @@ skill
 			id = CROW
 			name = "Crow Genjutsu"
 			icon_state = "crow_depart"
-			default_cooldown = 80
-			default_chakra_cost = 200
+			default_cooldown = 120
+			default_chakra_cost = 500
 
 
 			Activate(mob/human/user)
