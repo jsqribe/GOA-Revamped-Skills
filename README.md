@@ -1,5 +1,5 @@
-# GOA-Revamped-Skills
-submodule with all the skills code
+# GOA-Revamped-Skills+Passives
+submodule with all the skills and passives code
 ---
 
 
