@@ -213,6 +213,8 @@ mob
 
 			var/dam = 0
 
+			if(gentlefist)
+				outcome = 6
 
 			switch(outcome)
 				if(6,5)
