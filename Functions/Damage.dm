@@ -13,6 +13,7 @@ mob
 
 
 			if(src.cursing)
+				src.cursing = 0
 				var/mob/human/Puppet/Cursed_Doll/puppet = new/mob/human/Puppet/Cursed_Doll(src.loc)
 				Poof(src.x,src.y,src.z)
 
@@ -22,7 +23,7 @@ mob
 				puppet.CreateName(255, 255, 255)
 				puppet.connected_mob = attacker
 				spawn() puppet.PuppetRegen(src)
-				spawn(src.int)
+				spawn(src.int/3)
 					if(puppet)
 						puppet = null
 
