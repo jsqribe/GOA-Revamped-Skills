@@ -33,6 +33,8 @@ skill
 					user.chidori=1
 					user.Load_Overlays()
 					user.combat("Press <b>A</b> to use Chidori on someone. If you take damage it will dissipate!")
+					while(user.chidori)
+						sleep(world.tick_lag)
 
 
 

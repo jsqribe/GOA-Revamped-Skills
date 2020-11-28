@@ -27,6 +27,8 @@ skill
 				user.rasengan=1
 				user.combat("Press <b>A</b> to use Rasengan on someone. If you take damage it will dissipate!")
 				user.Load_Overlays()
+				while(user.rasengan)
+					sleep(world.tick_lag)
 
 
 
@@ -63,7 +65,9 @@ skill
 				user.Load_Overlays()
 				// This is a nice candidate for a task system
 				// Make it get removed when the rasengan is used/failed
-				spawn(100)
-					if(user && user.rasengan == 2)
-						user.jutsu_overlay=null
-						user.Load_Overlays()
+				while(user.rasengan)
+					sleep(100)
+					user.rasengan=0
+
+				user.jutsu_overlay=null
+				user.Load_Overlays()

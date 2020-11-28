@@ -4,8 +4,6 @@ skill
 		copyable = 0
 
 
-
-
 		spinach_pill
 			id = SPINACH_PILL
 			name = "Spinach Pill"
