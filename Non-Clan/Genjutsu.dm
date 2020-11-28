@@ -224,10 +224,12 @@ skill
 				//flick("Form", user)
 				user.using_crow = 1
 
-				spawn((user_effective_int/50)*10)
-					if(user.using_crow)
-						user.combat("You are no longer in crow form.")
-						user.using_crow = 0
+				while(user.using_crow)
+					sleep((user_effective_int/50)*10)
+					user.using_crow = 0
+
+				user.combat("You are no longer in crow form.")
+				user.using_crow = 0
 
 
 
