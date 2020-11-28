@@ -312,7 +312,7 @@ skill
 
 				while(cooldown > 0)
 					sleep(10)
-					world<< "[src] Cooldown [cooldown]"
+					//world<< "[src] Cooldown [cooldown]"
 					--cooldown
 
 				spawn()
