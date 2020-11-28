@@ -147,6 +147,11 @@ mob/human
 				onHit(M,"Size")
 				return
 
+			if(chidori)
+				onHit(etarget,"chidori")
+				return
+
+
 			// And this arbitrary distinction between having a mob argument or not is weird.
 			// It pretty much exists for the AI to explictly specify a target but there's no real reason it needs to.
 			// Or that the non-AI part couldn't just preprocess a bit to figure out the target first.
