@@ -29,8 +29,8 @@ skill
 				user.Load_Overlays()
 				while(user.rasengan)
 					sleep(world.tick_lag)
-
-
+				user.jutsu_overlay=null
+				user.Load_Overlays()
 
 
 	oodama_rasengan
