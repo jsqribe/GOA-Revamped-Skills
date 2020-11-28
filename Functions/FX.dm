@@ -638,6 +638,8 @@ obj/rasengan
 	New()
 		flick("create", src)
 
+
+
 mob/proc/Affirm_Icon_Ret()
 	if(istype(src, /mob/human/Puppet/Karasu))
 		return

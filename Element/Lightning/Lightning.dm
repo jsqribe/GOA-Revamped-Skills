@@ -10,7 +10,7 @@ skill
 			name = "Lightning: Chidori"
 			description = "Pierces through enemies with a quick charge for heavy internal damage."
 			icon_state = "chidori"
-			default_chakra_cost = 400
+			default_chakra_cost = 300
 			default_cooldown = 90
 			default_seal_time = 5
 			stamina_damage_fixed = list(1500, 2500)
@@ -18,53 +18,21 @@ skill
 			wound_damage_fixed = list(0, 50)
 			wound_damage_con = list(0, 0)
 
-
-			Use(mob/human/user)
+			Use(mob/human/player/user)
 				viewers(user) << output("[user]: Lightning: Chidori!", "combat_output")
-
-				user.overlays+='icons/chidori.dmi'
-
-				var/mob/human/etarget = user.hasTarget()
-
-
-				if(!etarget) //if no target
-					user.usemove=1
+				user.Timed_Stun(10)
+				var/obj/x = new(locate(user.x,user.y,user.z))
+				x.layer=MOB_LAYER+1
+				x.icon='icons/chidori.dmi'
+				x.dir=user.dir
+				user.jutsu_overlay=/obj/chidori
+				spawn(10)
+					x.loc = null
+				sleep(10)
+				if(user && !user.ko)
 					user.chidori=1
-
-					var/ei=7
-					while(!etarget && ei>0)
-						for(var/mob/human/o in get_step(user,user.dir))
-							if(!o.ko&&!o.IsProtected())
-								etarget=o
-						ei--
-						walk(user,user.dir)
-						sleep(1)
-						walk(user,0)
-
-					if(etarget)//running chidori
-						user.onHit(etarget,"chidori")
-
-
-				else//teleport chidori
-					user.usemove=1
-					user.chidori=1
-					user.canmove = 0
-					for(var/i=3; i>0; i--)
-						etarget = user.MainTarget()
-						step_to(user,etarget)
-						if(etarget in ohearers(1,user)) break
-						sleep(1)
-					user.canmove = 1
-
-					etarget = user.MainTarget()
-
-					var/inrange=(etarget in ohearers(user, 1))
-
-					user.Timed_Stun(5)
-
-					if(etarget && user.usemove && inrange)
-						user.onHit(etarget,"chidori")
-
+					user.Load_Overlays()
+					user.combat("Press <b>A</b> to use Chidori on someone. If you take damage it will dissipate!")
 
 
 

@@ -13,6 +13,10 @@ mob/proc
 		var/mob/hit = targetHit()
 		var/critdam = 0
 
+		//reset any jutsu overlays
+		src.jutsu_overlay=null
+		src.Load_Overlays()
+
 		switch(type)
 			if("rasengan")
 				// And a bit more specific to the rasengans: They all do the exact same thing except with different overlays and proc calls.
@@ -162,6 +166,7 @@ mob/proc
 
 			if("chidori")
 				if(chidori)
+					src.chidori=0
 					if(hit)
 						var/mob/M=hit
 						M = M.Replacement_Start(src)
@@ -199,6 +204,4 @@ mob/proc
 						spawn(5)
 							if(M) M.Replacement_End()
 
-					src.overlays-='icons/chidori.dmi'
-					src.usemove=0
-					src.chidori=0
+

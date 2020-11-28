@@ -220,11 +220,11 @@ skill
 
 				if(!user) return
 				var/user_effective_int = (user.int+user.intbuff-user.intneg)*(1 + 0.05*user.skillspassive[19])
-				user.combat("You are now in crow form for [round(user_effective_int/30)] seconds") //at 450int roughly 30secs
+				user.combat("You are now in crow form for [round(user_effective_int/50)] seconds") //at 450int roughly 30secs
 				//flick("Form", user)
 				user.using_crow = 1
 
-				spawn((user_effective_int/30)*10)
+				spawn((user_effective_int/50)*10)
 					if(user.using_crow)
 						user.combat("You are no longer in crow form.")
 						user.using_crow = 0
