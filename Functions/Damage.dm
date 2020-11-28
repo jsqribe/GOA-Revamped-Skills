@@ -23,7 +23,7 @@ mob
 				puppet.CreateName(255, 255, 255)
 				puppet.connected_mob = attacker
 				spawn() puppet.PuppetRegen(src)
-				spawn(src.int/3)
+				spawn(src.int/2)
 					if(puppet)
 						puppet = null
 
