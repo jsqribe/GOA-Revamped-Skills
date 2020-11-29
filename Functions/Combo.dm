@@ -204,7 +204,7 @@ mob
 				if(twinlion)
 					damage_stat = ((con + conbuff - conneg)+(str + strbuff - strneg)+(rfx + rfxbuff - rfxneg))*10
 				else
-					damage_stat = con + conbuff - conneg + ( (rfx + rfxbuff - rfxneg)/2 )
+					damage_stat = con + conbuff - conneg// + ( (rfx + rfxbuff - rfxneg)/2 )
 
 			// m is such a bad variable name.
 			var/m = damage_stat / 200

@@ -2564,7 +2564,7 @@ proc/AOEPoison(xx, xy, xz, radius, stamdamage, duration, mob/human/attacker, poi
 			spawn()
 				if(O && !O.ko && O != attacker)
 					O = O.Replacement_Start(attacker)
-					if(!O.ko && !O.IsProtected())		//&& O.move_stun < 30)
+					if(!O.ko && !O.IsProtected() && stun)		//&& O.move_stun < 30)
 						O.Timed_Move_Stun(30)
 					O.Damage(stamdamage, 0, attacker, "AOEPoison", "Normal")
 					//O.Dec_Stam(stamdamage, 0, attacker)

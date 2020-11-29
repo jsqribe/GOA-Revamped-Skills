@@ -23,7 +23,7 @@ mob
 				puppet.CreateName(255, 255, 255)
 				puppet.connected_mob = attacker
 				spawn() puppet.PuppetRegen(src)
-				spawn(src.int/2)
+				spawn(src.int/3)
 					if(puppet)
 						puppet = null
 
@@ -440,8 +440,6 @@ mob
 				if(CD.connected_mob)
 					var/mob/human/player/P = CD.connected_mob
 					P.curstamina -= total_stamina_dmg
-					P.curwound += wound_dmg
-
 
 			curstamina -= total_stamina_dmg
 			curwound += wound_dmg
