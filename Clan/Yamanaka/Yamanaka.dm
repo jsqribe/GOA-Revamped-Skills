@@ -67,7 +67,7 @@ skill
 			name = "Yamanaka: Mind Disturbance"
 			icon_state = "minddisturbance"
 			default_chakra_cost = 140
-			default_cooldown = 50
+			default_cooldown = 80
 
 			Use(mob/user)
 				viewers(user) << output("[user]: Mind Disturbance!", "combat_output")
