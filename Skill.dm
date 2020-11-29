@@ -269,53 +269,57 @@ skill
 				if(user.skillspassive[5] == 5 && user.client.run_count > 4 && !istype(src,/skill/water/water_dragon))
 					user.move_stun=0
 					user.icon_state="HandSeals-Run"
+					spawn(0)//spawn off the skill c/d
+						while(user && time)
+							if(!user || !user.CanUseSkills())
+								user << "break as cannot use skill"
+								break
+							time--
+							sleep(world.tick_lag)
+
+				if(istext(time)) time = text2num(time)
+				user.icon_state="HandSeals"
+				user.handseal_stun = 1
+				spawn(0)//spawn off the while loop
 					while(user && time)
 						if(!user || !user.CanUseSkills())
 							user << "break as cannot use skill"
 							break
 						time--
-						sleep(1)
-				if(istext(time)) time = text2num(time)
-				user.icon_state="HandSeals"
-				user.handseal_stun = 1
-				while(user && time)
-					if(!user || !user.CanUseSkills())
-						user << "break as cannot use skill"
-						break
-					time--
-					sleep(1)
-				if(user)
-					user.icon_state=""
-					user.handseal_stun = 0
-			else
+						sleep(world.tick_lag)
+
+					if(user)
+						user.icon_state=""
+						user.handseal_stun = 0
+
 
 
 		DoCooldown(mob/user, resume = 0, passthrough = 0)
+			if(!resume) cooldown = Cooldown(user)
+
 			spawn(0)
-				if(!resume) cooldown = Cooldown(user)
-
-				spawn()
-					for(var/skillcard/card in skillcards)
+				for(var/skillcard/card in skillcards)
+					card.overlays -= 'icons/dull.dmi'
+				if(master)
+					for(var/skillcard/card in master.skillcards)
 						card.overlays -= 'icons/dull.dmi'
-					if(master)
-						for(var/skillcard/card in master.skillcards)
-							card.overlays -= 'icons/dull.dmi'
 
-				if(!cooldown) return
+			if(!cooldown) return
 
-				spawn()
-					for(var/skillcard/card in skillcards)
+			spawn(0)
+				for(var/skillcard/card in skillcards)
+					card.overlays += 'icons/dull.dmi'
+				if(master)
+					for(var/skillcard/card in master.skillcards)
 						card.overlays += 'icons/dull.dmi'
-					if(master)
-						for(var/skillcard/card in master.skillcards)
-							card.overlays += 'icons/dull.dmi'
 
+			spawn(0)//spawn off the skill c/d
 				while(cooldown > 0)
-					sleep(10)
+					sleep(world.tick_lag*10)
 					//world<< "[src] Cooldown [cooldown]"
 					--cooldown
 
-				spawn()
+				spawn(0)
 					for(var/skillcard/card in skillcards)
 						card.overlays -= 'icons/dull.dmi'
 					if(master)
