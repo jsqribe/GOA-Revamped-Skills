@@ -28,13 +28,13 @@ mob
 
 				flick("Form", M)
 
-				spawn(10)
+				sleep(10)
 
-					if(!M || !src) return
+				if(!M || !src) return
 
-					//M.AppearBehind(src)
+				//M.AppearBehind(src)
 
-					flick("Reform", M)
+				flick("Reform", M)
 
 
 			var/blk = 0
