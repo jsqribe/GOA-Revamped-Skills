@@ -35,20 +35,20 @@ mob
 				if(attacker.client)
 					lasthostile = attacker.key
 
-				if(src.using_crow)
-					//M.using_crow = 0
-					src.Protect(25)
+			if(src.using_crow)
+				//M.using_crow = 0
+				//src.Protect(25)
 
-					flick("Form", src)
+				flick("Form", src)
 
-					sleep(10)
+				sleep(10)
 
-					if(!attacker|| !src) return
+				if(!attacker|| !src) return
 
-					src.AppearBehind(attacker)
+				//src.AppearBehind(attacker)
 
-					flick("Reform", src)
-					return
+				flick("Reform", src)
+				return
 
 			var/piercing_stamina_dmg = 0
 			if(source == "Taijutsu" && attacker && attacker.skillspassive[PIERCING_STRIKE])
