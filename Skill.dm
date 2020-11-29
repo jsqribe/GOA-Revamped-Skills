@@ -1,4 +1,4 @@
-mob/var/skillbypass=0 // used for ctr currently
+mob/var/skillbypass=0 // used for ctr currently..
 
 skill
 	var
@@ -122,7 +122,6 @@ skill
 					return
 
 
-
 				if(user.leading)
 					user.leading.following = 0
 					user.leading = 0
@@ -234,18 +233,6 @@ skill
 					if(user.MainTarget()) user.FaceTowards(user.MainTarget())
 
 
-	/*			var/witnessing_time = world.time
-				for(var/mob/human/player/XE in ohearers(8))
-					if(copyable && XE.sharingan && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
-						XE.combat("<font color=#faa21b>{Sharingan} [user] used [src]. Press <b>Space</b> within 5 Seconds to copy this skill.</font>")
-						XE.lastwitnessing=id
-						XE.lastwitnessing_time = witnessing_time
-						spawn(50)
-							if(XE && XE.lastwitnessing_time == witnessing_time) XE.lastwitnessing=0
-					else if(XE.sharingan)
-						XE.combat("<font color=#faa21b>{Sharingan} [user] used [src].</font>")
-	*/
-
 				for(var/mob/human/player/XE in oview(8))
 					var/can_copy = 0
 					if(copyable && XE.HasSkill(SHARINGAN_COPY) && !XE.HasSkill(id))
@@ -325,6 +312,7 @@ skill
 
 				while(cooldown > 0)
 					sleep(10)
+					//world<< "[src] Cooldown [cooldown]"
 					--cooldown
 
 				spawn()

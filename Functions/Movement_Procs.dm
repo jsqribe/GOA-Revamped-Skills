@@ -76,14 +76,12 @@ mob/proc
 					if(new_loc && loc.Exit(src) && new_loc.Enter(src))
 						loc.Exited(src)
 						loc = new_loc
-						spawn() src.Get_Global_Coords()
 						new_loc.Entered(src)
 					spawn(3)
 						return 1
 
 				else
 					. = ..()
-					spawn() src.Get_Global_Coords()
 					return
 
 			if(!movedrecently)
@@ -130,7 +128,6 @@ mob/proc
 			for(var/obj/undereffect/B in loc)
 				if(B.uowner) Blood_Add(B.uowner)
 
-		spawn() src.Get_Global_Coords()
 
 		for(var/area/XE in oview(src,0))
 			if(!XE.pkzone)
