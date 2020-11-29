@@ -13,19 +13,8 @@ mob
 
 
 			if(src.cursing)
-				src.cursing = 0
-				var/mob/human/Puppet/Cursed_Doll/puppet = new/mob/human/Puppet/Cursed_Doll(src.loc)
-				Poof(src.x,src.y,src.z)
+				Cursing_Doll(attacker)
 
-				puppet.realname = "[attacker]'s Cursed Doll"
-				puppet.name = "[attacker]'s Cursed Doll"
-				puppet.faction = src.faction
-				puppet.CreateName(255, 255, 255)
-				puppet.connected_mob = attacker
-				spawn() puppet.PuppetRegen(src)
-				spawn(src.int/3)
-					if(puppet)
-						puppet = null
 
 			if(istype(attacker, /mob/human/player/npc/kage_bunshin))
 				stamina_dmg /= 4

@@ -1,3 +1,18 @@
+mob/proc/Cursing_Doll(mob/attacker)
+	src.cursing = 0
+	var/mob/human/Puppet/Cursed_Doll/puppet = new/mob/human/Puppet/Cursed_Doll(src.loc,attacker)
+	Poof(src.x,src.y,src.z)
+
+	puppet.realname = "[attacker]'s Cursed Doll"
+	puppet.name = "[attacker]'s Cursed Doll"
+	puppet.faction = src.faction
+	puppet.CreateName(255, 255, 255)
+	puppet.connected_mob = attacker
+	spawn() puppet.PuppetRegen(src)
+
+
+
+
 mob/proc/Drunk(var/duration)
 	src.Timed_Move_Stun(duration,5)
 	var/times = 0

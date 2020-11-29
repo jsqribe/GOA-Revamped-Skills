@@ -153,6 +153,12 @@ mob
 				chakra = 10000
 				meleedamage = 10000
 
+				New(loc, mob/attacker)
+					..()
+					if(attacker)
+						spawn(attacker.int/3)
+							src.KO()
+
 
 
 

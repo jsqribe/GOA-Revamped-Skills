@@ -22,7 +22,7 @@ obj/projectile
 				sleep(10)
 				loc = null //hit a wall!
 
-			if(istype(O,/mob/human/player))
+			if(istype(O,/mob/human))
 				var/mob/human/player/Oc=O
 				src.Grabbed+=Oc  //this means the wave will no longer cause damage to that specific player, 1 time hit max per projectile of this type
 				spawn()Oc.Collide(src)//the mob gets hit by src. Cause knockback check.
@@ -59,7 +59,7 @@ obj/projectile
 				sleep(10)
 				loc = null //hit a wall!
 
-			if(istype(O,/mob/human/player))
+			if(istype(O,/mob/human/))
 				var/mob/human/player/Oc=O
 				src.Grabbed+=Oc  //this means the wave will no longer cause damage to that specific player, 1 time hit max per projectile of this type
 				spawn()Oc.Collide(src)//the mob gets hit by src. Cause knockback check.
