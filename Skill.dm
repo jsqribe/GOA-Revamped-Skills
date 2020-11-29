@@ -181,7 +181,7 @@ skill
 
 
 				//user.combat("Here1 [src]")
-				//user.combat("[user.startclash],[user.stakes],[user.skillusecool],[bypass],[!user.CanUseSkills()],[!IsUsable(user)],[user.mane]")
+				//user.combat("[user.startclash],[user.stakes],[user.skillusecool && !user.skillbypass],[(!user.CanUseSkills() && !istype(src,/skill/namikaze/hiraishin_1))],[(!IsUsable(user) && !istype(src,/skill/namikaze/hiraishin_1))],[(user.mane && !istype(src,/skill/nara))]")
 				if(user.startclash || user.stakes || (user.skillusecool && !user.skillbypass) || (!user.CanUseSkills() && !istype(src,/skill/namikaze/hiraishin_1)) || (!IsUsable(user) && !istype(src,/skill/namikaze/hiraishin_1)) || (user.mane && !istype(src,/skill/nara)))
 					return
 				//user.combat("Here2 [src]")
@@ -573,8 +573,8 @@ mob
 			if(usr.chambered)
 				for(var/obj/earthcage/cage in usr.loc)
 					if(cage.owner == usr)
-						return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && /*!kstun &&*/ !Tank && pk
-			return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && !stunned && /*!kstun &&*/ !Tank && pk
+						return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && !Tank && pk
+			return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && !stunned && !Tank && pk
 
 
 		RefreshSkillList()
