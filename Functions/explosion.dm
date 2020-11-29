@@ -83,26 +83,32 @@ obj
 			pow=0
 			moves=0
 			exploid
+
 		New(loc,mob/e,xdir,dam,dist,xoff,yoff,dontknock,passedexploid)
 			..()
 			exploid=passedexploid
 			spawn(40)
 				if(src)
 					src.loc = null
+
 			if(!dontknock)
 				push=1
 			src.pow=dam
+
 			if(xoff)src.pixel_x=xoff
 			if(yoff)src.pixel_y=yoff
 			if(e)src.owner=e
+
 			src.dir=xdir
+
 			if(dist>=3)src.icon_state="1"
 			else if(dist>=2)src.icon_state="2"
 			else src.icon_state="3"
 			src.moves=dist
-			spawn()
+
+			spawn(0)
 				var/turf/T = get_step(src, dir)
-				while(loc && T && moves)
+				while(src && loc && T && moves)
 					Move(T)
 					sleep(2)
 					T = get_step(src, dir)
@@ -113,7 +119,7 @@ obj
 				for(var/mob/human/eX in hearers(1,src))
 					var/mob/human/X = eX.Replacement_Start(owner)
 					if(eX != X) eX.curexplosions.Add(exploid) //make them immune if they kawa'd from it
-					spawn()
+					spawn(0)
 						if(eX!=src.exempt)
 							if(X && !X.IsProtected() && !(exploid in X.curexplosions))
 								owned+=X
@@ -136,7 +142,9 @@ obj
 							else
 								X.Move(T)
 
-				if(!loc) return
+				if(!loc)
+					return
+
 			if(src.moves>=3)src.icon_state="1"
 			else if(src.moves>=2)src.icon_state="2"
 			else src.icon_state="3"
@@ -153,10 +161,12 @@ obj
 
 		Del()
 			src.loc=null
-			sleep(50)
-			for(var/mob/X in src.owned)
-				if(X.icon_state=="hurt") X.icon_state=""
-				X.curexplosions.Remove(exploid)
-				src.owned-=X
+			Reset_Explosions(src.owned.Copy,exploid)
 			..()
 
+
+proc/Reset_Explosions(list/mob_list,id)
+	for(var/mob/X in mob_list)
+		if(X.icon_state=="hurt") X.icon_state=""
+		X.curexplosions.Remove(id)
+	mob_list=null

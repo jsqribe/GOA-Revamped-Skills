@@ -33,9 +33,15 @@ skill
 					user.chidori=1
 					user.Load_Overlays()
 					user.combat("Press <b>A</b> to use Chidori on someone. If you take damage it will dissipate!")
-					while(user.chidori)
-						sleep(world.tick_lag)
+					user.on_hit.add(src, "Cancel")
 
+
+
+			proc
+				Cancel(mob/human/player/user, mob/human/player/attacker, event/event)
+					event.remove(src, "Cancel")
+					if(user && user.chidori == 1)
+						user.Chidori_Fail()
 
 
 		chidori_spear

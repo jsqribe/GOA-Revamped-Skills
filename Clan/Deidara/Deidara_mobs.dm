@@ -1,5 +1,5 @@
 mob/human/clay
-	can_target=0
+	can_target = 0
 	var/power = 0
 	var/mob/owner
 	icon = 'icons/clay-animals.dmi'

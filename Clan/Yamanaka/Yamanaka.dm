@@ -124,7 +124,7 @@ skill
 				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
 				else angle = dir2angle(user.dir)
 
-				var/damage = 50
+				var/damage = 5
 
 
 				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0)
@@ -180,7 +180,7 @@ skill
 				if(etarget) angle = get_real_angle(user, etarget)
 				else angle = dir2angle(user.dir)
 
-				var/damage = 50
+				var/damage = 5
 
 				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))
 				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))

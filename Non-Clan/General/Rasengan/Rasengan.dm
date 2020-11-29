@@ -26,11 +26,18 @@ skill
 			if(user && !user.ko)
 				user.rasengan=1
 				user.combat("Press <b>A</b> to use Rasengan on someone. If you take damage it will dissipate!")
+				user.on_hit.add(src, "Cancel")
 				user.Load_Overlays()
 				while(user.rasengan)
 					sleep(world.tick_lag)
 				user.jutsu_overlay=null
 				user.Load_Overlays()
+
+		proc
+			Cancel(mob/human/player/user, mob/human/player/attacker, event/event)
+				event.remove(src, "Cancel")
+				if(user && user.rasengan == 1)
+					user.Rasengan_Fail()
 
 
 	oodama_rasengan
@@ -62,6 +69,7 @@ skill
 			if(user && !user.ko)
 				user.rasengan=2
 				user.combat("Press <b>A</b> before the Oodama Rasengan dissapates to use it on someone. If you take damage it will dissipate!")
+				user.on_hit.add(src, "Cancel")
 				user.Load_Overlays()
 				// This is a nice candidate for a task system
 				// Make it get removed when the rasengan is used/failed
@@ -71,3 +79,8 @@ skill
 
 				user.jutsu_overlay=null
 				user.Load_Overlays()
+		proc
+			Cancel(mob/human/player/user, mob/human/player/attacker, event/event)
+				event.remove(src, "Cancel")
+				if(user && user.rasengan == 2)
+					user.ORasengan_Fail()

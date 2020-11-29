@@ -1,6 +1,4 @@
-
 mob/proc
-
 	ORasengan_Fail()
 		src.rasengan=0
 		src.overlays-=/obj/oodamarasengan
@@ -9,8 +7,11 @@ mob/proc
 		o.layer=MOB_LAYER-1
 		o.icon='icons/oodamarasengan.dmi'
 		flick("failed",o)
+		src.jutsu_overlay=null
+		src.Load_Overlays()
 		spawn(50)
 			o.loc = null
+
 	ORasengan_Hit(mob/x,mob/human/u,xdir)
 		x = x.Replacement_Start(u)
 		u.overlays-=/obj/oodamarasengan
@@ -37,16 +38,20 @@ mob/proc
 			if(!x.ko) x.icon_state=""
 			x.Hostile(u)
 		spawn(5) if(x) x.Replacement_End()
+
 	Rasengan_Fail()
 		src.rasengan=0
 		src.overlays-=/obj/rasengan
 		src.overlays-=/obj/rasengan2
+		src.jutsu_overlay=null
+		src.Load_Overlays()
 		var/obj/o=new/obj(locate(src.x,src.y,src.z))
 		o.layer=MOB_LAYER+1
 		o.icon='icons/rasengan.dmi'
 		flick("failed",o)
 		spawn(50)
 			o.loc = null
+
 	Rasengan_Hit(mob/x,mob/human/u,xdir)
 		x = x.Replacement_Start(u)
 		u.overlays-=/obj/rasengan
@@ -84,12 +89,15 @@ mob/proc
 		src.rasengan=0
 		src.overlays-=/obj/rasengan
 		src.overlays-=/obj/rasengan2
+		src.jutsu_overlay=null
+		src.Load_Overlays()
 		var/obj/o=new/obj(locate(src.x,src.y,src.z))
 		o.layer=MOB_LAYER+1
 		o.icon='icons/rasengan.dmi'
 		flick("failed",o)
 		spawn(50)
 			o.loc = null
+
 	SRasengan_Hit(mob/x,mob/human/u,xdir)
 		x = x.Replacement_Start(u)
 		u.overlays-=/obj/rasengan
