@@ -24,17 +24,17 @@ mob
 
 			if(M.using_crow)
 				//M.using_crow = 0
-				M.Protect(25)
+				//M.Protect(25)
 
 				flick("Form", M)
 
-				sleep(10)
+				spawn(10)
 
-				if(!M || !src) return
+					if(!M || !src) return
 
-				M.AppearBehind(src)
+					//M.AppearBehind(src)
 
-				flick("Reform", M)
+					flick("Reform", M)
 
 
 			var/blk = 0

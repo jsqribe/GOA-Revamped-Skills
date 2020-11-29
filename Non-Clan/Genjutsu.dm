@@ -205,7 +205,7 @@ skill
 			id = CROW
 			name = "Crow Genjutsu"
 			icon_state = "crow_depart"
-			default_cooldown = 120
+			default_cooldown = 180
 			default_chakra_cost = 500
 
 
@@ -224,12 +224,13 @@ skill
 				//flick("Form", user)
 				user.using_crow = 1
 
-				while(user.using_crow)
-					sleep((user_effective_int/50)*10)
-					user.using_crow = 0
+				spawn()
+					while(user.using_crow)
+						sleep((user_effective_int/50)*10)
+						user.using_crow = 0
 
-				user.combat("You are no longer in crow form.")
-				user.using_crow = 0
+					user.combat("You are no longer in crow form.")
+					user.using_crow = 0
 
 
 
