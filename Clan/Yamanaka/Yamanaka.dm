@@ -119,41 +119,43 @@ skill
 					user.dir=turn(user.dir,90)
 
 				var/angle
-				var/speed = 48
+				var/speed = 35
 				var/spread = 18
 				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
 				else angle = dir2angle(user.dir)
 
-				var/damage = 5
+				var/damage = rand(100,250) + 5*user.skillspassive[20]
+
+				var/flower = /obj/projectile/flower
 
 
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*3, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*2, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*2, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*3, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*4, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*3, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*2, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*2, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*3, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*4, distance=10, damage=damage, wounds=0, custom_obj=flower)
 
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*7, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*6, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*5, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*5, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*6, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*7, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*10, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*8, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*9, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*9, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*8, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*10, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*7, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*6, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*5, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*5, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*6, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*7, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*10, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*8, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*9, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*9, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*8, distance=10, damage=damage, wounds=0, custom_obj=flower)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*10, distance=10, damage=damage, wounds=0, custom_obj=flower)
 
 
 		wolfbane
@@ -175,27 +177,29 @@ skill
 					user.dir = angle2dir_cardinal(get_real_angle(user, etarget))
 
 				var/angle
-				var/speed = 48
+				var/speed = 40
 				var/spread = 9
 				if(etarget) angle = get_real_angle(user, etarget)
 				else angle = dir2angle(user.dir)
 
-				var/damage = 5
+				var/damage = rand(100,250) + 5*user.skillspassive[20]
 
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2))
+				var/wolfbane = /obj/projectile/wolfbane
 
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2))
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-1*rand(0,4), distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
 
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2))
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(10,14)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
 
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2))
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(12,16)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
 
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2))
-				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2))
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(18,22)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
+				spawn(rand(0,2)) advancedprojectile_angle(eicon, estate, usr, speed, angle-spread*rand(21,25)/10, distance=10, damage=damage, wounds=rand(1,2), custom_obj=wolfbane)
 
 
 

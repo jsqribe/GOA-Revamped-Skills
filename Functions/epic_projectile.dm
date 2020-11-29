@@ -235,16 +235,7 @@ proc/M_Projectile(obj/projectile/O,mob/user,power,xmom,ymom,iterations,list/Misc
 				var/distance = max(1, round(0.99+speed_tiles)+round((O.radius-16)/32))
 				for(var/obj/m in oview(distance,O))
 					if(m.vectorized && m.powner != O.powner && physics_intersection(O,m))
-						if(O.icon == 'note.dmi' && O.icon_state == "flower")
-							explosion(rand(200,400)*(1+0.3*user.skillspassive[20]),O.x,O.y,O.z,user,dist = 2)
-
-						if(O.icon == 'note.dmi' && O.icon_state == "wolfbane")
-							var/tempx = O.x
-							var/tempy = O.y
-							var/tempz = O.z
-							spawn()AOEPoison(tempx,tempy,tempz,1,rand(200,300)*(1+0.3*user.skillspassive[20]),20,user,6,0)
-							spawn()PoisonCloud(tempx,tempy,tempz,1,10)
-						O.landed(m,power,wnd,daze,burn)
+						O.landed(m,power,wnd,daze,burn,user)
 						if(!O || !O.loc) return
 
 			if(!O.ignoremobs)
@@ -252,33 +243,13 @@ proc/M_Projectile(obj/projectile/O,mob/user,power,xmom,ymom,iterations,list/Misc
 					if(m!=user && !(m in ignore_mobs) && physics_stationary(O,m))
 						//O.pixel_x+=O.momx
 						//O.pixel_y+=O.momy
-
-						if(istype(m, /mob/human))
-							if(O.icon == 'note.dmi' && O.icon_state == "flower")
-								explosion(rand(200,400)*(1+0.3*user.skillspassive[20]),O.x,O.y,O.z,user,dist = 2)
-
-							if(O.icon == 'note.dmi' && O.icon_state == "wolfbane")
-								var/tempx = O.x
-								var/tempy = O.y
-								var/tempz = O.z
-								spawn()AOEPoison(tempx,tempy,tempz,1,rand(200,300)*(1+0.3*user.skillspassive[20]),20,user,6,0)
-								spawn()PoisonCloud(tempx,tempy,tempz,1,10)
-							O.landed(m,power,wnd,daze,burn)
+						O.landed(m,power,wnd,daze,burn,user)
 						if(!O || !O.loc) return
 
 			if(!O.ignoredisturbproj)
 				for(var/obj/m in O.loc)
 					if(m.projdisturber)
-						if(O.icon == 'note.dmi' && O.icon_state == "flower")
-							explosion(rand(200,400)*(1+0.3*user.skillspassive[20]),O.x,O.y,O.z,user,dist = 2)
-
-						if(O.icon == 'note.dmi' && O.icon_state == "wolfbane")
-							var/tempx = O.x
-							var/tempy = O.y
-							var/tempz = O.z
-							spawn()AOEPoison(tempx,tempy,tempz,1,rand(200,300)*(1+0.3*user.skillspassive[20]),20,user,6,0)
-							spawn()PoisonCloud(tempx,tempy,tempz,1,10)
-						O.landed(null,power,wnd,daze,burn)
+						O.landed(null,power,wnd,daze,burn,user)
 						if(!O || !O.loc) return
 
 			//move!-
@@ -344,13 +315,6 @@ proc/M_Projectile(obj/projectile/O,mob/user,power,xmom,ymom,iterations,list/Misc
 			sleep(1)
 			O.momentum--
 
-			if(O.icon == 'note.dmi' && O.icon_state == "flower" && O.momentum <= 1)
-				explosion(rand(200,400)*(1+0.3*user.skillspassive[20]),O.x,O.y,O.z,user,dist = 2)
-
-			if(O.icon == 'note.dmi' && O.icon_state == "wolfbane" && O.momentum <= 1)
-				spawn()AOEPoison(O.x,O.y,O.z,1,rand(200,300)*(1+0.3*user.skillspassive[20]),20,user,6,0)
-				spawn()PoisonCloud(O.x,O.y,O.z,1,10)
-
 		if(!O || !O.loc)
 			return
 
@@ -407,7 +371,7 @@ atom/var
 	ignoredisturbproj=0
 	powner=0
 atom/movable
-	proc/landed(atom/movable/O,pow,wnd,daze,burn)
+	proc/landed(atom/movable/O,pow,wnd,daze,burn,user)
 
 
 proc/get_real_loc(atom/movable/O)

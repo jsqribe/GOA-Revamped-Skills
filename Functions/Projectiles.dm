@@ -1,5 +1,6 @@
+
 proc
-	advancedprojectile_angle(icon, icon_state, mob/user, speed, angle, distance, damage, wounds=0, daze=0, burn=0, radius=8, atom/from=user)
+	advancedprojectile_angle(icon, icon_state, mob/user, speed, angle, distance, damage, wounds=0, daze=0, burn=0, radius=8, atom/from=user, custom_obj=0)
 		if(!from || !speed)
 			return
 
@@ -12,7 +13,13 @@ proc
 		if(!isnum(wounds))
 			wounds = 0
 
-		var/obj/projectile/p = new /obj/projectile(from.loc)
+
+		var/obj/projectile/p
+		if(!custom_obj)
+			p = new /obj/projectile(from.loc)
+		else
+			p = new custom_obj(from.loc)
+
 		p.icon = icon
 		p.icon_state = icon_state
 
