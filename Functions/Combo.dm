@@ -23,8 +23,6 @@ mob
 		if(M && src)
 
 			if(M.using_crow)
-				//M.using_crow = 0
-				//M.Protect(25)
 
 				flick("Form", M)
 
@@ -32,10 +30,8 @@ mob
 
 				if(!M || !src) return
 
-				//M.AppearBehind(src)
-
 				flick("Reform", M)
-
+				return
 
 			var/blk = 0
 

@@ -21,8 +21,7 @@ mob
 				example.loc = null
 
 			if(using_crow)
-				//using_crow = 0
-				Protect(20)
+
 
 				flick("Form", src)
 
@@ -30,9 +29,9 @@ mob
 
 				if(!src) return
 
-				AppearBehind(attacker)
 
 				flick("Reform", src)
+				return
 
 			// Actually there's so much stuff in this proc I think we'd be better of with a full event-handler so we can just register a bunch
 			// of separate callbacks as needed for things. Like these cancel-skill things.

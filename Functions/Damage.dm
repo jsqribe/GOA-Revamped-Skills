@@ -36,16 +36,12 @@ mob
 					lasthostile = attacker.key
 
 			if(src.using_crow)
-				//M.using_crow = 0
-				//src.Protect(25)
 
 				flick("Form", src)
 
 				sleep(10)
 
-				if(!attacker|| !src) return
-
-				//src.AppearBehind(attacker)
+				if(!src) return
 
 				flick("Reform", src)
 				return
