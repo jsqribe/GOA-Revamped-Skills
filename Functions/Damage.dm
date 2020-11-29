@@ -13,6 +13,7 @@ mob
 
 
 			if(src.cursing)
+				//if user takes dmg then it spawns a doll that's linked to the attacker.
 				Cursing_Doll(attacker)
 
 

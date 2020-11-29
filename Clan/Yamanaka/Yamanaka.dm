@@ -124,7 +124,7 @@ skill
 				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
 				else angle = dir2angle(user.dir)
 
-				var/damage = rand(100,250) + 5*user.skillspassive[20]
+				var/damage = rand(600,850) + 5*user.skillspassive[20]
 
 				var/flower = /obj/projectile/flower
 
