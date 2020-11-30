@@ -915,26 +915,6 @@ proc/Poof(dx, dy, dz)
 
 
 
-obj/entertrigger/poisonsmoke
-	icon = 'icons/smoke2.dmi'
-	icon_state = "poison"
-	pixel_x = -32
-	pixel_y = -32
-	layer = 6.1
-	step_size = 32
-	var/tmp/mob/human/muser
-
-	New()
-		..()
-
-	SteppedOn(mob/human/player/M)
-		if(istype(M,/mob/human/player) && M.client && !M.ko && !M.IsProtected())
-			M.Poison += 1 + muser.skillspassive[23]*0.25
-			//M.combat("You have been affected by posion")
-			//world << "Affected Mob([M.x],[M.y]) by Object([src.x],[src.y])"
-			spawn() M.Timed_Move_Stun(10) //lags out?
-			M.Hostile(muser)
-			M.Damage(200,0,muser,"Medical: Poison Mist","Normal")
 
 
 obj/smoke

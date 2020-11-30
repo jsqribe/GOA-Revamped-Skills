@@ -9,9 +9,6 @@ obj/projectile
 			..()
 			src.powner=o
 		landed(atom/movable/O,pow,wnd,daze,burn,user)
-			var/tempx=src.x
-			var/tempy=src.y
-			var/tempz=src.z
 
 			if(src.landed || src.clashin)
 				return
@@ -27,8 +24,17 @@ obj/projectile
 				src.Grabbed+=Oc  //this means the wave will no longer cause damage to that specific player, 1 time hit max per projectile of this type
 				spawn()Oc.Collide(src)//the mob gets hit by src. Cause knockback check.
 				//Oc.Damage(pow, 0, "", "Projectile", "Normal")
-				spawn()AOEPoison(tempx,tempy,tempz,1,pow,20,user,6,0)
-				spawn()PoisonCloud(tempx,tempy,tempz,1,10)
+				var/turf/source
+				if(Oc.dir==NORTH)
+					source = locate(Oc.x,Oc.y+1,Oc.z)
+				if(Oc.dir==SOUTH)
+					source = locate(Oc.x,Oc.y-1,Oc.z)
+				if(Oc.dir==EAST)
+					source = locate(Oc.x+1,Oc.y,Oc.z)
+				if(Oc.dir==WEST)
+					source = locate(Oc.x-1,Oc.y,Oc.z)
+				spawn() SmokeSpread(source, type="poison", size=2, delay=1, far=1)
+
 
 			if(istype(O,/obj/projectile))
 				Clash(O,src)
