@@ -246,7 +246,7 @@ skill
 //This is used for BodyFlicker so will leave it here
 client
 	DblClick(atom/thing, atom/loc, control, params)
-		if(!mob.stunned && mob.pk && mob.shun && isloc(loc) &&!cantshun )
+		if(!mob.stunned && mob.pk && mob.shun && isloc(loc) &&!mob.cantshun )
 			if(!loc || !loc.Enter(usr) || !loc.icon || loc.type == /turf || !(loc in oview(mob)) || Issmoke(mob.loc))
 				return
 
