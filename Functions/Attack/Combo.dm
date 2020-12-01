@@ -176,20 +176,20 @@ mob
 
 
 
-			if(prob(100))//critchan))
+			//if(prob(critchan)) // temp removed to test
 				//Critical..
-				if(gate)
-					critdam=round(((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2]))
-				if(!gentlefist)
-					critdam=round(((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
-				else
-					critdam=round(((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
-				if(twinlion==1)
-					critdam=round(((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10))
+			if(gate)
+				critdam=round(((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2]))
+			if(!gentlefist)
+				critdam=round(((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
+			else
+				critdam=round(((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
+			if(twinlion==1)
+				critdam=round(((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10))
 
 
-				combat("Critical hit!")
-				spawn() if(M) M.Graphiked('icons/critical.dmi', -6)
+			combat("Critical hit!")
+			spawn() if(M) M.Graphiked('icons/critical.dmi', -6)
 
 
 			var/outcome = Roll_Against(rfx + rfxbuff - rfxneg, M.rfx + M.rfxbuff - M.rfxneg, rand(80, 120))
