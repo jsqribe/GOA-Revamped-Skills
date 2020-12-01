@@ -176,7 +176,7 @@ mob
 
 
 
-			if(prob(critchan))
+			if(prob(100))//critchan))
 				//Critical..
 				if(gate)
 					critdam=round(((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2]))
@@ -253,7 +253,11 @@ mob
 
 			if(combo)
 				dam *= 1 + (2 * combo) / 30 //< Being a bit strange to avoid floating-point accuracy issues
-			var/DD = dam + critdam
+			var/DD
+			if(critdamn)
+				DD = critdam
+			else
+				DD = dam
 
 			M.Damage(DD, tai_wounds, src, "Taijutsu", "Normal")
 
