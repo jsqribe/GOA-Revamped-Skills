@@ -254,7 +254,7 @@ mob
 			if(combo)
 				dam *= 1 + (2 * combo) / 30 //< Being a bit strange to avoid floating-point accuracy issues
 			var/DD
-			if(critdamn)
+			if(critdam)
 				DD = critdam
 			else
 				DD = dam
