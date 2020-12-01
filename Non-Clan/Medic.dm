@@ -241,7 +241,7 @@ skill
 			name = "Medical: Chakra Scalpel"
 			description = "Uses chakra to create a sharp blade around your hands, allowing you to deal heavy damage with precise strikes."
 			icon_state = "mystical_palm_technique"
-			default_chakra_cost = 100
+			default_chakra_cost = 80
 			default_cooldown = 30
 
 

@@ -27,14 +27,14 @@ skill
 
 				var/mob/human/player/etarget = user.MainTarget()
 				var/size
-				if(user.con < 100 && user.str < 100) size = 3
-				else if(user.con < 150 && user.con < 150) size = 4
-				else if(user.con < 200 && user.con < 200) size = 5
-				else if(user.con < 250 && user.con < 250) size = 6
-				else if(user.con < 300 && user.con < 300) size = 7
-				else if(user.con < 350 && user.con < 350) size = 8
-				else if(user.con < 400 && user.con < 400) size = 9
-				else if(user.con >= 450 && user.con >= 450) size = 10
+				if(user.con > 50) size = 3
+				else if(user.con > 150) size = 4
+				else if(user.con > 200) size = 5
+				else if(user.con > 250) size = 6
+				else if(user.con > 300) size = 7
+				else if(user.con > 350) size = 8
+				else if(user.con > 400) size = 9
+				else if(user.con >= 450) size = 10
 
 				if(etarget)
 					SwampField(user, etarget.loc, size=size, delay=3)
