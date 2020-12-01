@@ -198,19 +198,19 @@ skill
 					var/list/mirrorlist = ret["mirrors"]
 					var/turf/cen = ret["center"]
 
-					var/list/Gotchad=new
+
 					for(var/mob/G in range(2,cen))
 						G.cantshun=1//Fix Shunhsin out of Ice Mirrors?
-						Gotchad+=G
+
 
 					sleep(20)
 
 					var/demonmirrored = 0
 
-
+					var/list/Gotchad=new
 					for(var/mob/G in range(2,cen))
 						if(G!=user)
-							if(!Gotchad.Find)
+							if(!Gotchad.Find(G))
 								Gotchad+=G //add them if they weren't in the list before
 							G = G.Replacement_Start(user)
 							demonmirrored = 1
@@ -232,7 +232,7 @@ skill
 
 						for(var/mob/G in range(2,cen))
 							if(G != user)
-								if(!Gotchad.Find)
+								if(!Gotchad.Find(G))
 									Gotchad+=G //add them if they weren't in the list before
 								if(!G.ironskin)
 									G.overlays += 'icons/needlepwn.dmi'
@@ -1048,8 +1048,10 @@ proc
 		//user.loc = null
 		if(user.client) user.client.eye = Q
 
-		while(get_dist(Q, target) > 1)
+		var/step_count=20
+		while(get_dist(Q, target) > 1 && step_count>0)
 			step_to(Q, target)
+			step_count--
 			sleep(1)
 			if(!Q || !target || !user) return
 
