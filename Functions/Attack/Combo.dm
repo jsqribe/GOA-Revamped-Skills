@@ -179,13 +179,13 @@ mob
 			if(prob(critchan))
 				//Critical..
 				if(gate)
-					critdam=round((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2]))
 				if(!gentlefist)
-					critdam=round((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
 				else
-					critdam=round((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
 				if(twinlion==1)
-					critdam=round((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10)
+					critdam=round(((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10))
 
 
 				combat("Critical hit!")
