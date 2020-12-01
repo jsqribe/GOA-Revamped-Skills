@@ -210,29 +210,34 @@ mob
 			var/dam = 0
 
 			if(gentlefist)
-				outcome = 6
+				outcome = 5
 
 			switch(outcome)
-				if(6,5)
+				if(6)
 					deltamove += 5//3
 					M.c += 4
 					dam = round(150 * m)
 				if(5)
 					deltamove += 4//3
 					M.c += 4
-					dam = round(150 * m)
+					dam = round(135 * m)
 				if(4)
 					deltamove += 3//1
 					M.c += 3
-					dam = round(125 * m)
+					dam = round(120 * m)
 				if(3,2)
 					deltamove += 2//1
 					M.c += 2.5
 					dam = round(100 * m)
-				if(1,0)
+				if(1)
 					deltamove += 1//0
 					M.c += 2
 					dam = round(75 * m)
+
+				if(0)
+					deltamove += 1//0
+					M.c += 2
+					dam = round(50 * m)
 
 
 			if(M.c > 13)
