@@ -273,7 +273,7 @@ mob
 							if(M.cc < 0) M.cc = 0
 							sleep(10)
 					M.icon_state = "hurt"
-					var/dazed = 30
+					var/dazed = 10
 					dazed *= 1 + skillspassive[11] / 10 //< More floating-point accuracy
 					M.Timed_Move_Stun(round(dazed, 0.1))
 

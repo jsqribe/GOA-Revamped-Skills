@@ -58,7 +58,7 @@ skill
 			if(..())
 
 				if(user.cantshun)
-					Error(user, "Cant shunshin while your inside swamp.")
+					Error(user, "Cant shunshin while your inside swamp or ice mirrors.")
 					return 0
 
 				if(Issmoke(user.loc))
@@ -81,7 +81,7 @@ skill
 		Use(mob/human/user)
 			var/mob/human/player/etarget = user.MainTarget()
 
-			if(user.UsrOnSwamp==1)
+			if(user.UsrOnSwamp || user.cantshun)
 				return
 
 			if(!user.icon_state)
@@ -246,7 +246,7 @@ skill
 //This is used for BodyFlicker so will leave it here
 client
 	DblClick(atom/thing, atom/loc, control, params)
-		if(!mob.stunned && mob.pk && mob.shun && isloc(loc))
+		if(!mob.stunned && mob.pk && mob.shun && isloc(loc) &&!mob.cantshun )
 			if(!loc || !loc.Enter(usr) || !loc.icon || loc.type == /turf || !(loc in oview(mob)) || Issmoke(mob.loc))
 				return
 

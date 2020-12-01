@@ -163,7 +163,8 @@ skill
 				. = ..()
 				if(.)
 					var/mob/human/etarget = user.MainTarget()
-					if(!etarget || (etarget && (etarget.chambered || etarget.sandshield || etarget.ko) ))
+					if(!etarget || !etarget.client || (etarget && (etarget.chambered || etarget.sandshield || etarget.ko) ))
+						//Can only use mirrors on clients, should solve mirrors used on bunshins.
 						Error(user, "No Valid Target")
 						return 0
 					if(!user.NearWater(10))
@@ -197,6 +198,11 @@ skill
 					var/list/mirrorlist = ret["mirrors"]
 					var/turf/cen = ret["center"]
 
+
+					for(var/mob/G in range(2,cen))
+						G.cantshun=1//Fix Shunhsin out of Ice Mirrors?
+
+
 					sleep(20)
 
 					var/demonmirrored = 0
@@ -204,9 +210,10 @@ skill
 					var/list/Gotchad=new
 					for(var/mob/G in range(2,cen))
 						if(G!=user)
+							if(!Gotchad.Find(G))
+								Gotchad+=G //add them if they weren't in the list before
 							G = G.Replacement_Start(user)
 							demonmirrored = 1
-							Gotchad+=G
 							spawn() G.Timed_Stun(180)
 							spawn() G.Hostile(user)
 
@@ -224,7 +231,9 @@ skill
 											OG.icon_state=""
 
 						for(var/mob/G in range(2,cen))
-							if(G != src)
+							if(G != user)
+								if(!Gotchad.Find(G))
+									Gotchad+=G //add them if they weren't in the list before
 								if(!G.ironskin)
 									G.overlays += 'icons/needlepwn.dmi'
 
@@ -259,6 +268,7 @@ skill
 						spawn(100)
 							for(var/mob/OG in Gotchad)
 								OG.overlays-='icons/needlepwn.dmi'
+								OG.cantshun=0 //enable Shunshin
 
 					else
 						user.loc = user.oldloc
@@ -1038,8 +1048,10 @@ proc
 		//user.loc = null
 		if(user.client) user.client.eye = Q
 
-		while(get_dist(Q, target) > 1)
+		var/step_count=20
+		while(get_dist(Q, target) > 1 && step_count>0)
 			step_to(Q, target)
+			step_count--
 			sleep(1)
 			if(!Q || !target || !user) return
 
