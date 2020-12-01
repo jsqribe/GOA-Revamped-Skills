@@ -179,13 +179,13 @@ mob
 			if(prob(critchan))
 				//Critical..
 				if(gate)
-					critdam=round((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((str + strbuff) * rand(15, 20) / 15) * (1 + 0.10 * skillspassive[2]))
 				if(!gentlefist)
-					critdam=round((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((str + strbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
 				else
-					critdam=round((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2])
+					critdam=round(((con + conbuff) * rand(20, 25) / 15) * (1 + 0.10 * skillspassive[2]))
 				if(twinlion==1)
-					critdam=round((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10)
+					critdam=round(((((con + conbuff) + (str + strbuff) + (rfx + rfxbuff)) * rand(25, 30) / 10) * (1 + 0.10 * skillspassive[2])*10))
 
 
 				combat("Critical hit!")
@@ -210,29 +210,34 @@ mob
 			var/dam = 0
 
 			if(gentlefist)
-				outcome = 6
+				outcome = 5
 
 			switch(outcome)
-				if(6,5)
+				if(6)
 					deltamove += 5//3
 					M.c += 4
 					dam = round(150 * m)
 				if(5)
 					deltamove += 4//3
 					M.c += 4
-					dam = round(150 * m)
+					dam = round(135 * m)
 				if(4)
 					deltamove += 3//1
 					M.c += 3
-					dam = round(125 * m)
+					dam = round(120 * m)
 				if(3,2)
 					deltamove += 2//1
 					M.c += 2.5
 					dam = round(100 * m)
-				if(1,0)
+				if(1)
 					deltamove += 1//0
 					M.c += 2
 					dam = round(75 * m)
+
+				if(0)
+					deltamove += 1//0
+					M.c += 2
+					dam = round(50 * m)
 
 
 			if(M.c > 13)
@@ -248,7 +253,11 @@ mob
 
 			if(combo)
 				dam *= 1 + (2 * combo) / 30 //< Being a bit strange to avoid floating-point accuracy issues
-			var/DD = dam + critdam
+			var/DD
+			if(critdamn)
+				DD = critdam
+			else
+				DD = dam
 
 			M.Damage(DD, tai_wounds, src, "Taijutsu", "Normal")
 
