@@ -42,7 +42,7 @@ skill
 								user.controlmob= result
 							//	user.client:perspective = etarget
 								result.controlmob = user
-								result.client.Controling=result
+								result.client.Controling=user
 								user.controlling_yamanaka=1
 								sleep(100 + (user.int/4))
 								user.client:eye = user
@@ -54,6 +54,7 @@ skill
 								user.icon_state=""
 								result.Reset_Stun()
 								user.Reset_Stun()
+								spawn()DoCooldown(user)
 						else
 							user.Reset_Stun()
 							user.icon_state=""

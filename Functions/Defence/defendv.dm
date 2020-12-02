@@ -7,6 +7,9 @@ mob/human
 			//if(inslymind)
 			//	return
 
+			if(client.Controling)
+				return
+
 			if(taiclash)
 				PressAButton="D"
 				return
