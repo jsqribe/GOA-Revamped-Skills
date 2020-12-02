@@ -472,14 +472,13 @@ skill
 								H.AddTarget(user, active=0, silent=1)
 
 					ChangeIconState("Cancel_Mole_Hiding")
-					if(user.isCombatFlag(20) || user.warring || user.cexam)
-						user.combat("<font color=red>Because you were combat recently, your ability with this jutsu is limited. You have 20 seconds.</font>")
-						user.mole = 2//used to stop regen rather than half it
-						spawn(100)
-							if(user && user.mole)
-								user.UnMole(user)
-								var/skill/mole = user.GetSkill(DOTON_MOLE_HIDING)
-								spawn() mole.DoCooldown(user)
+					user.combat("<font color=red>Because you were combat recently, your ability with this jutsu is limited. You have 20 seconds.</font>")
+					user.mole = 2//used to stop regen rather than half it
+					spawn(100)
+						if(user && user.mole)
+							user.UnMole(user)
+							var/skill/mole = user.GetSkill(DOTON_MOLE_HIDING)
+							spawn() mole.DoCooldown(user)
 
 		head_hunter
 			id = DOTON_HEAD_HUNTER
@@ -679,13 +678,13 @@ skill
 			id = DOTON_EARTH_SHAKING_PALM
 			name = "Earth Release: Earth Shaking Palm"
 			icon_state = "earth_palm"
-			default_chakra_cost = 500
-			default_cooldown = 90
+			default_chakra_cost = 1000
+			default_cooldown = 180
 			default_seal_time = 4
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Shaking Palm!", "combat_output")
-				var/earth_damage = user.ControlDamageMultiplier()*3
+				var/earth_damage = user.ControlDamageMultiplier()*5
 				user.icon_state="Seal"
 				spawn(15)
 					user.icon_state=""
@@ -693,8 +692,13 @@ skill
 			//	user.protected=4
 				var/obj/x=new/obj/ground_destruction(user.loc)
 				spawn()AOExk(user.x,user.y,user.z,3,earth_damage*user.blevel,6,user,0,1,1)
-				spawn(5)
-					x.loc=null
+				for(var/mob/human/X in oview(3,user))
+					if(X.mole)
+						X.UnMole(X)
+						sleep(1)
+						X.Damage(X.stamina, 0, user, "Earth Shaking Palm", "Normal")
+
+				spawn(5) del(x)
 
 
 		doton_prison_dome
