@@ -61,6 +61,10 @@ skill
 					Error(user, "Cant shunshin while your inside swamp or ice mirrors.")
 					return 0
 
+				if(Isswamp(user))
+					Error(user, "Cant shunshin while your inside swamp or ice mirrors.")
+					return 0
+
 				if(Issmoke(user.loc))
 					return 0
 				else
