@@ -36,7 +36,6 @@ skill
 					//while(user.usemove && etarget.curwound && etarget && etarget.x==p.x && etarget.y==p.y && user.x==q.x && user.y==q.y)
 					var/conroll=rand((user.con+user.conbuff-user.conneg),1.5*(user.con+user.conbuff-user.conneg))
 					var/woundroll=rand(round((etarget.curwound)/2),(etarget.curwound))
-					var/obj/mapinfo/Minfo = locate("__mapinfo__[user.z]")
 					var/medicz = 50
 					medicz += (user.skillspassive[23] * 50 / 20)
 					if(medicz >= rand(1,100))
