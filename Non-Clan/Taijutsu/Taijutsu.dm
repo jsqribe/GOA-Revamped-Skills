@@ -368,9 +368,6 @@ skill
 				spawn(20) if(user) user.overlays-='icons/senpuu.dmi'
 				sleep(15)
 				if(user && !user.ko && !user.stunned && etarget && (get_dist(user, etarget) <= 2) && !(etarget.ko || etarget.chambered || etarget.sandshield || etarget.kaiten || etarget.mole))
-					var/vx=etarget.x
-					var/vy=etarget.y
-					var/vz=etarget.z
 					etarget = etarget.Replacement_Start(user)
 					spawn() user.Taijutsu(etarget)
 
@@ -379,6 +376,7 @@ skill
 					etarget.Hostile(user)
 					sleep(1)
 					if(etarget && user)
+						var/multiplier=(user.str+user.strbuff-user.strneg)/(etarget.str+etarget.strbuff-etarget.strneg)
 						if(result>=5)
 							etarget.Damage(2500*multiplier,0,user,"Lion Combo","Normal")
 							//etarget.Dec_Stam(2000*multiplier,0,user)
@@ -402,6 +400,9 @@ skill
 						etarget.Replacement_End()
 					if(user)
 						user.layer=MOB_LAYER
+
+
+
 
 		Front_Lotus
 			id = FRONT_LOTUS
@@ -433,10 +434,11 @@ skill
 					return
 				if(etarget.dzed)
 					etarget.stunned=0
+
 				var/vx=etarget.x
 				var/vy=etarget.y
 				var/vz=etarget.z
-			//	user.overlays+='icons/senpuu.dmi'
+
 				user.overlays+=image('icons/senpuu2.dmi',icon_state = "1",pixel_x=-32,pixel_y=0)
 				user.overlays+=image('icons/senpuu2.dmi',icon_state = "2",pixel_x=0,pixel_y=0)
 				user.overlays+=image('icons/senpuu2.dmi',icon_state = "3",pixel_x=32,pixel_y=0)
@@ -456,611 +458,12 @@ skill
 				if(user && etarget && etarget.x==vx && etarget.y==vy && etarget.z==vz)
 					spawn() user.Taijutsu(etarget)
 
-					user.AppearBefore(etarget)
-					spawn()smack(etarget,5,8)
-					user.icon_state="Throw2"
-			//		flick("KickA-1",user)
-					if(etarget.larch)
-						return
-					if(!user)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						return
-					if(!etarget)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						return
-					var/LOx=user.x
-					var/LOy=user.y
-					var/LOz=user.z
+					var/result = Front_Lotus(user,etarget)
 
-					user.stunned=15
-					etarget.stunned=15
-					spawn()smack(etarget,5,8)
-					sleep(2)
-					if(!user)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.loc=locate(vx,vy,vz)
-					user.AppearBefore(etarget)
-					spawn()smack(etarget,5,8)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					sleep(3)
-					if(!user)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					user.incombo=1
-					etarget.incombo=1
-					spawn()smack(etarget,5,8)
-					user.x=vx
-					user.y=vy
-					user.z=vz
-					var/obj/S=new/obj(locate(vx,vy,vz))
-					S.density=0
-					S.icon='icons/shadow.dmi'
-
-					etarget.dir=SOUTH
-				//	user.protected=10
-				//	etarget.protected=10
-					user.dir=SOUTH
-					var/obj/O = new/obj(locate(vx,vy,vz))
-					O.density=0
-					O.icon='icons/appeartai.dmi'
-					spawn(5)
-						del(O)
-
-					etarget.icon_state="hurt"
-					etarget.layer=MOB_LAYER+13
-					user.layer=MOB_LAYER+12
-					etarget.pixel_y=3
-					user.pixel_y=etarget.pixel_y
-					spawn()smack(etarget,5,8)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-
-					etarget.y=user.y
-					var/E=50
-					spawn()
-						user.pixel_x = 8
-						user.pixel_y += 5
-					while(etarget&&user&&E>0)
-						etarget.pixel_y += 4
-						user.pixel_y += 4
-
-						E-=2
-						sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-
-					S.loc=locate(vx,vy,vz)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					user.dir=WEST
-				//	user.icon_state="Throw1"
-					etarget.overlays+=image('icons/front.dmi',icon_state = "1",pixel_x=0,pixel_y=0)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "2",pixel_x=0,pixel_y=32)
-					user.pixel_y=etarget.pixel_y+3
-					etarget.y=user.y
-
-					user.pixel_x=8
-					spawn()smack(etarget,5,8)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-
-			//		flick("PunchA-1",user)
-					spawn()smack(etarget,5,8)
-					etarget.pixel_y+=5
-					sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					user.dir=WEST
-				//	user.icon_state="Throw1"
-					etarget.overlays+=image('icons/front.dmi',icon_state = "1",pixel_x=0,pixel_y=0)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "2",pixel_x=0,pixel_y=32)
-					user.pixel_y=etarget.pixel_y+3
-					etarget.y=user.y
-
-					user.pixel_x=8
-
-			//		flick("PunchA-1",user)
-					spawn()smack(etarget,5,8)
-					etarget.pixel_y+=5
-					sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y++
-					sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y++
-					sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y++
-					sleep(1)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-
-					user.pixel_y+=8
-					user.icon_state=""
-					user.pixel_y=etarget.pixel_y-3
-					etarget.y=user.y
-					user.pixel_x=8
-				//	flick("KickA-1",user)
-					spawn()smack(etarget,5,8)
-					spawn()smack(etarget,2,4)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					sleep(4)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.layer=MOB_LAYER+12
-					user.layer=MOB_LAYER+13
-					spawn()smack(etarget,5,8)
-			//		flick("KickA-2",user)
-					spawn()smack(etarget,5,6)
-					sleep(4)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					user.pixel_x=0
-					user.dir=NORTH
-					user.pixel_y=etarget.pixel_y+6
-					etarget.y=user.y
-					user.pixel_x=0
-			//		flick("KickA-1",user)
-					spawn()smack(etarget,5,8)
-					spawn() if(etarget) smack(etarget,0,8)
-					sleep(2)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y-=2
-					sleep(2)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y-=2
-					etarget.layer=MOB_LAYER+13
-					user.layer=MOB_LAYER+12
-					spawn()smack(etarget,5,8)
-
-					user.dir=EAST
-					user.pixel_y=etarget.pixel_y+9
-					etarget.y=user.y
-					user.pixel_x=-4
-				//	flick("KickA-2",user)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					sleep(4)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.layer=MOB_LAYER+12
-					user.layer=MOB_LAYER+13
-					spawn()smack(etarget,5,8)
-
-			//		flick("KickA-1",user)
-					spawn()smack(etarget,-2,4)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "3",pixel_x=-16,pixel_y=0)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "4",pixel_x=16,pixel_y=0)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "5",pixel_x=-16,pixel_y=32)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "6",pixel_x=16,pixel_y=32)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "7",pixel_x=-16,pixel_y=64)
-					etarget.overlays+=image('icons/front.dmi',icon_state = "8",pixel_x=16,pixel_y=64)
-					sleep(2)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					etarget.pixel_y-=2
-					etarget.layer=MOB_LAYER+13
-					user.layer=MOB_LAYER+12
-					spawn()smack(etarget,5,8)
-
-					user.dir=EAST
-					user.pixel_y=etarget.pixel_y+9
-					etarget.y=user.y
-					user.pixel_x=-4
-				//	flick("KickA-2",user)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					spawn()smack(etarget,-5,6)
-					sleep(4)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					spawn() if(etarget) etarget.Fallpwn()
-					sleep(2)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						etarget.loc=locate(vx,vy,vz)
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						user.loc=locate(LOx,LOy,LOz)
-						return
-					user.overlays+='icons/appeartai.dmi'
-					user.pixel_x=0
-					user.pixel_y=0
-					user.loc=locate(LOx,LOy,LOz)
-					etarget.loc=locate(vx,vy,vz)
-					etarget.dir=SOUTH
-					user.AppearBefore(etarget)
-					sleep(6)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						return
-					user.overlays-='icons/appeartai.dmi'
-					etarget.overlays-=image('icons/front.dmi',icon_state = "1",pixel_x=0,pixel_y=0)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "2",pixel_x=0,pixel_y=32)
-					sleep(4)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						return
-					user.protected=0
-					etarget.protected=0
-					sleep(2)
-					if(!user)
-						del(S)
-						etarget.pixel_x=0
-						etarget.pixel_y=0
-						etarget.incombo=0
-						etarget.protected=0
-						etarget.icon_state=""
-						etarget.stunned=0
-						return
-					if(!etarget)
-						del(S)
-						user.pixel_x=0
-						user.pixel_y=0
-						user.incombo=0
-						user.protected=0
-						user.icon_state=""
-						user.stunned=0
-						return
-					user.incombo=0
-					user.stunned=0
-					etarget.overlays-=image('icons/front.dmi',icon_state = "1",pixel_x=0,pixel_y=0)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "2",pixel_x=0,pixel_y=32)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "3",pixel_x=-16,pixel_y=0)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "4",pixel_x=16,pixel_y=0)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "5",pixel_x=-16,pixel_y=32)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "6",pixel_x=16,pixel_y=32)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "7",pixel_x=-16,pixel_y=64)
-					etarget.overlays-=image('icons/front.dmi',icon_state = "8",pixel_x=16,pixel_y=64)
-					user.icon_state=""
-					del(S)
-					var/multiplier=(user.str+user.strbuff-user.strneg)/(etarget.str+etarget.strbuff-etarget.strneg)
-					var/result=Roll_Against(user.rfx+user.rfxbuff-user.rfxneg,etarget.rfx+etarget.rfxbuff-etarget.rfxneg,100)
 					etarget.Hostile(user)
 					sleep(1)
 					if(etarget && user)
+						var/multiplier=(user.str+user.strbuff-user.strneg)/(etarget.str+etarget.strbuff-etarget.strneg)
 						if(result>=5)
 							etarget.Damage(2000*multiplier,0,user,"Front Lotus","Normal")
 							etarget.curwound+=25
@@ -1105,19 +508,6 @@ skill
 			stamina_damage_str = 1
 
 
-
-			/*Dipic: Disabled as it makes this skill too easy to land
-			IsUsable(mob/user)
-				. = ..()
-				var/mob/human/target = user.NearestTarget()
-				if(. && target)
-					var/distance = get_dist(user, target)
-					if(distance > 1)
-						Error(user, "Target too far ([distance]/1 tiles)")
-						return 0
-			*/
-
-
 			Use(mob/human/user)
 				flick("PunchA-1",user)
 				viewers(user) << output("[user]: Achiever of Nirvana Fist!", "combat_output")
@@ -1144,27 +534,27 @@ skill
 							etarget.Damage(450+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(5,user.dir)
-								etarget.Timed_Move_Stun(20)
+								etarget.Nirvana_Stun(20)
 
 						if(result==5)
 							etarget.Damage(400+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(3,user.dir)
-								etarget.Timed_Move_Stun(15)
+								etarget.Nirvana_Stun(15)
 						if(result==4)
 							etarget.Damage(275+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(2,user.dir)
-								etarget.Timed_Move_Stun(10)
+								etarget.Nirvana_Stun(10)
 						if(result==3)
 							etarget.Damage(200+str_mod,0,user,"Nirvana Fist","Normal")
 							spawn()
 								etarget.Knockback(1,user.dir)
-								etarget.Timed_Move_Stun(5)
+								etarget.Nirvana_Stun(5)
 
 						if(result==2)
 							etarget.Damage(100+str_mod,0,user,"Nirvana Fist","Normal")
-							etarget.Timed_Move_Stun(5)
+							etarget.Nirvana_Stun(5)
 
 						if(result==1)
 							etarget.Damage(50+str_mod,0,user,"Nirvana Fist","Normal")
