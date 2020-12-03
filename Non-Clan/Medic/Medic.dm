@@ -34,22 +34,17 @@ skill
 					user.Begin_Stun()
 					user.usemove=1
 					//while(user.usemove && etarget.curwound && etarget && etarget.x==p.x && etarget.y==p.y && user.x==q.x && user.y==q.y)
-					var/conroll=rand(1,2*(user.con+user.conbuff-user.conneg))
-					var/woundroll=rand(round((etarget.curwound)/3),(etarget.curwound))
-					if(conroll>woundroll && woundroll)
+					var/conroll=rand((user.con+user.conbuff-user.conneg),1.5*(user.con+user.conbuff-user.conneg))
+					var/woundroll=rand(round((etarget.curwound)/2),(etarget.curwound))
+					var/obj/mapinfo/Minfo = locate("__mapinfo__[user.z]")
+					var/medicz = 50
+					medicz += (user.skillspassive[23] * 50 / 20)
+					if(medicz >= rand(1,100))
+				//	if(conroll>woundroll && woundroll)
 						var/effect=round(conroll/(woundroll))//*pick(1,2,3)
-
-						if(user.skillspassive[23]<=5) //lvl 0-5
-
-							effect = (effect*(1 + 0.10*user.skillspassive[23])/4) //Quarter Heals
-
-						if(user.skillspassive[23]>5 && user.skillspassive[23]<=10 ) //lvl 5-10
-
-							effect = (effect*(1 + 0.15*user.skillspassive[23])/2) //Half Heals
-
-						if(user.skillspassive[23]>10 ) //lvl 10+
-
-							effect = effect*(1 + 0.20*user.skillspassive[23]) //Full Heals
+						if(user.skillspassive[23])effect*=(1 + 0.05*user.skillspassive[23])
+						if(effect>etarget.curwound)
+							effect=etarget.curwound
 
 						if(effect>etarget.curwound)
 							effect=etarget.curwound
@@ -981,3 +976,28 @@ obj
 					sleep(1)
 
 					mom -= (abs(motx)+abs(moty))
+
+
+
+
+//OLd heal formula
+
+/*
+		var/conroll=rand(1,2*(user.con+user.conbuff-user.conneg))
+					var/woundroll=rand(round((etarget.curwound)/3),(etarget.curwound))
+					if(conroll>woundroll && woundroll)
+						var/effect=round(conroll/(woundroll))//*pick(1,2,3)
+
+						if(user.skillspassive[23]<=5) //lvl 0-5
+
+							effect = (effect*(1 + 0.10*user.skillspassive[23])/4) //Quarter Heals
+
+						if(user.skillspassive[23]>5 && user.skillspassive[23]<=10 ) //lvl 5-10
+
+							effect = (effect*(1 + 0.15*user.skillspassive[23])/2) //Half Heals
+
+						if(user.skillspassive[23]>10 ) //lvl 10+
+
+							effect = effect*(1 + 0.20*user.skillspassive[23]) //Full Heals
+
+*/
