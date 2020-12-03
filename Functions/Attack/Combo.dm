@@ -216,24 +216,23 @@ mob
 				if(6)
 					deltamove += 5//3
 					M.c += 4
-					dam = round(150 * m)
+					dam = round(130 * m)
 				if(5)
 					deltamove += 4//3
 					M.c += 4
-					dam = round(135 * m)
+					dam = round(115 * m)
 				if(4)
 					deltamove += 3//1
 					M.c += 3
-					dam = round(120 * m)
+					dam = round(95 * m)
 				if(3,2)
 					deltamove += 2//1
 					M.c += 2.5
-					dam = round(100 * m)
+					dam = round(80 * m)
 				if(1)
 					deltamove += 1//0
 					M.c += 2
-					dam = round(75 * m)
-
+					dam = round(65 * m)
 				if(0)
 					deltamove += 1//0
 					M.c += 2
