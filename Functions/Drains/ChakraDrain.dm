@@ -94,12 +94,3 @@ mob
 					src.conbuff=0
 					src.strbuff=0
 
-			if(src.scorch_modo == 1)
-				src.chakradrain=50
-				spawn()
-					while(src.curchakra > 50 && src.scorch_modo == 1)
-						src.curchakra-=chakradrain
-						for(var/mob/human/player/U in oview(1,src))
-							var/con_mod=src.con+src.conbuff-src.conneg/150
-							U.curstamina-=80*con_mod
-							sleep(50)
