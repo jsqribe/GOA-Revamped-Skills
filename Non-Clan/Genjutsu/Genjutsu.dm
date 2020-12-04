@@ -209,13 +209,6 @@ skill
 			default_chakra_cost = 500
 
 
-			Activate(mob/human/user)
-				if(user.using_crow)
-					user.using_crow = 0
-					return
-				..(user)
-
-
 			Use(mob/user)
 
 				if(!user) return
