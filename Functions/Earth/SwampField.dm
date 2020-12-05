@@ -30,7 +30,7 @@ obj/entertrigger/swampobj
 				M.Timed_Move_Stun(30) //lags out?
 				M.Hostile(muser)
 				//world << "[M],[muser]"
-				M.Damage(500,0,muser,"Swamp of the Underworld","Normal")
+				M.Damage(M.str,0,muser,"Swamp of the Underworld","Normal")
 
 	proc/spread2(turf/source, size=3, delay=2)
 		var/list/dirs = list(NORTH,,EAST,SOUTH,WEST,NORTHWEST,NORTHEAST,SOUTHEAST,SOUTHWEST)

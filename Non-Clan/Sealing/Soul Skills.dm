@@ -29,12 +29,9 @@ skill
 				var/size
 				if(user.con >= 50) size = 3
 				if(user.con >= 150) size = 4
-				if(user.con >= 200) size = 5
-				if(user.con >= 250) size = 6
-				if(user.con >= 300) size = 7
-				if(user.con >= 350) size = 8
-				if(user.con >= 400) size = 9
-				if(user.con >= 450) size = 10
+				if(user.con >= 250) size = 5
+				if(user.con >= 350) size = 6
+				if(user.con >= 450) size = 7
 
 				if(etarget)
 					SwampField(user, etarget.loc, size=size, delay=3)
