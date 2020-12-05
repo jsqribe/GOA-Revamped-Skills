@@ -36,6 +36,8 @@ skill
 				if(user.con >= 400) size = 9
 				if(user.con >= 450) size = 10
 
+				user<<"size is [size]"
+
 				if(etarget)
 					SwampField(user, etarget.loc, size=size, delay=3)
 				else
