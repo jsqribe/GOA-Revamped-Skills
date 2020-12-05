@@ -19,7 +19,7 @@ obj/projectile
 				sleep(10)
 				loc = null //hit a wall!
 
-			if(istype(O,/mob/human))
+			if(istype(O,/mob/human/))
 				var/mob/human/player/Oc=O
 				src.Grabbed+=Oc  //this means the wave will no longer cause damage to that specific player, 1 time hit max per projectile of this type
 				spawn()Oc.Collide(src)//the mob gets hit by src. Cause knockback check.
@@ -33,7 +33,7 @@ obj/projectile
 					source = locate(Oc.x+1,Oc.y,Oc.z)
 				if(Oc.dir==WEST)
 					source = locate(Oc.x-1,Oc.y,Oc.z)
-				spawn() SmokeSpread(source, type="poison", size=3, delay=1, far=1)
+				spawn() SmokeSpread(source, type="poison", size=2, delay=1, far=1)
 
 
 			if(istype(O,/obj/projectile))
