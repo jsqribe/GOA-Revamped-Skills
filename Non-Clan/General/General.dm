@@ -56,10 +56,10 @@ skill
 
 		IsUsable(mob/human/user)
 			if(..())
-/*				for(var/obj/swampobj/p in oview(1,user))
+				for(var/obj/entertrigger/swampobj/p in oview(1,user))
 					if(p.muser != user)
 						Error(user, "Cannot use shunshin right now")
-						return 0*/
+						return 0
 
 				if(user.cantshun)
 					Error(user, "Cant shunshin while your inside swamp or ice mirrors.")
