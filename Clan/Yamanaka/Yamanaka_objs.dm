@@ -33,7 +33,7 @@ obj/projectile
 					source = locate(Oc.x+1,Oc.y,Oc.z)
 				if(Oc.dir==WEST)
 					source = locate(Oc.x-1,Oc.y,Oc.z)
-				spawn() SmokeSpread(source, type="poison", size=2, delay=1, far=1)
+				spawn() SmokeSpread(source, type="poison", size=3, delay=1, far=1)
 
 
 			if(istype(O,/obj/projectile))
