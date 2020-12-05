@@ -1,11 +1,11 @@
-proc/SmokeSpread(turf/source, type=0, size=3, delay=2, far=3)
+proc/SmokeSpread(turf/source, type=0, size=3, delay=2, far=3, mob/user)
 	var/direction
-	if(usr.dir == NORTHEAST || usr.dir == SOUTHEAST)
+	if(user.dir == NORTHEAST || user.dir == SOUTHEAST)
 		direction = EAST
-	else if(usr.dir == NORTHWEST || usr.dir == SOUTHWEST)
+	else if(user.dir == NORTHWEST || user.dir == SOUTHWEST)
 		direction = WEST
 	else
-		direction = usr.dir
+		direction = user.dir
 
 	var/obj/L = new/obj(source)
 	L.dir = direction
@@ -52,45 +52,45 @@ proc/SmokeSpread(turf/source, type=0, size=3, delay=2, far=3)
 		var/num = 0
 		if(C.dir == NORTH)
 			while(L.x+num < C.x)
-				if(type == "ash") AshSmoke(usr,L.x+num,L.y,L.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,L.x+num,L.y,L.z,direction)
+				if(type == "ash") AshSmoke(user,L.x+num,L.y,L.z,direction)
+				else if(type == "poison") PoisonSmoke(user,L.x+num,L.y,L.z,direction)
 				num++
 			num = 0
 			while(R.x-num > C.x)
-				if(type == "ash") AshSmoke(usr,R.x-num,R.y,R.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,R.x-num,R.y,R.z,direction)
+				if(type == "ash") AshSmoke(user,R.x-num,R.y,R.z,direction)
+				else if(type == "poison") PoisonSmoke(user,R.x-num,R.y,R.z,direction)
 				num++
 		if(C.dir == SOUTH)
 			while(L.x-num > C.x)
-				if(type == "ash") AshSmoke(usr,L.x-num,L.y,L.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,L.x-num,L.y,L.z,direction)
+				if(type == "ash") AshSmoke(user,L.x-num,L.y,L.z,direction)
+				else if(type == "poison") PoisonSmoke(user,L.x-num,L.y,L.z,direction)
 				num++
 			num = 0
 			while(R.x+num < C.x)
-				if(type == "ash") AshSmoke(usr,R.x+num,R.y,R.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,R.x+num,R.y,R.z,direction)
+				if(type == "ash") AshSmoke(user,R.x+num,R.y,R.z,direction)
+				else if(type == "poison") PoisonSmoke(user,R.x+num,R.y,R.z,direction)
 				num++
 		if(C.dir == WEST)
 			while(L.y+num < C.y)
-				if(type == "ash") AshSmoke(usr,L.x,L.y+num,L.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,L.x,L.y+num,L.z,direction)
+				if(type == "ash") AshSmoke(user,L.x,L.y+num,L.z,direction)
+				else if(type == "poison") PoisonSmoke(user,L.x,L.y+num,L.z,direction)
 				num++
 			num = 0
 			while(R.y-num > C.y)
-				if(type == "ash") AshSmoke(usr,R.x,R.y-num,R.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,R.x,R.y-num,R.z,direction)
+				if(type == "ash") AshSmoke(user,R.x,R.y-num,R.z,direction)
+				else if(type == "poison") PoisonSmoke(user,R.x,R.y-num,R.z,direction)
 				num++
 		if(C.dir == EAST)
 			while(L.y-num > C.y)
-				if(type == "ash") AshSmoke(usr,L.x,L.y-num,L.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,L.x,L.y-num,L.z,direction)
+				if(type == "ash") AshSmoke(user,L.x,L.y-num,L.z,direction)
+				else if(type == "poison") PoisonSmoke(user,L.x,L.y-num,L.z,direction)
 				num++
 			num = 0
 			while(R.y+num < C.y)
-				if(type == "ash") AshSmoke(usr,R.x,R.y+num,R.z,direction)
-				else if(type == "poison") PoisonSmoke(usr,R.x,R.y+num,R.z,direction)
+				if(type == "ash") AshSmoke(user,R.x,R.y+num,R.z,direction)
+				else if(type == "poison") PoisonSmoke(user,R.x,R.y+num,R.z,direction)
 				num++
-		if(type == "ash") AshSmoke(usr,C.x,C.y,C.z,direction)
-		else if(type == "poison") PoisonSmoke(usr,C.x,C.y,C.z,direction)
+		if(type == "ash") AshSmoke(user,C.x,C.y,C.z,direction)
+		else if(type == "poison") PoisonSmoke(user,C.x,C.y,C.z,direction)
 		sleep(delay)
 		length--
