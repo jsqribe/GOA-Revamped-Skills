@@ -19,4 +19,4 @@ submodule with all the skills and passives code
 	- Move all Functions to seperate .dm files
 
 
-##Suggestions moved to site#2
+##Suggestions moved to site
