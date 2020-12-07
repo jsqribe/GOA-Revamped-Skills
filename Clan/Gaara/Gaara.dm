@@ -94,17 +94,21 @@ skill
 				if(p)
 					p.density=0
 					user.Begin_Stun()
+
 					while(user && get_dist(user, p) > 1)
 						user.sandshield=1
 						step_to(p,user,1)
 						sleep(1)
-						if(!p)
-							if(user)
-								user.End_Stun()
-								user.sandshield=0
-							break
-					if(!user)
-						return
+
+
+					if(!p)
+						if(user)
+							user.End_Stun()
+							user.sandshield=0
+
+
+					if(!user) return
+
 					if(p)
 						user.pet-=p
 						p.loc=null
@@ -120,6 +124,11 @@ skill
 							user.End_Stun()
 							user.sandshield=0
 						x.loc = null
+
+					else
+						if(user)
+							user.End_Stun()
+							user.sandshield=0
 
 
 
