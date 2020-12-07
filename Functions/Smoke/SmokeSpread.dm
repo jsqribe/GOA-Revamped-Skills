@@ -1,4 +1,5 @@
 proc/SmokeSpread(turf/source, type=0, size=3, delay=2, far=3, mob/user)
+	if(!user) return
 	var/direction
 	if(user.dir == NORTHEAST || user.dir == SOUTHEAST)
 		direction = EAST

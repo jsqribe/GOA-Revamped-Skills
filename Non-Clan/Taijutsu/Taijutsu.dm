@@ -373,9 +373,9 @@ skill
 
 					var/result = Lion_Combo(user,etarget)
 
-					etarget.Hostile(user)
 					sleep(1)
 					if(etarget && user)
+						etarget.Hostile(user)
 						var/multiplier=(user.str+user.strbuff-user.strneg)/(etarget.str+etarget.strbuff-etarget.strneg)
 						if(result>=5)
 							etarget.Damage(2500*multiplier,0,user,"Lion Combo","Normal")
@@ -398,7 +398,6 @@ skill
 							(oviewers(user)-etarget) << output("[etarget] managed to defend himself from all of [user]'s attacks!", "combat_output")
 						etarget.Hostile(user)
 						etarget.Replacement_End()
-					if(user)
 						user.layer=MOB_LAYER
 
 
@@ -460,9 +459,9 @@ skill
 
 					var/result = Front_Lotus(user,etarget)
 
-					etarget.Hostile(user)
 					sleep(1)
 					if(etarget && user)
+						etarget.Hostile(user)
 						var/multiplier=(user.str+user.strbuff-user.strneg)/(etarget.str+etarget.strbuff-etarget.strneg)
 						if(result>=5)
 							etarget.Damage(2000*multiplier,0,user,"Front Lotus","Normal")
@@ -489,7 +488,6 @@ skill
 							etarget.combat("You managed to defend yourself from all of [user]'s attacks!")
 							(oviewers(user)-etarget) << output("[etarget] managed to defend himself from all of [user]'s attacks!", "combat_output")
 						etarget.Hostile(user)
-					if(user)
 						user.layer=MOB_LAYER
 
 
