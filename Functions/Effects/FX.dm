@@ -2587,21 +2587,6 @@ obj
 					o.loc = null
 				..()
 
-obj/earthcage
-	var/crushed = 0
-	var/crumbled = 0
-	icon = 'icons/dotoncage.dmi'
-	layer = MOB_LAYER
-	pixel_x = -32
-	pixel_y = -32
-	density = 0
-
-proc/Doton_Cage(dx, dy, dz, dur)
-	var/obj/cage = new /obj/earthcage(locate(dx, dy, dz))
-	cage.owner = usr
-	flick("Creation", cage)
-	sleep(dur)
-	cage.loc = null
 
 obj
 	kbl

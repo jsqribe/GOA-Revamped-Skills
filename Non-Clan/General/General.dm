@@ -231,7 +231,7 @@ skill
 
 					max += round(20*conmult*dmg_mult)
 
-					if(max > 400 && gotcha)
+					if(max > 400 && gotcha && !gotcha.chambered)
 						gotcha.End_Stun()
 
 					if(gotcha.curchakra<0)
@@ -243,7 +243,7 @@ skill
 					if(user.curchakra>user.chakra*1.5) user.curchakra=user.chakra*1.5
 					sleep(5)
 
-				if(gotcha)
+				if(gotcha && !gotcha.chambered)
 					gotcha.End_Stun()
 					gotcha.overlays-='icons/leech.dmi'
 				user.icon_state=""
