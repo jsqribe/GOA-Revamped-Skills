@@ -235,7 +235,7 @@ proc/M_Projectile(obj/projectile/O,mob/user,power,xmom,ymom,iterations,list/Misc
 				var/distance = max(1, round(0.99+speed_tiles)+round((O.radius-16)/32))
 				for(var/obj/m in oview(distance,O))
 					if(m.vectorized && m.powner != O.powner && physics_intersection(O,m))
-						O.landed(m,power,wnd,daze,burn,user)
+						O.landed(m,power,wnd,daze,burn)
 						if(!O || !O.loc) return
 
 			if(!O.ignoremobs)
@@ -243,13 +243,13 @@ proc/M_Projectile(obj/projectile/O,mob/user,power,xmom,ymom,iterations,list/Misc
 					if(m!=user && !(m in ignore_mobs) && physics_stationary(O,m))
 						//O.pixel_x+=O.momx
 						//O.pixel_y+=O.momy
-						O.landed(m,power,wnd,daze,burn,user)
+						O.landed(m,power,wnd,daze,burn)
 						if(!O || !O.loc) return
 
 			if(!O.ignoredisturbproj)
 				for(var/obj/m in O.loc)
 					if(m.projdisturber)
-						O.landed(null,power,wnd,daze,burn,user)
+						O.landed(null,power,wnd,daze,burn)
 						if(!O || !O.loc) return
 
 			//move!-
@@ -371,7 +371,7 @@ atom/var
 	ignoredisturbproj=0
 	powner=0
 atom/movable
-	proc/landed(atom/movable/O,pow,wnd,daze,burn,user)
+	proc/landed(atom/movable/O,pow,wnd,daze,burn)
 
 
 proc/get_real_loc(atom/movable/O)

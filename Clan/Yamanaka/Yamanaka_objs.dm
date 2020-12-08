@@ -8,7 +8,7 @@ obj/projectile
 		New(loc,mob/o)
 			..()
 			src.powner=o
-		landed(atom/movable/O,pow,wnd,daze,burn,user)
+		landed(atom/movable/O,pow,wnd,daze,burn)
 
 			if(src.landed || src.clashin)
 				return
@@ -33,7 +33,7 @@ obj/projectile
 					source = locate(Oc.x+1,Oc.y,Oc.z)
 				if(Oc.dir==WEST)
 					source = locate(Oc.x-1,Oc.y,Oc.z)
-				spawn() SmokeSpread(source, type="poison", size=2, delay=1, far=1, user)
+				spawn() SmokeSpread(source,"poison", 2, 1, 1, src.powner)
 
 
 			if(istype(O,/obj/projectile))
@@ -51,7 +51,7 @@ obj/projectile
 		New(loc,mob/o)
 			..()
 			src.powner=o
-		landed(atom/movable/O,pow,wnd,daze,burn,user)
+		landed(atom/movable/O,pow,wnd,daze,burn)
 			var/tempx=src.x
 			var/tempy=src.y
 			var/tempz=src.z
@@ -71,7 +71,7 @@ obj/projectile
 				spawn()Oc.Collide(src)//the mob gets hit by src. Cause knockback check.
 				//Oc.Damage(pow, 0, "", "Projectile", "Normal")
 
-				spawn()explosion(pow,tempx,tempy,tempz,user,dist = 2)
+				spawn()explosion(pow,tempx,tempy,tempz,src.powner,dist = 2)
 
 			if(istype(O,/obj/projectile))
 				Clash(O,src)
