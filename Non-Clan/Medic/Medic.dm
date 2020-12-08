@@ -220,7 +220,7 @@ skill
 				if(user.dir==WEST)
 					source = locate(usr.x-1,usr.y,usr.z)
 
-				spawn() SmokeSpread(source, type="poison", size=poison_size, delay=2, far=1,user)
+				spawn() SmokeSpread(source, "poison", poison_size, 2, 1,user)
 
 				spawn(10)
 					user.End_Stun()
