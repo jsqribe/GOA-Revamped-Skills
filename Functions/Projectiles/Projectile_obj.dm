@@ -1,5 +1,5 @@
 obj/projectile
-	landed(atom/movable/O,pow,wnd,daze,burn,user)
+	landed(atom/movable/O,pow,wnd,daze,burn)
 		..()
 
 		if(src.landed)
