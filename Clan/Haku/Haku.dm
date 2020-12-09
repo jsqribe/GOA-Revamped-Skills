@@ -222,6 +222,11 @@ skill
 							if(M.icon!='icons/Haku.dmi')
 								flick("Throw1",M)
 
+							//Remove mobs who are not in range anymore
+							for(var/mob/OG in Gotchad)
+								if(!OG in range(2,cen))
+									Gotchad-=OG
+
 							for(var/mob/OG in Gotchad)
 								spawn() if(OG) projectile_to('icons/projectiles.dmi',"needle-m",M,OG)
 								if(!OG.icon_state)
