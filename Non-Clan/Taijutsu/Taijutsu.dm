@@ -368,6 +368,7 @@ skill
 				spawn(20) if(user) user.overlays-='icons/senpuu.dmi'
 				sleep(15)
 				if(user && !user.ko && !user.stunned && etarget && (get_dist(user, etarget) <= 2) && !(etarget.ko || etarget.chambered || etarget.sandshield || etarget.kaiten || etarget.mole))
+					if(etarget.ko || etarget.IsProtected())	return
 					etarget = etarget.Replacement_Start(user)
 					spawn() user.Taijutsu(etarget)
 

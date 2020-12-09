@@ -205,6 +205,9 @@ skill
 			var/mob/gotcha=0
 			var/turf/getloc=0
 
+			if(etarget.ko || etarget.IsProtected())
+				return
+
 			if(etarget)
 				gotcha=etarget.Replacement_Start(user)
 				gotcha.overlays+='icons/leech.dmi'
