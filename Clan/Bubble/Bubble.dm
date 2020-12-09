@@ -37,6 +37,7 @@ skill
 					spawn(50)
 						if(A)
 							spawn() A.Explode()
+							world.log << "dist = [get_dist(A, etarget)]"
 							if(etarget && A && get_dist(A, etarget) <= 2)
 								etarget.sight=(BLIND|SEE_SELF|SEE_OBJS)
 								spawn(100)
@@ -255,10 +256,10 @@ skill
 						hit=1
 				if(hit)
 					var/conmult = user.ControlDamageMultiplier()
-					var/mob/human/clay/bubble/B=new/mob/human/clay/bubble(locate(etarget.x-2,etarget.y,etarget.z),rand(500,(100+100*conmult)),user)
-					var/mob/human/clay/bubble/A=new/mob/human/clay/bubble(locate(etarget.x+2,etarget.y,etarget.z),rand(500,(100+100*conmult)),user)
-					var/mob/human/clay/bubble/C=new/mob/human/clay/bubble(locate(etarget.x,etarget.y-2,etarget.z),rand(500,(100+100*conmult)),user)
-					var/mob/human/clay/bubble/D=new/mob/human/clay/bubble(locate(etarget.x,etarget.y+2,etarget.z),rand(500,(100+100*conmult)),user)
+					var/mob/human/clay/bubble/B=new/mob/human/clay/bubble(locate(etarget.x-2,etarget.y,etarget.z),rand(250,(100+100*conmult)),user)
+					var/mob/human/clay/bubble/A=new/mob/human/clay/bubble(locate(etarget.x+2,etarget.y,etarget.z),rand(250,(100+100*conmult)),user)
+					var/mob/human/clay/bubble/C=new/mob/human/clay/bubble(locate(etarget.x,etarget.y-2,etarget.z),rand(250,(100+100*conmult)),user)
+					var/mob/human/clay/bubble/D=new/mob/human/clay/bubble(locate(etarget.x,etarget.y+2,etarget.z),rand(250,(100+100*conmult)),user)
 					spawn(1)Poof(D.x,D.y,D.z)
 					spawn(3)Homing_Projectile_bang(user,D,8,etarget,1)
 					spawn(1)Poof(C.x,C.y,C.z)
