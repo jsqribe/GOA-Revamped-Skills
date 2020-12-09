@@ -19,9 +19,7 @@ mob/human/clay
 			src.overlays+=image('icons/clay_owl.dmi',icon_state = "3",pixel_x=0,pixel_y=32)
 			src.overlays+=image('icons/clay_owl.dmi',icon_state = "4",pixel_x=32,pixel_y=32)
 			..()
-	bubble
-		icon='projectiles.dmi'
-		icon_state="bubble-m"
+
 	spider
 		icon_state = "spider"
 		mouse_drag_pointer = MOUSE_HAND_POINTER

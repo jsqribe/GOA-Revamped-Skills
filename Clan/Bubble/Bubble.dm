@@ -33,15 +33,12 @@ skill
 				if(hit)
 					var/mob/human/clay/bubble/A=new/mob/human/clay/bubble(locate(user.x,user.y,user.z),rand(200,(200+150*conmult)),user)
 					spawn(1)Poof(A.x,A.y,A.z)
+					A.target=etarget
 					spawn(3)Homing_Projectile_bang(user,A,8,etarget,1)
 					spawn(50)
 						if(A)
 							spawn() A.Explode()
-							world.log << "dist = [get_dist(A, etarget)]"
-							if(etarget && A && get_dist(A, etarget) <= 2)
-								etarget.sight=(BLIND|SEE_SELF|SEE_OBJS)
-								spawn(100)
-									etarget.sight=0
+
 
 
 		bubblebarrage
