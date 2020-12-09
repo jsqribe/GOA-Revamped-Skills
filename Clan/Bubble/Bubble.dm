@@ -36,10 +36,11 @@ skill
 					spawn(3)Homing_Projectile_bang(user,A,8,etarget,1)
 					spawn(50)
 						if(A)
-							A.Explode()
-							etarget.sight=(BLIND|SEE_SELF|SEE_OBJS)
-							sleep(100)
-							etarget.sight=0
+							spawn() A.Explode()
+							if(etarget && A && get_dist(A, etarget) <= 2)
+								etarget.sight=(BLIND|SEE_SELF|SEE_OBJS)
+								spawn(100)
+									etarget.sight=0
 
 
 		bubblebarrage
