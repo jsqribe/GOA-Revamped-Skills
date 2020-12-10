@@ -61,6 +61,11 @@ skill
 						Error(user, "Cannot use shunshin right now")
 						return 0
 
+
+				if(user.has_flag)
+					Error(user, "Cant shunshin while carrying a scroll or flag.")
+					return 0
+
 				if(user.cantshun)
 					Error(user, "Cant shunshin while your inside swamp or ice mirrors.")
 					return 0
