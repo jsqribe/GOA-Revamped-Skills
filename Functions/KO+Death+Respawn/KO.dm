@@ -152,6 +152,11 @@ mob
 				for(var/obj/entertrigger/CTF_Flag/F in contents)
 					src<<"You dropped the [F.flagname] flag."
 					F.Drop(src)
+
+				for(var/obj/entertrigger/World_Scroll/F in contents)
+					src<<"You dropped the world scroll!"
+					F.Drop(src) //incase they die with it just reset.
+
 				has_flag=0
 				move_stun=0
 				movepenalty = 0
