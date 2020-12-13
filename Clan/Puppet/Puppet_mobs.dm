@@ -6,6 +6,7 @@ mob
 
 
 mob/human/Puppet
+
 	Move(turf/new_loc,dirr)
 		. = ..()
 		var/area/A = loc.loc
@@ -92,6 +93,7 @@ mob/human/Puppet/proc
 mob
 	human
 		Puppet
+			can_target=1
 			pk=1
 			var
 				saveindex=0

@@ -36,9 +36,9 @@ skill
 						if(2) P1.icon = 'icons/puppet2.dmi'
 					var/typ = P1.summon
 					Poof(user.x,user.y,user.z)
-
 					puppet = new typ(user.loc)
 					puppet.rfx = user.rfx
+					puppet.realname = P1.name
 					puppet.name = P1.name
 					puppet.owner = user
 					puppet.faction = user.faction
