@@ -187,8 +187,8 @@ skill
 				user.overlays-=/obj/sword/w2
 				user.overlays-=/obj/sword/w3
 				user.overlays-=/obj/sword/w4
-				user.removeswords()
-				user.addswords()
+				//user.removeswords()
+				//user.addswords()
 
 
 
