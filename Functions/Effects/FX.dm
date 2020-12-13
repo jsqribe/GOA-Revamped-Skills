@@ -1,6 +1,4 @@
 obj
-	dense
-		density = 1
 
 	overfx
 		icon = 'icons/appear.dmi'
@@ -1844,11 +1842,7 @@ obj/Poison
 	layer = MOB_LAYER+1
 	mouse_opacity = 0
 
-obj/Steam
-	icon='icons/steam_cloud.dmi'
-	icon_state="steam"
-	density=0
-	layer=MOB_LAYER+1
+
 
 obj/Fire
 	f1
