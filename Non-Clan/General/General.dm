@@ -210,7 +210,7 @@ skill
 			var/mob/gotcha=0
 			var/turf/getloc=0
 
-			if(etarget.ko || etarget.IsProtected())
+			if(!etarget || etarget.ko || etarget.IsProtected())
 				return
 
 			if(etarget)
