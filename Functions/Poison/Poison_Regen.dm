@@ -25,5 +25,6 @@ mob/proc/Poison_Regen()
 		//remove poison overlay
 		if(status_effect_poison)
 			status_effect_poison = null
+			spawn() Load_Overlays()
 
 	return skip_regeneration
