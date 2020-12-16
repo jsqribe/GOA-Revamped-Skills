@@ -124,7 +124,7 @@ skill
 		name = "Multiple Shadow Clone"
 		description = "Creates many controllable clones to distract and hurt your enemies."
 		icon_state = "taijuu_kage_bunshin"
-		default_chakra_cost = 300
+		default_chakra_cost = 200
 		default_cooldown = 60
 		var/used_chakra
 
@@ -160,7 +160,10 @@ skill
 				if(!x.density)
 					options+=x
 			var/list/B = new
-			var/am=0
+
+			var/am=user.skillspassive[20]
+			//max ammount of clones you can summon now based off bunshin passive
+			//but you still need the chakra to summon them.
 
 
 			while(used_chakra>default_chakra_cost && am<=20 && options.len)
