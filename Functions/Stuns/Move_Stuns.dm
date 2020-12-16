@@ -13,7 +13,7 @@ mob
 					if(stunendall) break
 					--time
 					sleep(1)
-				End_Stun()
+				Reset_Stun()
 				src.icon_state=""
 
 		Begin_Stun()

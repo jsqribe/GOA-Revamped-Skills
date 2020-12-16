@@ -20,7 +20,7 @@ mob/proc
 		var/conmult= u.ControlDamageMultiplier()
 		x.cantreact=1
 		spawn(30)
-			x.cantreact=0
+			if(x) x.cantreact=0
 		var/obj/o=new/obj/oodamaexplosion(locate(x.x,x.y,x.z))
 		o.layer=MOB_LAYER-1
 		if(!x.icon_state)
@@ -60,7 +60,7 @@ mob/proc
 		var/conmult= u.ControlDamageMultiplier()
 		x.cantreact=1
 		spawn(30)	// Can we please not forget to make sure things are still valid after any sleep or spawn call.
-			if(x)	x.cantreact=0
+			if(x) x.cantreact=0
 		var/obj/o=new/obj(locate(x.x,x.y,x.z))
 		o.icon='icons/rasengan.dmi'
 		o.layer=MOB_LAYER+1
