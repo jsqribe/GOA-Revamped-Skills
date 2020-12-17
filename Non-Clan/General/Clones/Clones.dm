@@ -161,12 +161,12 @@ skill
 					options+=x
 			var/list/B = new
 
-			var/am=user.skillspassive[20]
+			var/am=0
 			//max ammount of clones you can summon now based off bunshin passive
 			//but you still need the chakra to summon them.
 
 
-			while(used_chakra>default_chakra_cost && am<=20 && options.len)
+			while(used_chakra>default_chakra_cost && am<=user.skillspassive[20] && options.len)
 				used_chakra-=default_chakra_cost
 				var/turf/next=pick(options)
 				spawn()Poof(next.x,next.y,next.z)
