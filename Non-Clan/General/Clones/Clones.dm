@@ -166,7 +166,9 @@ skill
 			//but you still need the chakra to summon them.
 
 
-			while(used_chakra>default_chakra_cost && am<=user.skillspassive[20] && options.len)
+			var/max = min(1,user.skillspassive[20]) //minimum 1 clone I guess
+
+			while(used_chakra>default_chakra_cost && am<=max && options.len)
 				used_chakra-=default_chakra_cost
 				var/turf/next=pick(options)
 				spawn()Poof(next.x,next.y,next.z)
