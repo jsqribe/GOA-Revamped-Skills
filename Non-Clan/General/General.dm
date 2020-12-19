@@ -153,7 +153,7 @@ skill
 		id = CAMOFLAGE_CONCEALMENT
 		name = "Camouflaged Hiding"
 		description = "Blends you into your surroundings, making it harder for your enemies to see you."
-		icon_state = "Camouflage Concealment Technique"
+		icon_state = "camo_hiding"
 		default_chakra_cost = 100
 		default_cooldown = 60
 		default_seal_time = 5
