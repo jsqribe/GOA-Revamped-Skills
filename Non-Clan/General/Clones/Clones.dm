@@ -69,7 +69,7 @@ skill
 		icon_state = "kagebunshin"
 		default_chakra_cost = 150
 		default_cooldown = 60
-
+		skill_reqs = list(BUNSHIN)
 
 
 		Use(mob/user)
@@ -127,6 +127,8 @@ skill
 		default_chakra_cost = 200
 		default_cooldown = 60
 		var/used_chakra
+		skill_reqs = list(BUNSHIN)
+
 
 
 
@@ -247,7 +249,7 @@ skill
 		default_cooldown = 45
 		stamina_damage_fixed = list(1000, 2500)
 		stamina_damage_con = list(0, 0)
-
+		skill_reqs = list(BUNSHIN)
 
 		Use(mob/user)
 			viewers(user) << output("[user]: Shadow Clone!", "combat_output")

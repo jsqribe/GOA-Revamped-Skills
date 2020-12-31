@@ -2,6 +2,14 @@ skill
 	wind
 		copyable = 1
 
+		futon_element
+			id = FUUTON_ELEMENT
+			icon_state = "fuuton"
+			name = "Wind: Element Control"
+			description = "Allows you to control the wind element and use slicing jutsu."
+			stack = "false"//don't stack
+			element = 1
+
 		pressure_damage
 			id = FUUTON_PRESSURE_DAMAGE
 			name = "Wind: Pressure Damage"
@@ -12,7 +20,7 @@ skill
 			default_cooldown = 120
 			stamina_damage_fixed = list(500, 500)
 			stamina_damage_con = list(250, 250)
-
+			skill_reqs = list(FUUTON_ELEMENT)
 
 			EstimateStaminaDamage(mob/human/user)
 				var/conmult = user.ControlDamageMultiplier()
@@ -109,7 +117,7 @@ skill
 			stamina_damage_con = list(0, 500)
 			wound_damage_fixed = list(0, 20)
 			wound_damage_con = list(0, 0)
-
+			skill_reqs = list(FUUTON_ELEMENT)
 
 
 			IsUsable(mob/user)
@@ -203,7 +211,7 @@ skill
 			default_seal_time = 3
 			stamina_damage_fixed = list(250, 250)
 			stamina_damage_con = list(150, 150)
-
+			skill_reqs = list(FUUTON_ELEMENT)
 
 
 			Use(mob/human/user)
@@ -241,7 +249,7 @@ skill
 			default_seal_time = 10
 			stamina_damage_fixed = list(750, 750)
 			stamina_damage_con = list(500, 500)
-
+			skill_reqs = list(FUUTON_ELEMENT)
 
 
 			Use(mob/human/user)
@@ -299,6 +307,7 @@ skill
 			stamina_damage_con = list(50, 50)
 			wound_damage_fixed = list(1,5)
 			wound_damage_con = list(1,1)
+			skill_reqs = list(FUUTON_ELEMENT)
 
 			Use(mob/human/player/user)
 				viewers(user) << output("[user]: Wind: Vacuum Blade Rush!", "combat_output")

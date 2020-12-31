@@ -51,7 +51,7 @@ skill
 		stamina_damage_con = list(1125, 1125)
 		wound_damage_fixed = list(15, 20)
 		wound_damage_con = list(0, 0)
-
+		skill_reqs = list(RASENGAN)
 
 
 		Use(mob/human/player/user)

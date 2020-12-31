@@ -5,6 +5,14 @@ skill
 
 		copyable = 1
 
+		raiton_element
+			id = RAITON_ELEMENT
+			icon_state = "raiton"
+			name = "Lightning: Element Control"
+			description = "Allows you to control the lighhtning element and use fast jutsu."
+			stack = "false"//don't stack
+			element = 1
+
 		chidori
 			id = CHIDORI
 			name = "Lightning: Chidori"
@@ -17,6 +25,7 @@ skill
 			stamina_damage_con = list(500, 650)
 			wound_damage_fixed = list(0, 50)
 			wound_damage_con = list(0, 0)
+			skill_reqs = list(RAITON_ELEMENT)
 
 			Use(mob/human/player/user)
 				viewers(user) << output("[user]: Lightning: Chidori!", "combat_output")
@@ -56,7 +65,7 @@ skill
 			stamina_damage_con = list(500, 500)
 			wound_damage_fixed = list(10, 20)
 			wound_damage_con = list(0, 0)
-
+			skill_reqs = list(RAITON_ELEMENT)
 
 
 			Use(mob/human/user)
@@ -111,6 +120,7 @@ skill
 			face_nearest = 1
 			stamina_damage_fixed = list(250, 400)
 			stamina_damage_con = list(150, 250)
+			skill_reqs = list(RAITON_ELEMENT)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Lightning: Chidori Current!", "combat_output")
@@ -151,7 +161,7 @@ skill
 			stamina_damage_con = list(50, 50)
 			wound_damage_fixed = list(1, 1)
 			wound_damage_con = list(0, 0)
-
+			skill_reqs = list(RAITON_ELEMENT)
 
 
 			Use(mob/human/user)
@@ -203,6 +213,7 @@ skill
 			stamina_damage_con = list(20, 230)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
+			skill_reqs = list(RAITON_ELEMENT)
 
 			IsUsable(mob/human/user)
 				if(..())
@@ -243,7 +254,7 @@ skill
 			default_chakra_cost = 300
 			default_seal_time = 8
 			default_cooldown = 90
-
+			skill_reqs = list(RAITON_ELEMENT)
 			var
 				active_needles = 0
 
@@ -310,6 +321,7 @@ skill
 			default_chakra_cost = 2500
 			default_cooldown = 550
 			default_seal_time = 15
+			skill_reqs = list(RAITON_ELEMENT)
 
 			Use(mob/human/user)
 				//user.stunned=2
@@ -348,18 +360,3 @@ skill
 						for(var/turf/New_Turfs/Outside/Electricity/e in oview(10))
 							spawn()Electricity(e.x,e.y,e.z,50)
 							spawn()AOExk(e.x,e.y,e.z,1,(user.con+user.conbuff+conmult/2),50,user,0,1.5,1)*/
-
-obj/Kirin
-	icon='Kirin(smaller).dmi'
-	density=0
-	New()
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "1",pixel_x=-32,pixel_y=0)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "2",pixel_x=0,pixel_y=0)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "3",pixel_x=32,pixel_y=0)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "4",pixel_x=-32,pixel_y=32)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "5",pixel_x=0,pixel_y=32)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "6",pixel_x=32,pixel_y=32)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "7",pixel_x=-32,pixel_y=64)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "8",pixel_x=0,pixel_y=64)
-		src.overlays+=image('icons/Kirin(smaller).dmi',icon_state = "6",pixel_x=32,pixel_y=64)
-		..()

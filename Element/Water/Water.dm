@@ -3,6 +3,14 @@ skill
 
 		copyable = 1
 
+		suiton_element
+			id = SUITON_ELEMENT
+			icon_state = "suiton"
+			name = "Water: Element Control"
+			description = "Allows you to control the water element and use control jutsu."
+			stack = "false"//don't stack
+			element = 1
+
 		giant_vortex
 			id = SUITON_VORTEX
 			name = "Water: Giant Vortex"
@@ -13,8 +21,8 @@ skill
 			default_seal_time = 15
 			stamina_damage_fixed = list(250, 250)
 			stamina_damage_con = list(750, 750)
-
-
+			skill_reqs = list(SUITON_ELEMENT)
+			stack = "false"//don't stack
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Water: Giant Vortex!", "combat_output")
@@ -43,7 +51,7 @@ skill
 			default_seal_time = 20
 			stamina_damage_fixed = list(500, 500)
 			stamina_damage_con = list(1000, 1000)
-
+			skill_reqs = list(SUITON_VORTEX)
 
 
 			Use(mob/human/user)
@@ -85,7 +93,7 @@ skill
 			default_chakra_cost = 500
 			default_cooldown = 60
 			default_seal_time = 15
-
+			skill_reqs = list(SUITON_SHOCKWAVE)
 
 
 			Use(mob/human/user)
@@ -111,7 +119,7 @@ skill
 			default_seal_time = 20
 			stamina_damage_fixed = list(1250, 1250)
 			stamina_damage_con = list(1500, 1500)
-
+			skill_reqs = list(SUITON_VORTEX)
 
 
 			IsUsable(mob/user)
@@ -168,7 +176,7 @@ skill
 			default_seal_time = 15
 			stamina_damage_fixed = list(750, 750)
 			stamina_damage_con = list(750, 750)
-
+			skill_reqs = list(SUITON_WATER_PRISON)
 
 			DoSeals(mob/human/user)
 				var/mob/human/player/etarget = user.MainTarget()
@@ -249,6 +257,7 @@ skill
 			default_chakra_cost = 650
 			default_cooldown = 180
 			default_seal_time = 15
+			skill_reqs = list(SUITON_ELEMENT)
 
 			ChakraCost(mob/user)
 				var/cost = default_chakra_cost
@@ -299,6 +308,7 @@ skill
 		default_chakra_cost = 100
 		default_cooldown = 150
 		default_seal_time = 2
+		skill_reqs = list(SUITON_ELEMENT)
 
 		IsUsable(mob/user)
 			. = ..()
@@ -419,6 +429,7 @@ skill
 		default_seal_time = 10
 		stamina_damage_fixed = list(120, 120)
 		stamina_damage_con = list(40, 40)
+		skill_reqs = list(SUITON_ELEMENT)
 
 		Use(mob/human/player/user)
 			viewers(user) << output("[user]: Water: Water Bullet!", "combat_output")

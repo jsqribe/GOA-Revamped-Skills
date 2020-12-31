@@ -44,7 +44,7 @@ skill
 		default_cooldown = 25
 		stamina_damage_fixed = list(2000, 2000)
 		stamina_damage_con = list(0, 0)
-
+		skill_reqs = list(KAWARIMI)
 
 		Use(mob/user)
 			user.combat("Exploding Body Replacement is now active. If you are hit during the next <b>10 seconds</b>, you will be teleported back to the location the skill was activated on.")

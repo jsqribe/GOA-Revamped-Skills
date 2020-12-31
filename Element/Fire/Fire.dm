@@ -2,6 +2,15 @@ skill
 	fire
 		face_nearest = 1
 		copyable = 1
+		element_reqs = list("Fire")
+
+		katon_element
+			id = KATON_ELEMENT
+			icon_state = "katon"
+			name = "Fire: Element Control"
+			description = "Allows you to control the fire element and use explosive jutsu."
+			stack = "false"//don't stack
+			element=1
 
 		grand_fireball
 			id = KATON_FIREBALL
@@ -15,7 +24,7 @@ skill
 			stamina_damage_con = list(100, 150)
 			wound_damage_fixed = list(2, 3)
 			wound_damage_con = list(1, 1)
-
+			skill_reqs = list(KATON_ELEMENT)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Fire: Grand Fireball!", "combat_output")
@@ -90,7 +99,7 @@ skill
 			stamina_damage_con = list(60, 90)
 			wound_damage_fixed = list(1, 2)
 			wound_damage_con = list(0.5, 0.5)
-
+			skill_reqs = list(KATON_ELEMENT)
 
 
 			Use(mob/human/user)
@@ -177,7 +186,7 @@ skill
 			stamina_damage_con = list(200, 300)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(1, 4)
-
+			skill_reqs = list(KATON_FIREBALL)
 
 
 			Use(mob/human/user)
@@ -205,7 +214,7 @@ skill
 			stamina_damage_con = list(1000, 1400)
 			wound_damage_fixed = list(5, 40)
 			wound_damage_con = list(1.5, 1.5)
-
+			skill_reqs = list(KATON_PHOENIX_FIRE)
 
 
 			Use(mob/human/user)
@@ -259,8 +268,8 @@ skill
 			stamina_damage_con = list(150, 150)
 			wound_damage_fixed = list(1, 2)
 			wound_damage_con = list(0.3, 0.3)
-
-
+			cost = 800
+			skill_reqs = list(KATON_PHOENIX_FIRE)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Fire: Coiling Flame!", "combat_output")
@@ -312,7 +321,7 @@ skill
 			stamina_damage_con = list(20, 20)
 			wound_damage_fixed = list(1, 2)
 			wound_damage_con = list(0, 0)
-
+			skill_reqs = list(KATON_COILING_FLAME)
 
 
 			Use(mob/human/user)

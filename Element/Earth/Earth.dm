@@ -1,6 +1,15 @@
 skill
 	earth
 		copyable = 1
+		element_reqs = list("Earth")
+
+		doton_element
+			id = DOTON_ELEMENT
+			icon_state = "doton"
+			name = "Earth: Element Control"
+			description = "Allows you to control the earth element and use defensive jutsu."
+			stack = "false"//don't stack
+			element=1
 
 		iron_skin
 			id = DOTON_IRON_SKIN
@@ -9,8 +18,9 @@ skill
 			icon_state = "doton_iron_skin"
 			default_chakra_cost = 150
 			default_cooldown = 240
-
-
+			//SkillTree
+			cost = 1800
+			skill_reqs = list(DOTON_ELEMENT)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -113,6 +123,7 @@ skill
 			default_chakra_cost = 100
 			default_cooldown = 40
 			default_seal_time = 10
+			skill_reqs = list(DOTON_ELEMENT)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -186,6 +197,7 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(25, 30)
 			wound_damage_con = list(0, 0)
+			skill_reqs = list(DOTON_CHAMBER)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -286,6 +298,7 @@ skill
 			default_seal_time = 5
 			stamina_damage_fixed = list(250, 750)
 			stamina_damage_con = list(250, 250)
+			skill_reqs = list(DOTON_ELEMENT)
 
 			Use(mob/human/user)
 				user.Timed_Stun(10)
@@ -400,6 +413,7 @@ skill
 			default_chakra_cost = 300
 			default_cooldown = 120
 			default_seal_time = 10
+			skill_reqs = list(DOTON_ELEMENT)
 
 			DoSeals(mob/human/user)
 				user.usemove = 1
@@ -489,6 +503,7 @@ skill
 			default_chakra_cost = 200
 			default_cooldown = 180
 		//	default_seal_time = 15
+			skill_reqs = list(DOTON_ELEMENT)
 
 			IsUsable(mob/user)
 				if(..())
@@ -580,6 +595,7 @@ skill
 			icon_state = "earth_dragon"
 			default_chakra_cost = 400
 			default_cooldown = 90
+			skill_reqs = list(DOTON_ELEMENT)
 
 			Use(mob/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Dragon!", "combat_output")
@@ -681,6 +697,7 @@ skill
 			default_chakra_cost = 1000
 			default_cooldown = 180
 			default_seal_time = 4
+			skill_reqs = list(DOTON_ELEMENT)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Shaking Palm!", "combat_output")
@@ -708,6 +725,7 @@ skill
 			default_chakra_cost = 1500
 			default_cooldown = 300
 			default_seal_time = 4
+			skill_reqs = list(DOTON_ELEMENT)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Prison Dome of Magnificent Nothingess!", "combat_output")
@@ -895,412 +913,6 @@ skill
 					for(var/mob/enemy in earth_wall.loc)
 						step_away(enemy,earth_wall,1)*/
 
-obj
-	doton_shield
-		icon = 'icons/doton shield.dmi'
-		icon_state = "center"
-		density = 1
-		layer = MOB_LAYER + 0.1
-
-		New(location)
-			..(location)
-
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "bottom_left", pixel_x = -32, pixel_y = -32)
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "bottom_center", pixel_y = -32)
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "bottom_right", pixel_x = 32, pixel_y = -32)
-
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "center_left", pixel_x = -32)
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "center_right", pixel_x = 32)
-
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "top_left", pixel_x = -32, pixel_y = 32)
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "top_center", pixel_y = 32)
-			overlays += image(icon = 'icons/doton shield.dmi', icon_state = "top_right", pixel_x = 32, pixel_y = 32)
-
-obj/shield
-	icon='icons/doton_crush.dmi'
-	one
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = 32
-		pixel_y = -32
-		New()
-			..()
-			flick("bottom_right",src)
-	two
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = -32
-		pixel_y = -32
-		New()
-			..()
-			flick("bottom_left",src)
-	three
-		layer=MOB_LAYER+1
-		density=1
-		New()
-			..()
-			flick("center",src)
-	four
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = -32
-		New()
-			..()
-			flick("center_left",src)
-	five
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = 32
-		New()
-			..()
-			flick("center_right",src)
-	six
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = -32
-		pixel_y = 32
-		New()
-			..()
-			flick("top_left",src)
-	seven
-		layer=MOB_LAYER+1
-		density=1
-		pixel_y = 32
-		New()
-			..()
-			flick("top_center",src)
-	eight
-		layer=MOB_LAYER+1
-		density=1
-		pixel_x = 32
-		pixel_y = 32
-		New()
-			..()
-			flick("top_right",src)
-	nine
-		layer=MOB_LAYER+1
-		density=1
-		pixel_y = -32
-		New()
-			..()
-			flick("bottom_center",src)
 
 
-mob
-	Resurrection
-		icon = 'icons/reanimation2.dmi'
-		icon_state = ""
-		density=1
-		New()
-			spawn(150)
-				if(src)
-					del(src)
 
-		interact="Talk"
-		verb
-			Talk()
-				set src in oview(1)
-				set hidden=1
-				alert(usr,"Your Reanimation Jutsu is incomplete!.")
-				return 0
-
-mob/proc
-	UnMole(mob/human/user)
-		var/obj/s = new/obj(locate(user.x,user.y,user.z))
-		s.icon = 'icons/mole_hiding_technique.dmi'
-		s.icon_state = "Deactivate"
-		s.layer = MOB_LAYER + 0.1
-		s.pixel_x -= 16
-		s.pixel_y -= 16
-		spawn(10) s.loc = null
-		user.Timed_Stun(3)
-		sleep(3)
-		var/obj/h = new/obj(locate(user.x,user.y,user.z))
-		h.icon = 'icons/mole_hiding_technique.dmi'
-		h.icon_state = "Hole"
-		h.layer = TURF_LAYER + 0.1
-		h.pixel_x -= 16
-		h.pixel_y -= 16
-		spawn(100) h.loc = null
-		user.mole=0
-		user.density=1
-		user.Affirm_Icon()
-		user.Load_Overlays()
-		var/skill/mole = user.GetSkill(DOTON_MOLE_HIDING)
-		mole.ChangeIconState("Mole_Hiding")
-mob/human/proc
-	Crush(mob/u)
-		if(src.shukaku==1 || src.yonbi==1)
-			src.Damage(4200,rand(15,30),u,"Doton: Earth Split", "Normal")
-		else
-			src.Damage(4000,rand(15,30),u,"Doton: Earth Split", "Normal")
-		spawn()Blood2(src,u)
-		spawn()src.Hostile(u)
-
-earth_dragon
-	parent_type = /obj
-	icon = 'icons/Earth_Dragon.dmi'
-	density = 1
-	New(loc)
-		..(loc)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "0,0",pixel_x = -48,pixel_y = 0)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "1,0",pixel_x = -16,pixel_y = 0)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "2,0",pixel_x = 16,pixel_y = 0)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "3,0",pixel_x = 48,pixel_y = 0)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "0,1",pixel_x = -48,pixel_y = 32)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "1,1",pixel_x = -16,pixel_y = 32)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "2,1",pixel_x = 16,pixel_y = 32)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "3,1",pixel_x = 48,pixel_y = 32)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "0,2",pixel_x = -48,pixel_y = 64)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "1,2",pixel_x = -16,pixel_y = 64)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "2,2",pixel_x = 16,pixel_y = 64)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "3,2",pixel_x = 48,pixel_y = 64)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "0,3",pixel_x = -48,pixel_y = 96)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "1,3",pixel_x = -16,pixel_y = 96)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "2,3",pixel_x = 16,pixel_y = 96)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "3,3",pixel_x = 48,pixel_y = 96)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "0,4",pixel_x = -48,pixel_y = 128)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "1,4",pixel_x = -16,pixel_y = 128)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "2,4",pixel_x = 16,pixel_y = 128)
-		overlays += image(icon = 'Earth_Dragon.dmi',icon_state = "3,4",pixel_x = 48,pixel_y = 128)
-
-obj
-	earthcrush_one
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-80
-		New()
-			..()
-			flick("0,0",src)
-	earthcrush_two
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-48
-		New()
-			..()
-			flick("1,0",src)
-	earthcrush_three
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-16
-		New()
-			..()
-			flick("2,0",src)
-	earthcrush_four
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=16
-		New()
-			..()
-			flick("3,0",src)
-	earthcrush_five
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=48
-		New()
-			..()
-			flick("4,0",src)
-	earthcrush_six
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=80
-		New()
-			..()
-			flick("5,0",src)
-	earthcrush_seven
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-80
-		pixel_y=32
-		New()
-			..()
-			flick("0,1",src)
-	earthcrush_eight
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-48
-		pixel_y=32
-		New()
-			..()
-			flick("1,1",src)
-	earthcrush_nine
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-16
-		pixel_y=32
-		New()
-			..()
-			flick("2,1",src)
-	earthcrush_ten
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=16
-		pixel_y=32
-		New()
-			..()
-			flick("3,1",src)
-	earthcrush_eleven
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=48
-		pixel_y=32
-		New()
-			..()
-			flick("4,1",src)
-	earthcrush_twelve
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=80
-		pixel_y=32
-		New()
-			..()
-			flick("5,1",src)
-	earthcrush_thirteen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-80
-		pixel_y=64
-		New()
-			..()
-			flick("0,2",src)
-	earthcrush_fourteen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-48
-		pixel_y=64
-		New()
-			..()
-			flick("1,2",src)
-	earthcrush_fifteen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=-16
-		pixel_y=64
-		New()
-			..()
-			flick("2,2",src)
-	earthcrush_sixteen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=16
-		pixel_y=64
-		New()
-			..()
-			flick("3,2",src)
-	earthcrush_seventeen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=48
-		pixel_y=64
-		New()
-			..()
-			flick("4,2",src)
-	earthcrush_eighteen
-		icon='icons/ground_tremble.dmi'
-		layer=MOB_LAYER+1
-		pixel_x=80
-		pixel_y=64
-		New()
-			..()
-			flick("5,2",src)
-
-obj/ground_destruction
-	var
-		list/ground=new
-	New()
-		spawn()..()
-		spawn()
-			ground+=new/obj/earthcrush_one(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_two(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_three(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_four(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_five(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_six(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_seven(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_eight(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_nine(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_ten(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_eleven(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_twelve(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_thirteen(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_fourteen(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_fifteen(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_sixteen(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_seventeen(locate(src.x,src.y,src.z))
-			ground+=new/obj/earthcrush_eighteen(locate(src.x,src.y,src.z))
-	Del()
-		for(var/obj/x in src.ground)
-			del(x)
-		..()
-
-/*mob/var/Combat/combat= null
-
-earth
-	wall
-		parent_type = /mob
-		New(loc)
-			..(loc)
-			combat = new(src)
-
-		Move(loc,dir)
-
-	earth_wall
-		icon = 'earth2.dmi'
-	//	health = 200
-	//	temp = 1
-		parent_type = /mob
-
-		New(loc)
-			..(loc)
-			combat = new(src)
-		Move(loc,dir)
-
-	giant_earth_wall
-		icon = 'earth3.dmi'
-	//	health = 2000
-	//	temp = 1
-		parent_type = /mob
-		pixel_x = -32
-
-		var
-			earth
-				giant_earth_wall
-					part_one
-					part_two
-		New(loc)
-			..(loc)
-			combat = new(src)
-
-		Move(loc,dir)
-
-		Del()
-
-			del(part_one)
-			del(part_two)
-
-			..()
-
-		proc
-			sides()
-				part_one = new(get_step(src,turn(dir, 90)))
-				part_two = new(get_step(src,turn(dir, -90)))
-
-				part_one.icon = null
-				part_two.icon = null
-
-				part_one.combat = combat
-				part_two.combat = combat
-
-
-	earth_dumpling
-		icon = 'earth3.dmi'
-		layer = MOB_LAYER
-		density = 1
-		pixel_x = -32
-		pixel_y = -32
-
-		Move(loc,dir)
-			if(icon_state != "roll")
-				return
-			..()
-*/
