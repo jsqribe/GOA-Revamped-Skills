@@ -1,14 +1,15 @@
-var/sand/iron_mass/iron_mass
-var/sand/gaara_mass/gaara_mass
-
 skill
-	universe
+	ironsand
 		copyable = 0
-		proc
-			Sand_Mass(mob/user)
-				if(user && user.HasSkill("sand_mass"))
-					var/skill/skill = user.GetSkill("sand_mass")
-					return skill:sand_mass
+
+		ironsand_clan
+			id = IRONSAND_CLAN
+			icon_state = "doton"
+			name = "Iron Sand"
+			description = "Iron Sand Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
+		
 		sand_mass
 			name = "Sand Mass"
 			icon = 'mouse_sand_mass.dmi'

@@ -3,6 +3,13 @@ skill
 	akimichi
 		copyable = 0
 
+		akimichi_clan
+			id = AKIMICHI_CLAN
+			icon_state = "doton"
+			name = "Akimichi"
+			description = "Akimichi Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		spinach_pill
 			id = SPINACH_PILL
@@ -11,8 +18,8 @@ skill
 			icon_state = "spinach"
 			default_chakra_cost = 0
 			default_cooldown = 5
-
-
+			cost = 800
+			skill_reqs = list(AKIMICHI_CLAN)
 
 			Use(mob/human/user)
 				if(user.gate)
@@ -46,7 +53,8 @@ skill
 			icon_state = "curry"
 			default_chakra_cost = 0
 			default_cooldown = 5
-
+			cost = 1200
+			skill_reqs = list(SPINACH_PILL)
 
 
 			Use(mob/human/user)
@@ -85,13 +93,14 @@ skill
 									user.RecalculateStats()
 
 		peper_pill
-			id = PEPER_PILL
-			name = "Peper Pill"
+			id = PEPPER_PILL
+			name = "Pepper Pill"
 			description = "A red pill. Eating it increases your body strenght, making all attacks do 50% less damage but you start taking significant internal damage and if you get koed you will get 200 wounds automatically."
-			icon_state = "peper"
+			icon_state = "peper"//check lolol
 			default_chakra_cost = 0
 			default_cooldown = 5
-
+			cost = 2000
+			skill_reqs = list(CURRY_PILL)
 
 
 			Use(mob/human/user)
@@ -147,7 +156,8 @@ skill
 			icon_state = "sizeup1"
 			default_chakra_cost = 400
 			default_cooldown = 200
-
+			cost = 800
+			skill_reqs = list(AKIMICHI_CLAN)
 
 
 			EstimateStaminaDamage(mob/user)
@@ -190,7 +200,8 @@ skill
 			icon_state = "sizeup1"
 			default_chakra_cost = 400
 			default_cooldown = 200
-
+			cost = 1500
+			skill_reqs = list(AKIMICHI_CLAN)
 
 
 			EstimateStaminaDamage(mob/user)
@@ -254,6 +265,8 @@ skill
 			icon_state = "sizeup2"
 			default_chakra_cost = 500
 			default_cooldown = 200
+			cost = 2000
+			skill_reqs = list(SIZEUP1)
 
 
 
@@ -318,7 +331,8 @@ skill
 			icon_state = "meattank"
 			default_chakra_cost = 300
 			default_cooldown = 30
-
+			cost = 600
+			skill_reqs = list(AKIMICHI_CLAN)
 
 
 			EstimateStaminaDamage(mob/user)
@@ -360,6 +374,9 @@ skill
 			icon_state = "butterfly_bombing"
 			default_chakra_cost = 1000
 			default_cooldown = 400
+			cost = 2500
+			skill_reqs = list(SIZEUP2)
+
 			var
 				tmp
 					stam_cost

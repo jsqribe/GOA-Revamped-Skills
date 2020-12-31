@@ -2,6 +2,14 @@ skill
 	capacity
 		copyable = 0
 
+		hoshigaki_clan
+			id = HOSHIGAKI_CLAN
+			icon_state = "doton"
+			name = "Hoshigaki"
+			description = "Hoshigaki Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
+
 		fusion
 			id = SHARK_FUSION
 			name = "Shark Fusion"

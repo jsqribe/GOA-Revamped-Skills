@@ -1,9 +1,14 @@
-mob/var
-	paper_bomb_explode=0
-	paper_armor=0
 skill
 	paper
 		copyable = 0
+
+		paper_clan
+			id = PAPER_CLAN
+			icon_state = "doton"
+			name = "Paper"
+			description = "Paper Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 /*
 		Paper_Person_Of_God_Technique
 			id = PAPER_GOD

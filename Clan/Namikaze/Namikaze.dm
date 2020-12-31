@@ -1,5 +1,14 @@
 skill
 	namikaze
+		copyable = 0
+
+		namikaze_clan
+			id = NAMIKAZE_CLAN
+			icon_state = "doton"
+			name = "Namikaze"
+			description = "Namikaze Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		hiraishin_1
 			id = HIRAISHIN_1

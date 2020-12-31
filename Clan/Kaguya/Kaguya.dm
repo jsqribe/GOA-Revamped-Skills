@@ -2,7 +2,13 @@ skill
 	kaguya
 		copyable = 0
 
-
+		kaguya_clan
+			id = KAGUYA_CLAN
+			icon_state = "doton"
+			name = "Kaguya"
+			description = "Kaguya Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 
 		finger_bullets

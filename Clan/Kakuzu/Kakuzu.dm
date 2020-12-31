@@ -2,8 +2,13 @@ skill
 	scavenger
 		copyable = 0
 
-
-
+		kakuzu_clan
+			id = KAKUZU_CLAN
+			icon_state = "doton"
+			name = "Kakuzu"
+			description = "Kakuzu Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		heart_extraction
 			id = HEART_EXTRACTION

@@ -3,7 +3,13 @@ skill
 		copyable = 0
 
 
-
+		puppet_clan
+			id = PUPPET_CLAN
+			icon_state = "doton"
+			name = "Puppet"
+			description = "Puppet Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		puppet_summoning
 			default_cooldown = 60

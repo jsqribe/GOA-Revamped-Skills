@@ -6,6 +6,14 @@ skill
 	hozuki
 		copyable = 0
 
+		hozuki_clan
+			id = HOZUKI_CLAN
+			icon_state = "doton"
+			name = "Hozuki"
+			description = "Hozuki Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
+
 		hydrate
 			id = HYDRATION
 			name = "Hydrification"

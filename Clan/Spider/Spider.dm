@@ -3,6 +3,13 @@ skill
 		copyable = 0
 		face_nearest = 1
 
+		spider_clan
+			id = SPIDER_CLAN
+			icon_state = "doton"
+			name = "Spider"
+			description = "Spider Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 /*		gold_armor
 			id = GOLD_ARMOR

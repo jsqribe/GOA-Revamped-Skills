@@ -1,5 +1,3 @@
-mob/var/skillbypass=0 // used for ctr currently..
-
 skill
 	var
 		name
@@ -33,7 +31,7 @@ skill
 		charge2 = 0
 
 		//Added for Skill Tree
-		cost=0
+		cost=0 //cost to buy
 		list/skill_reqs
 		element
 		list/element_reqs
@@ -43,7 +41,7 @@ skill
 		canbuy=1//should we display buy button
 
 		//Fuse in Passive system and also allow skill upgrades
-		max
+		max //how many times it can be bought
 
 
 
@@ -539,6 +537,7 @@ proc/show_skill_name(skill, time, over)
 
 
 
+mob/var/skillbypass=0 // used for ctr currently..
 
 mob
 	proc
@@ -617,8 +616,6 @@ proc
 			if(skill.id == id)
 				//world.log << "[skill.name] -> [skill.id]"
 				return skill
-
-
 
 
 

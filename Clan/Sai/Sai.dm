@@ -1,7 +1,14 @@
-mob/var/brush
 skill
 	ink
 		copyable=0
+
+		sai_clan
+			id = SAI_CLAN
+			icon_state = "doton"
+			name = "Sai"
+			description = "Sai Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		brush
 			id = BRUSH

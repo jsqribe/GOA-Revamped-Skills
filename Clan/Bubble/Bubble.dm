@@ -2,6 +2,13 @@ skill
 	bubble
 		copyable = 0
 
+		bubble_clan
+			id = BUBBLE_CLAN
+			icon_state = "doton"
+			name = "Bubble"
+			description = "Bubble Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		blinding_bubbles
 			id = BLINDING_BUBBLES

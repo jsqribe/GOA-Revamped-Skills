@@ -1,7 +1,14 @@
-mob/var/crystal_armor
 skill
 	crystal
 		copyable = 0
+
+		crystal_clan
+			id = CRYSTAL_CLAN
+			icon_state = "doton"
+			name = "Crystal"
+			description = "Crystal Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		crystal_chamber
 			id = CRYSTAL_CHAMBER

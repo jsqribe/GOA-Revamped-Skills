@@ -1,13 +1,14 @@
-mob/var
-	ridingbird = 0
-	c4 = 0
-var/list
-	infectedby = list()
-
 skill
 	deidara
 		copyable = 0
 
+		deidara_clan
+			id = DEIDARA_CLAN
+			icon_state = "doton"
+			name = "Deidara"
+			description = "Deidara Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		clay
 			id = CLAY_MODE
@@ -39,8 +40,8 @@ skill
 			default_cooldown = 15
 			stamina_damage_fixed = list(500, 1000)
 			stamina_damage_con = list(200, 200)
-
-
+			cost = 800
+			skill_reqs = list(EXPLODING_SPIDER)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -130,6 +131,8 @@ skill
 			icon_state = "clay owl"
 			default_chakra_cost = 400
 			default_cooldown = 90
+			cost = 1500
+			skill_reqs = list(EXPLODING_BIRD)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -173,7 +176,8 @@ skill
 			default_cooldown = 30
 			stamina_damage_fixed = list(600, 1500)
 			stamina_damage_con = list(400, 400)
-
+			cost = 800
+			skill_reqs = list(DEIDARA_CLAN)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -199,6 +203,8 @@ skill
 			icon_state = "c2"
 			default_chakra_cost = 1300
 			default_cooldown = 320
+			cost = 1500
+			skill_reqs = list(C0)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -226,7 +232,8 @@ skill
 			default_chakra_cost = 800
 			default_cooldown = 160
 			var/used_chakra
-
+			cost = 3500
+			skill_reqs = list(EXPLODING_BIRD)
 
 
 			EstimateStaminaDamage(mob/human/user)
@@ -325,6 +332,8 @@ skill
 			default_chakra_cost = 2000
 			default_cooldown = 600
 			var/used_chakra
+			cost = 1500
+			skill_reqs = list(C3)
 
 			ChakraCost(mob/user)
 				used_chakra = user.curchakra
@@ -440,6 +449,8 @@ skill
 			default_chakra_cost = 1000
 			default_cooldown = 320
 			var/used_chakra
+			cost = 1500
+			skill_reqs = list(C4)
 
 			ChakraCost(mob/user)
 				used_chakra = user.curchakra

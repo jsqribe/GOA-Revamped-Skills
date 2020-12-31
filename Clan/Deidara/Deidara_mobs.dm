@@ -1,3 +1,9 @@
+mob/var
+	ridingbird = 0
+	c4 = 0
+var/list
+	infectedby = list()
+
 mob/human/clay
 	can_target = 0
 	var/power = 0

@@ -2,6 +2,13 @@ skill
 	aburame
 		copyable = 0
 
+		aburame_clan
+			id = ABURAME_CLAN
+			icon_state = "doton"
+			name = "Aburame"
+			description = "Aburame Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		bug_summoning
 			id = BUG_SUMMONING

@@ -1,0 +1,1 @@
+mob/var/crystal_armor

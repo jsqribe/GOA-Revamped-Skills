@@ -2,6 +2,13 @@ skill
 	sand_control
 		copyable = 0
 
+		gaara_clan
+			id = GAARA_CLAN
+			icon_state = "doton"
+			name = "Gaara"
+			description = "Gaara Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		sand_summon
 			id = SAND_SUMMON

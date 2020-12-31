@@ -2,7 +2,13 @@ skill
 	jashin
 		copyable = 0
 
-
+		jashin_clan
+			id = JASHIN_CLAN
+			icon_state = "doton"
+			name = "Jashin"
+			description = "Jashin Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 
 		stab_self

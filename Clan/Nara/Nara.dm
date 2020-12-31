@@ -2,6 +2,13 @@ skill
 	nara
 		copyable = 0
 
+		naara_clan
+			id = NARA_CLAN
+			icon_state = "doton"
+			name = "Nara"
+			description = "Nara Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		shadow_binding
 			id = SHADOW_IMITATION

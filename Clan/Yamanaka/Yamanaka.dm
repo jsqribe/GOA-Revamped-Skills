@@ -1,13 +1,14 @@
-mob/var
-	Transfered = 0
-	petals=0
-	mind_attack=0
-	controlling_yamanaka=0
-	cursing = 0
-
 skill
 	yamanaka
 		copyable = 0
+
+		yamanaka_clan
+			id = YAMANAKA_CLAN
+			icon_state = "doton"
+			name = "Yamanka"
+			description = "Yamanaka Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		mind_transfer
 			id = MIND_TRANSFER

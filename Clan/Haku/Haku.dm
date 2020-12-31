@@ -2,12 +2,18 @@ skill
 	haku
 		copyable = 0
 
-
+		haku_clan
+			id = HAKU_CLAN
+			icon_state = "doton"
+			name = "Haku"
+			description = "Haku Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 
 		sensatsu_suisho
 			id = ICE_NEEDLES
-			name = "Sensatsusuishô"
+			name = "Sensatsusuishï¿½"
 			description = "Creates needles of ice that pierce your enemy."
 			icon_state = "ice_needles"
 			default_chakra_cost = 200
@@ -32,7 +38,7 @@ skill
 
 
 			Use(mob/human/user)
-				viewers(user) << output("[user]: Sensatsusuishô!", "combat_output")
+				viewers(user) << output("[user]: Sensatsusuishï¿½!", "combat_output")
 
 				var/atom/found = user.ClosestWater(10)
 				if(!found) return

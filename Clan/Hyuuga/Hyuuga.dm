@@ -3,7 +3,13 @@ skill
 		copyable = 0
 
 
-
+		hyuuga_clan
+			id = HYUUGA_CLAN
+			icon_state = "doton"
+			name = "Hyuuga"
+			description = "Hyuuga Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		byakugan
 			id = BYAKUGAN

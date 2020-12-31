@@ -1,11 +1,14 @@
-var/pain_skills = list(UNIVERSAL_PUSH, UNIVERSAL_PULL)
-
 skill
-	rinnegan
+	pain
 		copyable = 0
 
-
-
+		pain_clan
+			id = PAIN_CLAN
+			icon_state = "doton"
+			name = "Pain"
+			description = "Pain Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		rinnegan
 			id = RINNEGAN

@@ -1,12 +1,14 @@
-mob
-	var
-		fang_over_fang = 0
-		double_fang_over_fang = 0
-		tmp/beast_mode = 0
-
 skill
 	inuzuka
 		copyable = 0
+
+		inuzuka_clan
+			id = INUZUKA_CLAN
+			icon_state = "doton"
+			name = "Inuzuka"
+			description = "Inuzuka Clan Jutsu."
+			stack = "false"//don't stack
+			clan=1
 
 		fang_over_fang
 			id = FANG_OVER_FANG
