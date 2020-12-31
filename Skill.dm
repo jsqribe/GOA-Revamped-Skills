@@ -40,9 +40,11 @@ skill
 		clan
 		list/clan_reqs
 		stack="true" //should we stack the children skills
+		canbuy=1//should we display buy button
 
 		//Fuse in Passive system and also allow skill upgrades
 		max
+
 
 
 	proc
