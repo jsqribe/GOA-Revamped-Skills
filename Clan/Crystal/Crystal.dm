@@ -9,6 +9,7 @@ skill
 			description = "Crystal Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		crystal_chamber
 			id = CRYSTAL_CHAMBER

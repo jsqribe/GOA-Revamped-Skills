@@ -9,7 +9,7 @@ skill
 			description = "Haku Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
-
+			canbuy=0
 
 		sensatsu_suisho
 			id = ICE_NEEDLES

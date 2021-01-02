@@ -10,6 +10,7 @@ skill
 			description = "Puppet Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		puppet_summoning
 			default_cooldown = 60

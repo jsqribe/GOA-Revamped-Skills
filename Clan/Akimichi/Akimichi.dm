@@ -10,6 +10,7 @@ skill
 			description = "Akimichi Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		spinach_pill
 			id = SPINACH_PILL

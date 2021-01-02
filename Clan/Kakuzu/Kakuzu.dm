@@ -9,6 +9,7 @@ skill
 			description = "Kakuzu Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		heart_extraction
 			id = HEART_EXTRACTION

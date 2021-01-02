@@ -9,6 +9,7 @@ skill
 			description = "Gaara Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		sand_summon
 			id = SAND_SUMMON

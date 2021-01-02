@@ -9,6 +9,7 @@ skill
 			description = "Uchiha Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		sharingan_1
 			id = SHARINGAN1

@@ -9,6 +9,7 @@ skill
 			description = "Namikaze Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		hiraishin_1
 			id = HIRAISHIN_1

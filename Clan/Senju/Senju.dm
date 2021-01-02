@@ -9,6 +9,7 @@ skill
 			description = "Senju Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 /*
 		proc

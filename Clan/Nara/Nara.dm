@@ -9,6 +9,7 @@ skill
 			description = "Nara Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		shadow_binding
 			id = SHADOW_IMITATION

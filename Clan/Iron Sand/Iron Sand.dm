@@ -9,6 +9,7 @@ skill
 			description = "Iron Sand Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 		
 		sand_mass
 			name = "Sand Mass"

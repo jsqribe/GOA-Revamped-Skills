@@ -9,6 +9,7 @@ skill
 			description = "Sai Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		brush
 			id = BRUSH

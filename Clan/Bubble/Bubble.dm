@@ -9,6 +9,7 @@ skill
 			description = "Bubble Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		blinding_bubbles
 			id = BLINDING_BUBBLES

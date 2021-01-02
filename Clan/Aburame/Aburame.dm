@@ -9,6 +9,7 @@ skill
 			description = "Aburame Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		bug_summoning
 			id = BUG_SUMMONING

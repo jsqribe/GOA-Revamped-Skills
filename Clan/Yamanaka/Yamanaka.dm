@@ -9,6 +9,7 @@ skill
 			description = "Yamanaka Clan Jutsu."
 			stack = "false"//don't stack
 			clan=1
+			canbuy=0
 
 		mind_transfer
 			id = MIND_TRANSFER
