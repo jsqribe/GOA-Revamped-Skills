@@ -4,9 +4,6 @@ mob/human/player/npc
 		initialized=1
 		protected=0
 		ko=0
-
-
-
 		var
 			bunshinowner=1
 			bunshintype=0

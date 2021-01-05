@@ -1,20 +1,3 @@
-var/no_bunshin_skills = list(BUNSHIN, KAGE_BUNSHIN, TAJUU_KAGE_BUNSHIN, HENGE, EXPLODING_KAGE_BUNSHIN,
-                             GATE1, GATE2, GATE3, GATE4, GATE5, GATE6, MORNING_PEACOCK, MEDIC, POISON_MIST, POISON_NEEDLES, MASOCHISM,
-                             IMMORTALITY, BLOOD_BIND, PUPPET_SUMMON1, PUPPET_SUMMON2, MEAT_TANK, DOTON_IRON_SKIN, KAWARIMI, EXPLODING_KAWARIMI,
-                             SAND_SUMMON, SAND_UNSUMMON, SAND_SHIELD, DESERT_FUNERAL, SAND_ARMOR, SAND_SHURIKEN, SHUNSHIN, DOTON_MOLE_HIDING, DOTON_HEAD_HUNTER,
-                             PUPPET_HENGE, PUPPET_SWAP, EXPLODING_KUNAI, EXPLODING_NOTE, DOTON_CHAMBER_CRUSH, CHIDORI_NEEDLES,
-                             CHIDORI_CURRENT, FUUTON_GREAT_BREAKTHROUGH, FUUTON_PRESSURE_DAMAGE, FUUTON_AIR_BULLET, MANIPULATE_ADVANCING_BLADES,
-                             KAITEN, SHADOW_IMITATION, SHADOW_NECK_BIND, ICE_SPIKE_EXPLOSION, SAWARIBI, BONE_HARDEN, WOUND_REGENERATION,
-                             EXPLODING_SPIDER, EXPLODING_BIRD, C3, PHOENIX_REBIRTH, DOTON_CHAMBER, KATON_PHOENIX_FIRE, KATON_FIREBALL, KATON_ASH_BURNING, KATON_PHOENIX_NAIL_FLOWER,
-                             SUITON_SYRUP_CAPTURE, SUITON_WATER_PRISON, SUITON_HIDDEN_MIST, SUITON_WATER_BULLET,FUUTON_VACUUM_BLADE_RUSH, DOTON_MOLE_HIDING, DOTON_HEAD_HUNTER,
-                             FALSE_DARKNESS, FOUR_PILLAR_BIND, CHAKRA_ENHANCEMENT, WATER_CLONE, VACUUM_SPHERE, DOTON_EARTH_SHAKING_PALM, DOTON_PRISON_DOME, DOTON_EARTH_DRAGON,
-                             DOTON_RESURRECTION_TECHNIQUE, KIRIN, FRONT_LOTUS, C4, C0, EXPLODING_BARRAGE, EXPLODING_OWL, SHUKAKU, NIBI, SANBI, YONBI, GOBI, ROKUBI, SHICHIBI,
-                             HACHIBI, KYUUBI, DRAGON_BULLET, BOIL_RELEASE_SKILLED_MIST_TECHNIQUE, LAVA_RELEASE_QUICKLIME, CUBICAL_VARIANT, LARIAT, HORIZONTAL_OPPRESSION,
-                             PAPER_SHURIKEN, PAPER_CHASM, MIND_TRANSFER, MIND_TAG, MIND_DISTURBANCE, FLOWER_BOMB, SHIKI_FUJIN, UNIVERSAL_PUSH, UNIVERSAL_PULL,
-                             NEEDLE_UMBRELA, SUITON_COLLISION_DESTRUCTION, SUITON_SHOCKWAVE, TWIN_RISING_DRAGONS, DOTON_IRON_SKIN, HIRAISHIN_1, HIRAISHIN_2, HIRAISHIN_KUNAI,
-                             SLY_MIND, CROW , TREE_BIND, INSTANT_SLASH, IAI_BEHEADING, DANCING_BLADE, DOTON_SWAMP_FIELD)
-
-
 skill
 
 	clone
@@ -24,6 +7,7 @@ skill
 		icon_state = "bunshin"
 		default_chakra_cost = 10
 		default_cooldown = 30
+		canbuy = 0
 
 
 
@@ -69,6 +53,7 @@ skill
 		icon_state = "kagebunshin"
 		default_chakra_cost = 150
 		default_cooldown = 60
+		cost = 1500
 		skill_reqs = list(BUNSHIN)
 
 
@@ -127,6 +112,7 @@ skill
 		default_chakra_cost = 200
 		default_cooldown = 60
 		var/used_chakra
+		cost = 1800
 		skill_reqs = list(BUNSHIN)
 
 
@@ -236,8 +222,8 @@ skill
 				if(user)
 					user.tajuu=0
 					user.RecalculateStats()
-
-
+		
+		
 
 
 	exploding_shadow_clone
@@ -249,6 +235,7 @@ skill
 		default_cooldown = 45
 		stamina_damage_fixed = list(1000, 2500)
 		stamina_damage_con = list(0, 0)
+		cost = 1900
 		skill_reqs = list(BUNSHIN)
 
 		Use(mob/user)
@@ -290,3 +277,45 @@ skill
 			//spawn() X.regeneration2()
 
 			user.BunshinTrick(list(X))
+			
+	shuriken_shadow_clone
+			id = SHUIRKEN_KAGE_BUNSHIN
+			name = "Shuriken Shadow Clone"
+			description = "Throws a shuriken that splits into many shuriken."
+			icon_state = "Shuriken Kage Bunshin no Jutsu"
+			default_supply_cost = 1
+			default_chakra_cost = 300
+			default_cooldown = 60
+			stamina_damage_fixed = list(200, 200)
+			stamina_damage_con = list(0, 0)
+			wound_damage_fixed = list(1, 2)
+			wound_damage_con = list(0, 0)
+			cost = 1300
+			skill_reqs = list(KAGE_BUNSHIN)
+
+
+			Use(mob/user)
+				flick("Throw1",user)
+				var/obj/Du = new/obj(user.loc)
+				Du.icon='icons/projectiles.dmi'
+				Du.icon_state="shuriken-m"
+				Du.density=0
+
+
+				sleep(1)
+				walk(Du,user.dir)
+				sleep(2)
+				flick("Seal",user)
+				for(var/mob/X in ohearers(0,Du))
+					var/ex=Du.x
+					var/ey=Du.y
+					var/ez=user.z
+					spawn()Poof(ex,ey,ez)
+					Du.loc = null
+					return
+				var/dx=Du.x
+				var/dy=Du.y
+				var/dz=user.z
+				spawn()Poof(dx,dy,dz)
+				Du.loc = null
+				user.ShadowShuriken(dx,dy,dz)		

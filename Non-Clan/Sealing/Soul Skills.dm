@@ -3,43 +3,7 @@ skill
 	soul
 		copyable = 0
 
-		swamp_field
-			id = DOTON_SWAMP_FIELD
-			name = "Doton: Swamp Field"
-			description = "Create a Swamp."
-			icon_state = "doton_swamp_of_the_underworld"
-			default_chakra_cost = 450
-			//base_charge = 100
-			stamina_damage_fixed = list(233.3, 2800)
-			description = "Creates a swamp that slows and damages everyone in it"
-			default_cooldown = 175
-			default_seal_time = 30
-
-
-
-
-			Use(mob/human/user)
-				viewers(user) << output("[user]:Doton Swamp Field!", "combat_output")
-				user.icon_state="Seal"
-				user.Timed_Stun(20)
-				spawn(20)
-					user.icon_state=""
-
-				var/mob/human/player/etarget = user.MainTarget()
-				var/size
-				if(user.con >= 50) size = 3
-				if(user.con >= 150) size = 4
-				if(user.con >= 250) size = 5
-				if(user.con >= 350) size = 6
-				if(user.con >= 450) size = 7
-
-				if(etarget)
-					SwampField(user, etarget.loc, size=size, delay=3)
-				else
-					user.icon_state = "Swamp"
-					SwampField(user, user.loc, size=size, delay=3)
-
-
+		
 		water_clone
 			id = WATER_CLONE
 			name = "Clone"

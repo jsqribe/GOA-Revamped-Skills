@@ -8,7 +8,7 @@ skill
 		default_cooldown = 90
 		stamina_damage_fixed = list(750, 750)
 		stamina_damage_con = list(750, 750)
-
+		cost = 1500
 
 
 		Use(mob/human/player/user)
@@ -51,6 +51,7 @@ skill
 		stamina_damage_con = list(1125, 1125)
 		wound_damage_fixed = list(15, 20)
 		wound_damage_con = list(0, 0)
+		cost = 2500
 		skill_reqs = list(RASENGAN)
 
 

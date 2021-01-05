@@ -14,6 +14,7 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
+			cost = 1500
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -70,6 +71,7 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
+			cost = 1200
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -121,7 +123,9 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
-
+			cost = 1800
+			skill_reqs = list(IAI_BEHEADING)
+				
 			IsUsable(mob/human/user)
 				. = ..()
 				if(.)

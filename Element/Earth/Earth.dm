@@ -60,6 +60,8 @@ skill
 			default_seal_time = 7
 			description = "A earth wall comes out of the ground and protects everyone behind it(Idea By Aggripec)"
 			default_cooldown = 120
+			cost = 1000
+			skill_reqs = list(DOTON_IRON_SKIN)
 
 			Use(mob/user)
 				if(user.Earth_Wall==1)
@@ -123,6 +125,7 @@ skill
 			default_chakra_cost = 100
 			default_cooldown = 40
 			default_seal_time = 10
+			cost = 800
 			skill_reqs = list(DOTON_ELEMENT)
 
 			IsUsable(mob/user)
@@ -197,6 +200,7 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(25, 30)
 			wound_damage_con = list(0, 0)
+			cost = 1500
 			skill_reqs = list(DOTON_CHAMBER)
 
 			IsUsable(mob/user)
@@ -298,6 +302,7 @@ skill
 			default_seal_time = 5
 			stamina_damage_fixed = list(250, 750)
 			stamina_damage_con = list(250, 250)
+			cost = 1900
 			skill_reqs = list(DOTON_ELEMENT)
 
 			Use(mob/human/user)
@@ -413,6 +418,7 @@ skill
 			default_chakra_cost = 300
 			default_cooldown = 120
 			default_seal_time = 10
+			cost = 700
 			skill_reqs = list(DOTON_ELEMENT)
 
 			DoSeals(mob/human/user)
@@ -503,7 +509,8 @@ skill
 			default_chakra_cost = 200
 			default_cooldown = 180
 		//	default_seal_time = 15
-			skill_reqs = list(DOTON_ELEMENT)
+			cost = 1100
+			skill_reqs = list(DOTON_MOLE_HIDING)
 
 			IsUsable(mob/user)
 				if(..())
@@ -595,7 +602,8 @@ skill
 			icon_state = "earth_dragon"
 			default_chakra_cost = 400
 			default_cooldown = 90
-			skill_reqs = list(DOTON_ELEMENT)
+			cost = 1100
+			skill_reqs = list(DOTON_EARTH_FLOW)
 
 			Use(mob/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Dragon!", "combat_output")
@@ -629,65 +637,42 @@ skill
 						earth.loc = null
 
 
-/*		resurrection_technique_corpse_soil
-			id = DOTON_RESURRECTION_TECHNIQUE
-			name = "Earth Release: Resurrection Technique, Corpse Soil"
-			icon_state = "resurrection"
-			default_chakra_cost = 1500
-			default_cooldown = 450
+		swamp_field
+			id = DOTON_SWAMP_FIELD
+			name = "Doton: Swamp Field"
+			description = "Create a Swamp."
+			icon_state = "doton_swamp_of_the_underworld"
+			default_chakra_cost = 450
+			//base_charge = 100
+			stamina_damage_fixed = list(233.3, 2800)
+			description = "Creates a swamp that slows and damages everyone in it"
+			default_cooldown = 175
+			default_seal_time = 30
+			cost = 900
+			skill_reqs = list (DOTON_EARTH_FLOW)
+
+
 
 			Use(mob/human/user)
-				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Resurrection Technique, Corpse Soil!", "combat_output")
-				if(!user) return
-				var/found=0
-				for(var/mob/corpse/C in oview(10,user))
-					if(user.carrying.Find(C))
-						found=1
-						user.stunned=10
-						C.invisibility = 10
-						var/mob/R = new/mob/Resurrection(locate(C.x,C.y,C.z))
-						user.dir=get_dir(user,C)
-						user.resurrection = 1
-						spawn(50)
-							del(R)
-							user<<"<font color=grey>Your Corpse Has Awaken!"
-							user.combat("Press the A button to attack and press F if you want your corpse to use a jutsu(beware he won't always use a jutsu)")
-							var/mob/human/player/npc/o = new/mob/human/player/npc(locate(C.x,C.y,C.z))
-							spawn()
-								o.icon = C.icon
-								o.overlays += 'icons/reanimation.dmi'
-								o.name = "[C.name] (Edo Tensei)"
-								o.faction = C.faction
-								o.dir = user.dir
-								o.mouse_over_pointer = C.mouse_over_pointer
-								o.stamina = C.stamina*0.5
-								o.chakra = C.chakra*0.5
-								o.curstamina = C.stamina*0.5
-								o.curchakra = C.chakra*0.5
-								o.str += C.str*0.5
-								o.rfx += C.rfx*0.5
-								o.int += C.int*0.5
-								o.con += C.con*0.5
-								o.blevel = C.blevel
-								user.pet += o
-								o.ownerkey = user.key
-								o.owner = user
-								o.killable=1
+				viewers(user) << output("[user]:Doton Swamp Field!", "combat_output")
+				user.icon_state="Seal"
+				user.Timed_Stun(20)
+				spawn(20)
+					user.icon_state=""
 
-								for(var/skill/X in user.skills)
-									o.AddSkill(X.id)
+				var/mob/human/player/etarget = user.MainTarget()
+				var/size
+				if(user.con >= 50) size = 3
+				if(user.con >= 150) size = 4
+				if(user.con >= 250) size = 5
+				if(user.con >= 350) size = 6
+				if(user.con >= 450) size = 7
 
-								del(C)
-
-								spawn(450)
-									if(user && o)
-										user.resurrection = 0
-										del(o)
-
-					if(!found)
-						user<<"You need to be carrying a corpse."
-						default_cooldown = 120
-						return*/
+				if(etarget)
+					SwampField(user, etarget.loc, size=size, delay=3)
+				else
+					user.icon_state = "Swamp"
+					SwampField(user, user.loc, size=size, delay=3)
 
 
 		earth_shaking_palm
@@ -697,7 +682,8 @@ skill
 			default_chakra_cost = 1000
 			default_cooldown = 180
 			default_seal_time = 4
-			skill_reqs = list(DOTON_ELEMENT)
+			cost = 2000
+			skill_reqs = list(DOTON_CHAMBER_CRUSH)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Shaking Palm!", "combat_output")
@@ -725,7 +711,8 @@ skill
 			default_chakra_cost = 1500
 			default_cooldown = 300
 			default_seal_time = 4
-			skill_reqs = list(DOTON_ELEMENT)
+			cost = 1400
+			skill_reqs = list(DOTON_CHAMBER)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]:<font color=#8A4117> Earth Release: Earth Prison Dome of Magnificent Nothingess!", "combat_output")

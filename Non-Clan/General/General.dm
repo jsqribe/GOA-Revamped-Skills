@@ -7,7 +7,7 @@ skill
 		icon_state = "henge"
 		default_chakra_cost = 40
 		default_cooldown = 60
-
+		canbuy=0
 
 
 		IsUsable(mob/user)
@@ -53,6 +53,7 @@ skill
 		default_chakra_cost = 35
 		default_stamina_cost = 70
 		default_cooldown = 5
+		canbuy=0
 
 		IsUsable(mob/human/user)
 			if(..())
@@ -157,7 +158,7 @@ skill
 		default_chakra_cost = 100
 		default_cooldown = 60
 		default_seal_time = 5
-
+		cost = 1200
 
 
 		Use(mob/human/player/user)
@@ -176,7 +177,8 @@ skill
 		icon_state = "chakra_leach"
 		default_chakra_cost = 100
 		default_cooldown = 60
-
+		cost = 1700
+		
 		IsUsable(mob/user)
 			. = ..()
 			var/mob/human/target = user.NearestTarget()

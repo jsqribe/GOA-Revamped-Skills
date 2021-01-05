@@ -22,6 +22,7 @@ skill
 			stamina_damage_fixed = list(250, 250)
 			stamina_damage_con = list(750, 750)
 			skill_reqs = list(SUITON_ELEMENT)
+			cost = 600
 			stack = "false"//don't stack
 
 			Use(mob/human/user)
@@ -51,6 +52,7 @@ skill
 			default_seal_time = 20
 			stamina_damage_fixed = list(500, 500)
 			stamina_damage_con = list(1000, 1000)
+			cost = 2500
 			skill_reqs = list(SUITON_VORTEX)
 
 
@@ -93,6 +95,7 @@ skill
 			default_chakra_cost = 500
 			default_cooldown = 60
 			default_seal_time = 15
+			cost = 1100
 			skill_reqs = list(SUITON_SHOCKWAVE)
 
 
@@ -119,6 +122,7 @@ skill
 			default_seal_time = 20
 			stamina_damage_fixed = list(1250, 1250)
 			stamina_damage_con = list(1500, 1500)
+			cost = 1100
 			skill_reqs = list(SUITON_VORTEX)
 
 
@@ -176,6 +180,7 @@ skill
 			default_seal_time = 15
 			stamina_damage_fixed = list(750, 750)
 			stamina_damage_con = list(750, 750)
+			cost = 2100
 			skill_reqs = list(SUITON_WATER_PRISON)
 
 			DoSeals(mob/human/user)
@@ -257,6 +262,7 @@ skill
 			default_chakra_cost = 650
 			default_cooldown = 180
 			default_seal_time = 15
+			cost = 1500
 			skill_reqs = list(SUITON_ELEMENT)
 
 			ChakraCost(mob/user)
@@ -308,6 +314,7 @@ skill
 		default_chakra_cost = 100
 		default_cooldown = 150
 		default_seal_time = 2
+		cost = 1200
 		skill_reqs = list(SUITON_ELEMENT)
 
 		IsUsable(mob/user)
@@ -429,6 +436,7 @@ skill
 		default_seal_time = 10
 		stamina_damage_fixed = list(120, 120)
 		stamina_damage_con = list(40, 40)
+		cost = 800
 		skill_reqs = list(SUITON_ELEMENT)
 
 		Use(mob/human/player/user)

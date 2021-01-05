@@ -6,7 +6,8 @@ skill
 		icon_state = "kawarimi"
 		default_chakra_cost = 50
 		default_cooldown = 25
-
+		canbuy=0
+		
 /*		IsUsable(mob/user)
 			. = ..()
 			if(.)
@@ -44,6 +45,7 @@ skill
 		default_cooldown = 25
 		stamina_damage_fixed = list(2000, 2000)
 		stamina_damage_con = list(0, 0)
+		cost = 750
 		skill_reqs = list(KAWARIMI)
 
 		Use(mob/user)

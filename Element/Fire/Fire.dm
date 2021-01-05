@@ -24,6 +24,7 @@ skill
 			stamina_damage_con = list(100, 150)
 			wound_damage_fixed = list(2, 3)
 			wound_damage_con = list(1, 1)
+			cost = 800
 			skill_reqs = list(KATON_ELEMENT)
 
 			Use(mob/human/user)
@@ -90,7 +91,7 @@ skill
 
 		hosenka
 			id = KATON_PHOENIX_FIRE
-			name = "Fire: Hôsenka"
+			name = "Fire: Hï¿½senka"
 			description = "Throws a small fireball, dealing burst damage and damage over time."
 			icon_state = "katon_phoenix_immortal_fire"
 			default_chakra_cost = 50
@@ -99,13 +100,14 @@ skill
 			stamina_damage_con = list(60, 90)
 			wound_damage_fixed = list(1, 2)
 			wound_damage_con = list(0.5, 0.5)
+			cost = 400
 			skill_reqs = list(KATON_ELEMENT)
 
 
 			Use(mob/human/user)
 				user.icon_state="Seal"
 
-				viewers(user) << output("[user]: Fire: Hôsenka!", "combat_output")
+				viewers(user) << output("[user]: Fire: Hï¿½senka!", "combat_output")
 
 				spawn()
 					var/eicon='icons/fireball.dmi'
@@ -186,6 +188,7 @@ skill
 			stamina_damage_con = list(200, 300)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(1, 4)
+			cost = 2500
 			skill_reqs = list(KATON_FIREBALL)
 
 
@@ -214,6 +217,7 @@ skill
 			stamina_damage_con = list(1000, 1400)
 			wound_damage_fixed = list(5, 40)
 			wound_damage_con = list(1.5, 1.5)
+			cost = 2200
 			skill_reqs = list(KATON_PHOENIX_FIRE)
 
 
@@ -321,6 +325,7 @@ skill
 			stamina_damage_con = list(20, 20)
 			wound_damage_fixed = list(1, 2)
 			wound_damage_con = list(0, 0)
+			cost = 1500
 			skill_reqs = list(KATON_COILING_FLAME)
 
 

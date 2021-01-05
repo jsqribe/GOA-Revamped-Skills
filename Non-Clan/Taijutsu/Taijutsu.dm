@@ -9,7 +9,8 @@ skill
 			description = "coming soon."
 			icon_state = "shadow_dance"
 			default_cooldown = 30
-
+			cost = 2500
+			skill_reqs = list(LION_COMBO)
 
 			Cooldown(mob/user)
 				return default_cooldown
@@ -31,6 +32,8 @@ skill
 			icon_state = "gale"
 			default_stamina_cost = 600
 			default_cooldown = 100
+			cost = 1800
+			skill_reqs = list(LEAF_GREAT_WHIRLWIND)
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -110,7 +113,8 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
-
+			cost = 1000
+			skill_reqs = list(NIRVANA_FIST)
 
 
 			Use(mob/human/user)
@@ -156,6 +160,7 @@ skill
 			stamina_damage_fixed = list(0, 700)
 			stamina_damage_con = list(0, 0)
 			stamina_damage_str = 1
+			cost = 800
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -245,6 +250,8 @@ skill
 			stamina_damage_fixed = list(0, 350)
 			stamina_damage_con = list(0, 0)
 			stamina_damage_str = 2
+			cost = 1300
+			skill_reqs = list(LEAF_WHIRLWIND)
 
 			IsUsable(mob/human/user)
 				. = ..()
@@ -345,7 +352,7 @@ skill
 			default_cooldown = 60
 			stamina_damage_fixed = list(0, 2000)
 			stamina_damage_con = list(0, 0)
-
+			cost = 1400
 
 
 			IsUsable(mob/user)
@@ -411,6 +418,8 @@ skill
 			default_stamina_cost = 1000
 			default_cooldown = 120
 			copyable=0
+			cost = 2000
+			skill_reqs = list(LION_COMBO)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -505,7 +514,7 @@ skill
 			stamina_damage_fixed = list(650, 1250)
 			stamina_damage_con = list(0, 0)
 			stamina_damage_str = 1
-
+			cost = 400
 
 			Use(mob/human/user)
 				flick("PunchA-1",user)

@@ -59,6 +59,7 @@ var/const	// Skill index lists
 	DOTON_EARTH_DRAGON = 409
 	DOTON_RESURRECTION_TECHNIQUE = 410
 	DOTON_CHAKRA_DOME = 411
+	DOTON_SWAMP_FIELD = 412
 
 	// Elemental Skills -- Lightning
 	RAITON_ELEMENT = 500
@@ -480,9 +481,6 @@ var/const	// Skill index lists
 	SKIN_WEAR = 10156
 	SKIN_SHEDDING = 10157
 
-	//Soul
-
-	DOTON_SWAMP_FIELD = 10161
 
 	//Edo
 	TOBIRAMA_SUMMON = 12000

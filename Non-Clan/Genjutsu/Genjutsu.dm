@@ -1,15 +1,3 @@
-
-mob
-	var
-		using_crow = 0
-
-
-obj
-	sleep_genjutsu_feathers
-		icon  = 'icons/genjutsu2.dmi'
-		layer = MOB_LAYER + 1
-
-
 skill
 	genjutsu
 
@@ -21,7 +9,8 @@ skill
 			icon_state = "sleep_genjutsu"
 			default_chakra_cost = 550
 			default_cooldown = 220
-
+			cost = 1300
+			skill_reqs = list(PARALYZE_GENJUTSU)
 
 			Use(mob/user)
 				user.icon_state = "Seal"
@@ -90,7 +79,7 @@ skill
 			icon_state = "paralyse_genjutsu"
 			default_chakra_cost = 300
 			default_cooldown = 80
-
+			cost = 1000
 
 
 			Use(mob/user)
@@ -153,7 +142,7 @@ skill
 			default_chakra_cost = 650
 			default_cooldown = 250
 			default_seal_time = 10
-
+			cost = 2000
 
 			Use(mob/user)
 				user.icon_state = "Seal"
@@ -207,7 +196,7 @@ skill
 			icon_state = "crow_depart"
 			default_cooldown = 180
 			default_chakra_cost = 500
-
+			cost = 2000
 
 			Use(mob/user)
 
@@ -235,6 +224,7 @@ skill
 			icon_state = "slymind"
 			default_chakra_cost = 1100
 			default_cooldown = 300
+			cost = 2300
 
 			IsUsable(mob/user)
 				. = ..()

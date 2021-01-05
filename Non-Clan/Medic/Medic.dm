@@ -11,6 +11,7 @@ skill
 			icon_state = "medical_jutsu"
 			default_chakra_cost = 60
 			default_cooldown = 5
+			cost = 2000
 
 			IsUsable(mob/user)
 				. = ..()
@@ -112,6 +113,8 @@ skill
 			icon_state = "delicate_extraction"
 			default_chakra_cost = 80
 			default_cooldown = 30
+			cost = 500
+			skill_reqs = list(MEDIC)
 			/*
 			IsUsable(mob/user)
 				. = ..()
@@ -179,7 +182,8 @@ skill
 			icon_state = "poisonbreath"
 			default_chakra_cost = 420
 			default_cooldown = 60
-
+			cost = 1500
+			skill_reqs = list(MEDIC)
 
 
 			Use(mob/human/user)
@@ -237,7 +241,8 @@ skill
 			icon_state = "mystical_palm_technique"
 			default_chakra_cost = 80
 			default_cooldown = 30
-
+			cost = 1000
+			skill_reqs = list(MEDIC)
 
 			//ORIG VALUES
 			//var/critdamx=round((con + conbuff) * rand(20, 60) / 10)
@@ -294,6 +299,8 @@ skill
 			icon_state = "chakra_taijutsu_release"
 			default_chakra_cost = 100
 			default_cooldown = 30
+			cost = 1700
+			skill_reqs = list(MEDIC)
 
 
 			EstimateStaminaDamage(mob/user)
@@ -329,6 +336,8 @@ skill
 			icon_state = "chakra_enhancement"
 			default_chakra_cost = 150
 			default_cooldown = 100
+			cost = 1800
+			skill_reqs = list(MEDIC,CHAKRA_TAI_RELEASE)
 
 			Activate(mob/human/user)
 				if(user.tsupunch)
@@ -362,7 +371,8 @@ skill
 			icon_state = "important_body_ponts_disturbance"
 			default_chakra_cost = 100
 			default_cooldown = 180
-
+			cost = 1000
+			skill_reqs = list(MYSTICAL_PALM)
 
 
 			IsUsable(mob/user)
@@ -416,6 +426,8 @@ skill
 			default_chakra_cost = 800
 			default_cooldown = 1200
 			copyable = 0
+			cost = 2500
+			skill_reqs = list(IMPORTANT_BODY_PTS_DISTURB)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -454,7 +466,8 @@ skill
 			face_nearest = 0
 			stamina_damage_fixed = list(500, 500)
 			stamina_damage_con = list(0, 0)
-
+			cost = 1500
+			skill_reqs = list(POISON_MIST)
 
 
 			Use(mob/human/user)
@@ -551,6 +564,8 @@ skill
 		stamina_damage_fixed = list(500, 500)
 		stamina_damage_con = list(140, 140)
 		wound_damage_fixed = list(4, 4)
+		cost = 1200
+		skill_reqs = list(MEDIC)
 
 		IsUsable(mob/user)
 			. = ..()

@@ -25,6 +25,7 @@ skill
 			stamina_damage_con = list(500, 650)
 			wound_damage_fixed = list(0, 50)
 			wound_damage_con = list(0, 0)
+			cost = 1500
 			skill_reqs = list(RAITON_ELEMENT)
 
 			Use(mob/human/player/user)
@@ -65,6 +66,7 @@ skill
 			stamina_damage_con = list(500, 500)
 			wound_damage_fixed = list(10, 20)
 			wound_damage_con = list(0, 0)
+			cost = 2500
 			skill_reqs = list(RAITON_ELEMENT)
 
 
@@ -120,6 +122,7 @@ skill
 			face_nearest = 1
 			stamina_damage_fixed = list(250, 400)
 			stamina_damage_con = list(150, 250)
+			cost = 600
 			skill_reqs = list(RAITON_ELEMENT)
 
 			Use(mob/human/user)
@@ -161,6 +164,7 @@ skill
 			stamina_damage_con = list(50, 50)
 			wound_damage_fixed = list(1, 1)
 			wound_damage_con = list(0, 0)
+			cost = 1500
 			skill_reqs = list(RAITON_ELEMENT)
 
 
@@ -213,6 +217,7 @@ skill
 			stamina_damage_con = list(20, 230)
 			wound_damage_fixed = list(0, 0)
 			wound_damage_con = list(0, 0)
+			cost = 1200
 			skill_reqs = list(RAITON_ELEMENT)
 
 			IsUsable(mob/human/user)
@@ -254,6 +259,7 @@ skill
 			default_chakra_cost = 300
 			default_seal_time = 8
 			default_cooldown = 90
+			cost = 1800
 			skill_reqs = list(RAITON_ELEMENT)
 			var
 				active_needles = 0

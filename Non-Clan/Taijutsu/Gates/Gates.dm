@@ -6,7 +6,7 @@ skill
 			default_chakra_cost = 300
 			default_cooldown = 400
 			copyable = 0
-
+			
 			var
 				level
 				time_multiplier
@@ -108,6 +108,7 @@ skill
 				icon_state = "gate1"
 				level = 1
 				time_multiplier = 4
+				cost = 1500
 
 			two
 				id = GATE2
@@ -119,6 +120,8 @@ skill
 				time_multiplier = 3
 				overlay_icons = list('icons/rockslifting.dmi')
 				noskillbar = 1
+				cost = 1000
+				skill_reqs = list(GATE1)
 
 			three
 				id = GATE3
@@ -130,6 +133,8 @@ skill
 				time_multiplier = 2.5
 				overlay_icons = list('icons/gate3chakra.dmi')
 				noskillbar = 1
+				cost = 1250
+				skill_reqs = list(GATE2)
 
 			four
 				id = GATE4
@@ -143,6 +148,8 @@ skill
 				underlay_icons = list(/obj/gatesaura/bl, /obj/gatesaura/br, /obj/gatesaura/tl, /obj/gatesaura/tr)
 				icon_time = 30
 				noskillbar = 1
+				cost = 2000
+				skill_reqs = list(GATE3)
 
 			five
 				id = GATE5
@@ -155,6 +162,8 @@ skill
 				overlay_icons = list('icons/gate5.dmi')
 				icon_time = 5
 				noskillbar = 1
+				cost = 1500
+				skill_reqs = list(GATE4)
 
 			six
 				id = GATE6
@@ -167,6 +176,8 @@ skill
 				overlay_icons = list('icons/gate5.dmi')
 				icon_time = 5
 				noskillbar = 1
+				cost = 1500
+				skill_reqs = list(GATE5)
 
 			seven
 				id = GATE7
@@ -179,6 +190,8 @@ skill
 				overlay_icons = list('icons/gate5.dmi')
 				icon_time = 5
 				noskillbar = 1
+				cost = 1250
+				skill_reqs = list(GATE6)
 
 			eight
 				id = GATE8
@@ -191,6 +204,8 @@ skill
 				overlay_icons = list('icons/gate5.dmi')
 				icon_time = 5
 				noskillbar = 1
+				cost = 3000
+				skill_reqs = list(GATE7)
 
 		gate_cancel
 			id = GATE_CANCEL
@@ -219,6 +234,8 @@ skill
 			stamina_damage_fixed = list(0, 0)
 			stamina_damage_con = list(0, 0)
 			icon_state = "morning_peacock"
+			cost = 1800
+			skill_reqs = list(GATE6)
 
 			IsUsable(mob/user)
 				. = ..()
