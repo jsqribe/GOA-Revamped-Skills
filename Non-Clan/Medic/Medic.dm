@@ -38,11 +38,12 @@ skill
 					var/conroll=rand((user.con+user.conbuff-user.conneg),1.5*(user.con+user.conbuff-user.conneg))
 					var/woundroll=rand(round((etarget.curwound)/2),(etarget.curwound))
 					var/medicz = 50
-					medicz += (user.skillspassive[23] * 50 / 20)
+					medicz += (user.getPassive(MEDIC_TRAINING) * 50 / 20)
 					if(medicz >= rand(1,100))
 				//	if(conroll>woundroll && woundroll)
 						var/effect=round(conroll/(woundroll))//*pick(1,2,3)
-						if(user.skillspassive[23])effect*=(1 + 0.05*user.skillspassive[23])
+						if(user.getPassive(MEDIC_TRAINING))
+							effect*=(1 + 0.05*user.getPassive(MEDIC_TRAINING))
 						if(effect>etarget.curwound)
 							effect=etarget.curwound
 
@@ -152,8 +153,8 @@ skill
 
 						var/poisonroll=rand(round((etarget.Poison)/3),(etarget.Poison))
 
-						if(user.skillspassive[23])
-							var/effect = 1 + ((user.skillspassive[23]/50) * poisonroll) //at most you can remove half your poison at full med passives
+						if(user.getPassive(MEDIC_TRAINING))
+							var/effect = 1 + ((user.getPassive(MEDIC_TRAINING)/50) * poisonroll) //at most you can remove half your poison at full med passives
 
 							if(effect>etarget.Poison)
 								effect=etarget.Poison
@@ -206,7 +207,7 @@ skill
 
 					poison_size=3
 
-				if(user.skillspassive[23]>9 && user.skillspassive[23]<=15 ) //lvl 9-15
+				if(user.skillspassive[23]>9 && user.getPassive(MEDIC_TRAINING)<=15 ) //lvl 9-15
 
 					poison_size=6
 
@@ -251,16 +252,16 @@ skill
 
 
 			EstimateStaminaCritDamage(mob/user)
-				var/medic_passive = user.skillspassive[23]
+				var/medic_passive = user.getPassive(MEDIC_TRAINING)
 				return list(round(user.con + user.conbuff * (1+((0.2*medic_passive) / 10))), round(user.con + user.conbuff * (1+((4*medic_passive) / 10))))
 
 			EstimateStaminaDamage(mob/user)
-				var/medic_passive = user.skillspassive[23]
+				var/medic_passive = user.getPassive(MEDIC_TRAINING)
 				return list(round(user.con + user.conbuff * (1+((3.5*medic_passive) / 100))), round(user.con + user.conbuff * (1+((6*medic_passive) / 100))))
 
 
 			EstimateWoundDamage(mob/user)
-				var/medic_passive = user.skillspassive[23]
+				var/medic_passive = user.getPassive(MEDIC_TRAINING)
 				return list( 1 , 1 + (0.2*medic_passive) )
 
 
@@ -304,7 +305,7 @@ skill
 
 
 			EstimateStaminaDamage(mob/user)
-				return list(round((user.con+user.conbuff)*2+0.5*user.skillspassive[23]) + 400, round((user.con+user.conbuff)*2+0.5*user.skillspassive[23]) * 2 + 400)
+				return list(round((user.con+user.conbuff)*2+0.5*user.getPassive(MEDIC_TRAINING)) + 400, round((user.con+user.conbuff)*2+0.5*user.getPassive(MEDIC_TRAINING)) * 2 + 400)
 
 
 			Use(mob/human/user)
@@ -346,7 +347,7 @@ skill
 				..(user)
 
 			EstimateStaminaDamage(mob/user)
-				return list(round((user.con+user.conbuff)*2+0.5*user.skillspassive[23]) + 400, round((user.con+user.conbuff)*2+0.5*user.skillspassive[23]) * 2 + 400)
+				return list(round((user.con+user.conbuff)*2+0.5*user.skillspassive[23]) + 400, round((user.con+user.conbuff)*2+0.5*user.getPassive(MEDIC_TRAINING)) * 2 + 400)
 
 			Use(mob/human/user)
 				user.Begin_Stun()
@@ -393,8 +394,8 @@ skill
 
 			Use(mob/human/user)
 				var/mob/human/player/etarget = user.NearestTarget()
-				var/CX=rand(1,((user.con+user.conbuff-user.conneg)*user.skillspassive[23]))
-				var/Cx=rand(1,((etarget.con+etarget.conbuff-etarget.conneg)*etarget.skillspassive[23]))
+				var/CX=rand(1,((user.con+user.conbuff-user.conneg)*user.getPassive(MEDIC_TRAINING)))
+				var/Cx=rand(1,((etarget.con+etarget.conbuff-etarget.conneg)*etarget.getPassive(MEDIC_TRAINING)))
 				if(CX>Cx)
 					etarget = etarget.Replacement_Start(user)
 					user.combat("Nervous system disruption succeeded!")
@@ -613,7 +614,7 @@ skill
 				spawn(5) if(etarget) etarget.Replacement_End()
 				explosion(50,etarget.x,etarget.y,etarget.z,user,1)
 				etarget.Knockback(5,get_dir(user,etarget))
-				etarget.Damage(round(12*dmg_mult*user.skillspassive[23] + 70*dmg_mult*(user.con/150)*(1+0.4*user.skillspassive[23])),4,user,"Medical: Menacing Palm","Internal")
+				etarget.Damage(round(12*dmg_mult*user.getPassive(MEDIC_TRAINING) + 70*dmg_mult*(user.con/150)*(1+0.4*user.getPassive(MEDIC_TRAINING))),4,user,"Medical: Menacing Palm","Internal")
 
 
 

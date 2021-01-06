@@ -135,8 +135,8 @@ mob/human
 			if(cantreact || spectate || larch || sleeping || mane || ko || !canattack)
 				return
 
-			if(skillspassive[CONCENTRATION] && gen_effective_int && !gen_cancel_cooldown)
-				var/cancel_roll = Roll_Against(gen_effective_int, (con + conbuff - conneg) * (1 + 0.05 * (skillspassive[21] - 1)), 100)
+			if(getPassive(CONCENTRATION) && gen_effective_int && !gen_cancel_cooldown)
+				var/cancel_roll = Roll_Against(gen_effective_int, (con + conbuff - conneg) * (1 + 0.05 * (getPassive(CONCENTRATION) - 1)), 100)
 				if(cancel_roll < 3)
 					if(sight == (BLIND|SEE_SELF|SEE_OBJS)) // darkness gen
 						sight = 0

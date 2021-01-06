@@ -37,10 +37,10 @@ mob
 				return
 
 			var/piercing_stamina_dmg = 0
-			if(source == "Taijutsu" && attacker && attacker.skillspassive[PIERCING_STRIKE])
-				piercing_stamina_dmg = round(stamina_dmg * (attacker.skillspassive[PIERCING_STRIKE] * 0.02))
+			if(source == "Taijutsu" && attacker && attacker.getPassive(PIERCING_STRIKE))
+				piercing_stamina_dmg = round(stamina_dmg * (attacker.getPassive(PIERCING_STRIKE) * 0.02))
 				stamina_dmg += piercing_stamina_dmg
-			/*	piercing_stamina_dmg = round(stamina_dmg * 3 * attacker.skillspassive[PIERCING_STRIKE] / 100)
+			/*	piercing_stamina_dmg = round(stamina_dmg * 3 * attacker.getPassive(PIERCING_STRIKE) / 100)
 				stamina_dmg -= piercing_stamina_dmg*/
 
 			var/deflection_stamina_dmg = 0
@@ -165,17 +165,17 @@ mob
 						InSusanoo = 0
 						return
 
-				if(attacker && attacker.skillspassive[BLINDSIDE] && attacker != src && attacker.squad != src.squad && source != "Rend" && !byakugan && !impbyakugan && !istype(src,/mob/human/Puppet) && !istype(attacker,/mob/human/Puppet))
+				if(attacker && attacker.getPassive(BLINDSIDE) && attacker != src && attacker.squad != src.squad && source != "Rend" && !byakugan && !impbyakugan && !istype(src,/mob/human/Puppet) && !istype(attacker,/mob/human/Puppet))
 					FilterTargets()
 					if(!(attacker in active_targets))
 						if(attacker in targets)
-							piercing_stamina_dmg *= (1 + 0.05*attacker.skillspassive[BLINDSIDE])
-							stamina_dmg *= (1 + 0.05*attacker.skillspassive[BLINDSIDE])
-							wound_dmg *= (1 + 0.05*attacker.skillspassive[BLINDSIDE])
+							piercing_stamina_dmg *= (1 + 0.05*attacker.getPassive(BLINDSIDE))
+							stamina_dmg *= (1 + 0.05*attacker.getPassive(BLINDSIDE))
+							wound_dmg *= (1 + 0.05*attacker.getPassive(BLINDSIDE))
 						else
-							piercing_stamina_dmg *= (1 + 0.10*attacker.skillspassive[BLINDSIDE])
-							stamina_dmg *= (1 + 0.10*attacker.skillspassive[BLINDSIDE])
-							wound_dmg *= (1 + 0.10*attacker.skillspassive[BLINDSIDE])
+							piercing_stamina_dmg *= (1 + 0.10*attacker.getPassive(BLINDSIDE))
+							stamina_dmg *= (1 + 0.10*attacker.getPassive(BLINDSIDE))
+							wound_dmg *= (1 + 0.10*attacker.getPassive(BLINDSIDE))
 
 				if(boneharden)
 					// TODO: Real math rather than these for loops
@@ -341,12 +341,12 @@ mob
 						var/min_dmg = (effective_armor >= 1)?(1):(0) //(0):(1)
 						wound_dmg = max(min_dmg, wound_dmg * (1-effective_armor) + wound_dmg * effective_armor * (100/(str+strbuff-strneg)))
 
-				if(skillspassive[DEFLECTION])
+				if(getPassive(DEFLECTION))
 					var/checked_wounds = 0
 
 					while(checked_wounds < wound_dmg && (deflection_stamina_dmg + 100) < curstamina)
 						++checked_wounds
-						if(prob(3*skillspassive[DEFLECTION]))
+						if(prob(3*getPassive(DEFLECTION)))
 							--wound_dmg
 							deflection_stamina_dmg += 100
 
