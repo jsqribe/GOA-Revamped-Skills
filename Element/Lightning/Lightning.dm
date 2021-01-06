@@ -319,7 +319,7 @@ skill
 							user.End_Stun()
 						o.loc = null
 
-
+/*
 		kirin
 			id = KIRIN
 			name = "Lightning Release: Kirin"
@@ -359,10 +359,13 @@ skill
 						spawn(80)
 							del(x)
 							del(K)
-/*						var/conmult = user.ControlDamageMultiplier()
+						var/conmult = user.ControlDamageMultiplier()
 						for(var/turf/New_Turfs/Outside/Wire/w in oview(7))
 							spawn()Electricity(w.x,w.y,w.z,50)
 							spawn()AOExk(w.x,w.y,w.z,1,(user.con+user.conbuff+conmult/2),50,user,0,1.5,1)
 						for(var/turf/New_Turfs/Outside/Electricity/e in oview(10))
 							spawn()Electricity(e.x,e.y,e.z,50)
-							spawn()AOExk(e.x,e.y,e.z,1,(user.con+user.conbuff+conmult/2),50,user,0,1.5,1)*/
+							spawn()AOExk(e.x,e.y,e.z,1,(user.con+user.conbuff+conmult/2),50,user,0,1.5,1)
+
+
+*/

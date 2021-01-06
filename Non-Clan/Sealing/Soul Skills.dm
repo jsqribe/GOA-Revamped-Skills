@@ -3,7 +3,7 @@ skill
 	soul
 		copyable = 0
 
-		
+/*
 		water_clone
 			id = WATER_CLONE
 			name = "Clone"
@@ -181,7 +181,7 @@ skill
 								del(x)
 
 
-
+*/
 
 obj/umbrela
 	density=0

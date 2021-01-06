@@ -2,6 +2,8 @@ skill
 	passives
 		icon = 'icons/gui2.dmi'
 		con
+			cost = 500
+			passive=1
 			con_element
 				id = CON_ELEMENT
 				icon_state = "con"
@@ -17,6 +19,7 @@ skill
 				name = "Efficiency"
 				description="Each level of this passive reduces chakra costs for skills by 4% and when maxed allows to do Seals while running"
 				skill_reqs = list(CON_ELEMENT)
+				pindex=5
 
 			Powerhouse
 				icon_state = "22"
@@ -25,6 +28,7 @@ skill
 				name = "Powerhouse"
 				description="Each level of this passive increases maximum chakra by 4% but does not impact regeneration"
 				skill_reqs = list(CON_ELEMENT)
+				pindex=22
 
 			Medic_Training
 				icon_state = "23"
@@ -33,6 +37,7 @@ skill
 				name = "Medic Mastery"
 				description="For each level of this passive, Wound healing effects from the medic skill are increased by 5%"
 				skill_reqs = list(CON_ELEMENT)
+				pindex=23
 
 			Pure_Power
 				icon_state = "24"
@@ -41,6 +46,7 @@ skill
 				name = "Pure Power"
 				description="For each level of this passive, Con for the purpose of Ninjutsu damage is increased by 5%"
 				skill_reqs = list(CON_ELEMENT)
+				pindex=24
 
 			Regeneration
 				icon_state = "3"
@@ -49,6 +55,7 @@ skill
 				description="For each level of this passive, Chakra and Stamina regenerate 3% faster."
 				max=15
 				skill_reqs = list(CON_ELEMENT)
+				pindex=3
 
 			Hand_Seal_Mastery
 				icon_state = "6"
@@ -57,4 +64,5 @@ skill
 				name = "Handseals Mastery"
 				description="For each level of this passive, cooldowns for skills are reduced by 3%"
 				skill_reqs = list(CON_ELEMENT)
+				pindex=6
 

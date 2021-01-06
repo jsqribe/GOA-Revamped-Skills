@@ -79,7 +79,7 @@ skill
 					default_cooldown = 1
 
 
-
+/*
 		dungeon_chakra_dome
 			id = DOTON_CHAKRA_DOME
 			name = "Earth: Chakra absorb"
@@ -115,7 +115,7 @@ skill
 						gotcha.curstamina=0
 						gotcha=0
 
-
+*/
 
 		dungeon_chamber
 			id = DOTON_CHAMBER

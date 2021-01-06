@@ -2,6 +2,8 @@ skill
 	passives
 		icon = 'icons/gui2.dmi'
 		str
+			cost = 500
+			passive=1
 			str_element
 				id = STR_ELEMENT
 				icon_state = "str"
@@ -17,6 +19,7 @@ skill
 				name = "Better Criticals"
 				description="For every level of this passive, Critical hits do +10% damage"
 				skill_reqs = list(STR_ELEMENT)
+				pindex=2
 
 			Built_Solid
 				icon_state = "9"
@@ -25,6 +28,7 @@ skill
 				name = "Built Solid"
 				description="For every level of this passive, taijutsu daze resistance is increased by 8% and Defend damage resistence is increased by 1%"
 				skill_reqs = list(STR_ELEMENT)
+				pindex=9
 
 			Piercing_Strike
 				icon_state = "10"
@@ -33,6 +37,7 @@ skill
 				name = "Piercing Strike"
 				description="For every level of this passive, 3% of Taijutsu damage blows through all forms of defence."
 				skill_reqs = list(STR_ELEMENT)
+				pindex=10
 
 			Impact
 				icon_state = "11"
@@ -41,6 +46,7 @@ skill
 				name = "Impact"
 				description="For every level of this passive, Daze effect duration is increased by 10%"
 				skill_reqs = list(STR_ELEMENT)
+				pindex=11
 
 			Deflection
 				icon_state = "12"
@@ -49,6 +55,7 @@ skill
 				name = "Deflection"
 				description="For every level of this passive, there is a 3% chance per point of wound damage to convert 1 wound damage into 100 stamina damage."
 				skill_reqs = list(STR_ELEMENT)
+				pindex=12
 
 			Combo
 				icon_state = "13"
@@ -57,3 +64,4 @@ skill
 				name = "Combo"
 				description="Stackable Effect; every taijutsu attack does +20% extra damage than the last until you are hit. Stack limit is 1 + the level of this passive."
 				skill_reqs = list(STR_ELEMENT)
+				pindex=13

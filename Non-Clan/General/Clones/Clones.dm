@@ -222,8 +222,8 @@ skill
 				if(user)
 					user.tajuu=0
 					user.RecalculateStats()
-		
-		
+
+
 
 
 	exploding_shadow_clone
@@ -277,45 +277,45 @@ skill
 			//spawn() X.regeneration2()
 
 			user.BunshinTrick(list(X))
-			
+
 	shuriken_shadow_clone
-			id = SHUIRKEN_KAGE_BUNSHIN
-			name = "Shuriken Shadow Clone"
-			description = "Throws a shuriken that splits into many shuriken."
-			icon_state = "Shuriken Kage Bunshin no Jutsu"
-			default_supply_cost = 1
-			default_chakra_cost = 300
-			default_cooldown = 60
-			stamina_damage_fixed = list(200, 200)
-			stamina_damage_con = list(0, 0)
-			wound_damage_fixed = list(1, 2)
-			wound_damage_con = list(0, 0)
-			cost = 1300
-			skill_reqs = list(KAGE_BUNSHIN)
+		id = SHUIRKEN_KAGE_BUNSHIN
+		name = "Shuriken Shadow Clone"
+		description = "Throws a shuriken that splits into many shuriken."
+		icon_state = "Shuriken Kage Bunshin no Jutsu"
+		default_supply_cost = 1
+		default_chakra_cost = 300
+		default_cooldown = 60
+		stamina_damage_fixed = list(200, 200)
+		stamina_damage_con = list(0, 0)
+		wound_damage_fixed = list(1, 2)
+		wound_damage_con = list(0, 0)
+		cost = 1300
+		skill_reqs = list(KAGE_BUNSHIN)
 
 
-			Use(mob/user)
-				flick("Throw1",user)
-				var/obj/Du = new/obj(user.loc)
-				Du.icon='icons/projectiles.dmi'
-				Du.icon_state="shuriken-m"
-				Du.density=0
+		Use(mob/user)
+			flick("Throw1",user)
+			var/obj/Du = new/obj(user.loc)
+			Du.icon='icons/projectiles.dmi'
+			Du.icon_state="shuriken-m"
+			Du.density=0
 
 
-				sleep(1)
-				walk(Du,user.dir)
-				sleep(2)
-				flick("Seal",user)
-				for(var/mob/X in ohearers(0,Du))
-					var/ex=Du.x
-					var/ey=Du.y
-					var/ez=user.z
-					spawn()Poof(ex,ey,ez)
-					Du.loc = null
-					return
-				var/dx=Du.x
-				var/dy=Du.y
-				var/dz=user.z
-				spawn()Poof(dx,dy,dz)
+			sleep(1)
+			walk(Du,user.dir)
+			sleep(2)
+			flick("Seal",user)
+			for(var/mob/X in ohearers(0,Du))
+				var/ex=Du.x
+				var/ey=Du.y
+				var/ez=user.z
+				spawn()Poof(ex,ey,ez)
 				Du.loc = null
-				user.ShadowShuriken(dx,dy,dz)		
+				return
+			var/dx=Du.x
+			var/dy=Du.y
+			var/dz=user.z
+			spawn()Poof(dx,dy,dz)
+			Du.loc = null
+			user.ShadowShuriken(dx,dy,dz)

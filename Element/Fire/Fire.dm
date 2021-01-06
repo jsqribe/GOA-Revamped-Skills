@@ -91,7 +91,7 @@ skill
 
 		hosenka
 			id = KATON_PHOENIX_FIRE
-			name = "Fire: H�senka"
+			name = "Fire: Hosenka"
 			description = "Throws a small fireball, dealing burst damage and damage over time."
 			icon_state = "katon_phoenix_immortal_fire"
 			default_chakra_cost = 50

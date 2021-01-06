@@ -38,10 +38,14 @@ skill
 		clan
 		list/clan_reqs
 		stack="true" //should we stack the children skills
+		displayskill=1//should we display this skill
 		canbuy=1//should we display buy button
+
 
 		//Fuse in Passive system and also allow skill upgrades
 		max //how many times it can be bought
+		passive=0//is this skill a passive skill
+		pindex=0//the passive index
 
 
 

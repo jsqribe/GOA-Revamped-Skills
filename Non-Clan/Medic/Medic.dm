@@ -620,7 +620,7 @@ skill
 
 
 
-//TROLL MOVES BELOW
+
 
 
 mob/var/tooksharingans=0
@@ -631,7 +631,7 @@ mob/var/givenbyakugans=0
 mob/var/givensharingans=0
 mob/var/impsharingan=0
 mob/var/impbyakugan=0
-
+/*
 skill
 	dmedic
 		copyable = 0
@@ -902,6 +902,7 @@ skill
 					user.ChakraDrains()
 
 
+*/
 
 obj
 	chakrahands

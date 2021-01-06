@@ -39,6 +39,7 @@ mob/proc
 						else
 							ORasengan_Fail()
 						return
+					/*
 					if(3)//Rasen Shuriken
 						flick("PunchA-1", src)
 						if(hit)
@@ -46,7 +47,7 @@ mob/proc
 						else
 							Rasenshuriken_Fail()
 						return
-
+					*/
 					if(4)
 						flick("PunchA-1", src)
 						if(hit)

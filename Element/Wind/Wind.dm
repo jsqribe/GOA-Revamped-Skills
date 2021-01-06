@@ -343,7 +343,7 @@ skill
 					sleep(2)
 
 
-
+/*
 		rasenshuriken
 			id = FUUTON_RASENSHURIKEN
 			name = "Wind: Rasenshuriken"
@@ -437,3 +437,4 @@ mob/proc
 				M.Hostile(u)
 				M.Replacement_End()
 
+*/

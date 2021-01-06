@@ -169,7 +169,7 @@ skill
 				id = GATE6
 				prev_gate = GATE5
 				name = "View Gate"
-				description = "Opens the sixth limiter gate, further increasing your power and speed at the cost of heavy internal damage over time and ability penalties after exhaustion. Allows use of Morning Peacock. (65% chance to teleport in front of your target)"
+				description = "Opens the sixth limiter gate, further increasing your power and speed. (65% chance to teleport in front of your target)"
 				icon_state = "gate6"
 				level = 6
 				time_multiplier = 1.5
@@ -183,7 +183,7 @@ skill
 				id = GATE7
 				prev_gate = GATE6
 				name = "Wonder Gate"
-				description = "Opens the seventh limiter gate, further increasing power and speed at the cost of heavy internal damage over time and ability penalties after exhaustion. The user also passes out taking wound damage at exhaustion. Allows use of Daytime Tiger. (75% chance to teleport in front of your target)"
+				description = "Opens the seventh limiter gate, further increasing power and speed. (75% chance to teleport in front of your target)"
 				icon_state = "gate7"
 				level = 7
 				time_multiplier = 1
@@ -197,7 +197,7 @@ skill
 				id = GATE8
 				prev_gate = GATE7
 				name = "Death Gate"
-				description = "Opens the eighth limiter gate, further increasing your power and speed at the cost of heavy internal damage over time that results in death and ability and stamina penalties after exhaustion."
+				description = "Opens the eighth limiter gate, further increasing your power and speed. (90% chance to teleport in front of your target)"
 				icon_state = "gate8"
 				level = 8
 				time_multiplier = 1
@@ -212,6 +212,7 @@ skill
 			name = "Gate Cancel"
 			description = "Releases gates."
 			icon_state = "cancelgates"
+			displayskill=0
 
 			IsUsable(mob/human/user)
 				if(!user.gate)
