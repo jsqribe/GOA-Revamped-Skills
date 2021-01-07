@@ -14,7 +14,7 @@ mob
 	proc/Combo(mob/M,r)
 		// I wonder if there's any way to really simplify this. It's a pretty big proc.
 		M = M.Replacement_Start(src)
-		if(skillspassive[COMBO] && combo < (1 + skillspassive[COMBO]))
+		if(getPassive(COMBO) && combo < (1 + getPassive(COMBO)))
 			combo++
 			var/C = combo
 			spawn(50)
