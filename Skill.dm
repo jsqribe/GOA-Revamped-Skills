@@ -29,6 +29,8 @@ skill
 		noskillbar
 		modified = 0
 		charge2 = 0
+		level=1//skills can now be leveled up
+		canlevel=1//default is 1 but can be set to 0 for skills that shouldn't level up e.g gates
 
 		//Added for Skill Tree
 		cost=0 //cost to buy

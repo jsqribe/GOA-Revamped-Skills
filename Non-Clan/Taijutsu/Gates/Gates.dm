@@ -6,9 +6,8 @@ skill
 			default_chakra_cost = 300
 			default_cooldown = 400
 			copyable = 0
-			
+			canlevel=0
 			var
-				level
 				time_multiplier
 				icon_time = 50
 				prev_gate
