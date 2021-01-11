@@ -18,7 +18,8 @@ skill
 			icon_state = "shadow_imitation"
 			default_chakra_cost = 100
 			default_cooldown = 60
-
+			skill_reqs = list(NARA_CLAN)
+			cost = 1100
 
 			ChakraCost(mob/user)
 				if(!user.mane)
@@ -183,7 +184,8 @@ skill
 			default_cooldown = 5
 			stamina_damage_fixed = list(1000, 1000)
 			stamina_damage_con = list(500, 500)
-
+			cost = 1500
+			skill_reqs = list(SHADOW_IMITATION)
 
 
 			IsUsable(mob/user)
@@ -246,6 +248,9 @@ skill
 
 			var
 				active_needles = 0
+				
+			cost = 1500
+			skill_reqs = list(SHADOW_NECK_BIND)
 
 			stamina_damage_fixed = list(600, 900)
 			stamina_damage_con = list(0, 300)

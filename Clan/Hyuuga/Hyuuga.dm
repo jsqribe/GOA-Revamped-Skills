@@ -19,9 +19,8 @@ skill
 			icon_state = "byakugan"
 			default_chakra_cost = 80
 			default_cooldown = 0//240
-
-
-
+			skill_reqs = list(HYUUGA_CLAN)
+			cost = 400
 	/*	*	IsUsable(mob/user)
 				. = ..()
 				if(.)
@@ -94,7 +93,8 @@ skill
 			default_cooldown = 30
 			stamina_damage_fixed = list(100, 100)
 			stamina_damage_con = list(50, 50)
-
+			cost = 1500
+			skill_reqs = list(BYAKUGAN)
 
 
 			IsUsable(mob/user)
@@ -145,7 +145,8 @@ skill
 			face_nearest = 1
 			stamina_damage_fixed = list(1500, 1500)
 			stamina_damage_con = list(500, 500)
-
+			cost = 2000
+			skill_reqs = list(BYAKUGAN)
 
 
 			IsUsable(mob/user)
@@ -204,7 +205,8 @@ skill
 			icon_state = "gentle_fist"
 			default_chakra_cost = 100
 			default_cooldown = 30
-
+			cost = 700
+			skill_reqs = list(BYAKUGAN)
 
 
 			IsUsable(mob/user)
@@ -301,7 +303,8 @@ skill
 			face_nearest = 1
 			stamina_damage_fixed = list(3000, 3000)
 			stamina_damage_con = list(1000, 1000)
-
+			cost = 3000
+			skill_reqs = list(HAKKE_64)
 
 
 			IsUsable(mob/user)

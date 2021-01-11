@@ -191,23 +191,7 @@
 				sindex = DEMONIC_ICE_MIRRORS
 				cost = 2500
 				skill_reqs = list(ICE_SPIKE_EXPLOSION)
-		hyuuga
-			clan_reqs = list("Hyuuga")
-			Byakugan
-				sindex = BYAKUGAN
-				cost = 400
-			Turning_the_Tide
-				sindex = KAITEN
-				cost = 1500
-				skill_reqs = list(BYAKUGAN)
-			Palms
-				sindex = HAKKE_64
-				cost = 2000
-				skill_reqs = list(BYAKUGAN)
-			Gentle_Fist
-				sindex = GENTLE_FIST
-				cost = 700
-				skill_reqs = list(BYAKUGAN)
+
 		jashin
 			clan_reqs = list("Jashin")
 			Stab_Self
@@ -243,19 +227,7 @@
 				sindex = SAWARIBI
 				cost = 2000
 				skill_reqs = list(BONE_SPINES, BONE_BULLETS)
-		nara
-			clan_reqs = list("Nara")
-			Shadow_Binding
-				sindex = SHADOW_IMITATION
-				cost = 1100
-			Shadow_Neck_Bind
-				sindex = SHADOW_NECK_BIND
-				cost = 1500
-				skill_reqs = list(SHADOW_IMITATION)
-			Shadow_Sewing
-				sindex = SHADOW_SEWING_NEEDLES
-				cost = 1500
-				skill_reqs = list(SHADOW_NECK_BIND)
+
 		puppet
 			clan_reqs = list("Puppeteer")
 			First_Puppet
@@ -294,41 +266,3 @@
 				sindex = SAND_SHURIKEN
 				cost = 1750
 				skill_reqs = list(SAND_SUMMON)
-		uchiha
-			clan_reqs = list("Uchiha")
-			Sharingan_2
-				sindex = SHARINGAN1
-				cost = 750
-			Sharingan_3
-				sindex = SHARINGAN2
-				cost = 2000
-				skill_reqs = list(SHARINGAN1)
-			Sharingan_Copy
-				sindex = SHARINGAN_COPY
-				cost = 2500
-				skill_reqs = list(SHARINGAN2)
-		yamanaka
-			clan_reqs = list("Yamanaka")
-			Mind_Transfer_Jutsu
-				sindex = MIND_TRANSFER
-				cost = 500
-			Wolfbane
-				sindex = WOLFBANE
-				cost = 1000
-			Flower_Bomb
-				sindex = FLOWER_BOMB
-				cost = 1400
-				skill_reqs = list(WOLFBANE)
-			Mind_Disturbance
-				sindex = MIND_DISTURBANCE
-				cost = 800
-				skill_reqs = list(MIND_TRANSFER)
-			Mind_Read
-				sindex = MIND_READ
-				cost = 400
-				skill_reqs = list(MIND_DISTURBANCE)
-			Cursed_Doll
-				sindex = CURSED_DOLL
-				cost = 2000
-				skill_reqs = (MIND_DISTURBANCE)
-	

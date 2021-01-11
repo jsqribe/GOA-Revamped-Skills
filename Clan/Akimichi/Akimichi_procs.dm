@@ -195,9 +195,49 @@ mob
 			usr.overlays+=X8//image(spliticon8,usr,pixel_x=0,pixel_y=64)
 			usr.overlays+=X9//image(spliticon9,usr,pixel_x=32,pixel_y=64)
 
-obj
-	achu
-		layer=MOB_LAYER+0.1
+
+mob
+	proc
+		Chodan_Bakugeki()
+			var/mob/user=src
+
+			user.Timed_Stun(20)
+
+			var/skill/skill=user:GetSkill(BUTTERFLY_BOMBING)
+			if(!skill) return
+			var/stam_cost=skill:stam_cost
+			var/chakra_cost=skill:chakra_cost
+
+			skill:stam_cost=0
+			skill:chakra_cost=0
+
+			spawn()
+				spawn(4)new/obj/Aki_Explosion/Top_Left(user.loc)
+				spawn(4)new/obj/Aki_Explosion/Bottom_Left(user.loc)
+				spawn(4)new/obj/Aki_Explosion/Top_Middle(user.loc)
+				spawn(4)new/obj/Aki_Explosion/Bottom_Middle(user.loc)
+				spawn(4)new/obj/Aki_Explosion/Top_Right(user.loc)
+				spawn(4)new/obj/Aki_Explosion/Bottom_Right(user.loc)
+				spawn()
+					flick("PunchA-1",user)
+			spawn(4)
+				if(!user) return
+				spawn()user.Earthquake(20)
+				for(var/mob/M in oview(2,user))
+					if(M!=user&&!M.ko&&!istype(M,/mob/corpse))
+						spawn()
+							if(M)
+								M.Knockback(rand(5,8),user.dir)
+							spawn()
+								if(M)
+									flick(M,"hurt")
+							if(M)
+								Blood2(M)
+//								M.Wound(round((stam_cost+chakra_cost)/rand(300,750),1),xpierce=3,attacker=user)
+								M.Damage(stam_cost+chakra_cost,0,user, "Butterfly Bomb", "Normal")
+			user.butterfly_bombing=0
+
+
 
 
 

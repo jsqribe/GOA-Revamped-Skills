@@ -13,21 +13,13 @@ skill
 
 		sharingan_1
 			id = SHARINGAN1
-			name = "Sharingan"
+			name = "Sharingan_1"
 			description = "Enhances your vision and genjutsu ability, allowing you to react faster, see when your oppoents use jutsu, and detect chakra levels."
 			icon_state = "sharingan1"
 			default_chakra_cost = 150
 			default_cooldown = 0//150
-
-
-
-		/*	IsUsable(mob/user)
-				. = ..()
-				if(.)
-					if(user.sharingan)
-						Error(user, "Sharingan is already active")
-						return 0*/
-
+			cost = 2000
+			skill_reqs = list(UCHIHA_CLAN)
 
 			Cooldown(mob/user)
 				return default_cooldown
@@ -65,29 +57,19 @@ skill
 					user.ChakraDrains()
 					var/obj/trigger/sharingan_icon/first/T = new/obj/trigger/sharingan_icon/first
 					user.AddTrigger(T)
-	/*			spawn(Cooldown(user)*10)
-					if(!user) return
-					user.rfxbuff-=round(buffrfx)
-					user.intbuff-=round(buffint)
-
-					user.special=0
-					user.sharingan=0
-					user.see_infrared = 0
-
-					user.Affirm_Icon()
-					user.combat("Your sharingan deactivates.")*/
 
 
 
 
 		sharingan_2
 			id = SHARINGAN2
-			name = "Sharingan"
+			name = "Sharingan_2"
 			description = "Greatly enhances your vision and genjutsu ability, allowing you to react faster, see when your oppoents use jutsu, and detect chakra levels."
 			icon_state = "sharingan2"
 			default_chakra_cost = 350
 			default_cooldown = 0//250
-
+			cost = 2000
+			skill_reqs = list(SHARINGAN1)
 
 
 			Cooldown(mob/user)
@@ -147,6 +129,8 @@ skill
 			icon_state = "sharingancopy"
 			var
 				skill/copied_skill
+			cost = 2500
+			skill_reqs = list(SHARINGAN2)	
 
 
 			Cooldown(mob/user)
@@ -218,7 +202,7 @@ skill
 			icon_state = "mangekyouI"
 			default_chakra_cost = 50
 			default_cooldown = 0
-
+			displayskill=0
 
 			Use(mob/user)
 				var/buffrfx=round(user.rfx*0.35)
@@ -268,7 +252,7 @@ skill
 			icon_state = "mangekyouI"
 			default_chakra_cost = 50
 			default_cooldown = 0
-
+			displayskill=0
 
 			Use(mob/user)
 				var/buffrfx=round(user.rfx*0.40)
@@ -301,7 +285,7 @@ skill
 			name = "Mangekyou Sharingan"
 			icon_state = "mangekyouS"
 			default_chakra_cost = 50
-
+			displayskill=0
 
 			Use(mob/user)
 				var/buffrfx=round(user.rfx*0.35)
@@ -348,7 +332,7 @@ skill
 			name = "Mangekyou Sharingan"
 			icon_state = "madara_ms"
 			default_chakra_cost = 50
-
+			displayskill=0
 
 			Use(mob/user)
 				var/buffrfx=round(user.rfx*0.33)
@@ -534,6 +518,7 @@ skill
 			icon_state = "AmaterasuAOE"
 			default_chakra_cost = 1500
 			default_cooldown = 200
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -684,6 +669,7 @@ skill
 			default_chakra_cost = 2000
 			default_cooldown = 400
 			var/used_chakra
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -756,6 +742,7 @@ skill
 			default_chakra_cost = 2000
 			default_cooldown = 400
 			var/used_chakra
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -863,6 +850,7 @@ skill
 			default_chakra_cost = 2000
 			default_cooldown = 400
 			var/used_chakra
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -918,7 +906,7 @@ skill
 			icon_state="izanagi"
 			default_chakra_cost=1000
 			default_cooldown=1000
-
+			displayskill=0
 		/*	IsUsable(mob/user)
 				. = ..()
 				if(.)
@@ -948,6 +936,7 @@ skill
 			icon_state = "kotoamatsukami"
 			default_chakra_cost = 1200
 			default_cooldown = 450
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -1022,6 +1011,7 @@ skill
 			icon_state = "shisui"
 			default_chakra_cost = 150
 			default_cooldown = 270
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -1056,7 +1046,7 @@ skill
 			icon_state = "eternal_mangekyou"
 			default_chakra_cost = 50
 			copyable = 0
-
+			displayskill=0
 
 			Use(mob/human/user)
 				var/buffrfx=round(user.rfx*0.40)
@@ -1090,7 +1080,7 @@ skill
 			name = "Eternal Mangekyou Sharingan"
 			icon_state = "eternal_mangekyou_sasuke"
 			default_chakra_cost = 50
-
+			displayskill=0
 
 			Use(mob/human/user)
 				var/buffrfx=round(user.rfx*0.40)
@@ -1125,6 +1115,7 @@ skill
 			default_chakra_cost = 1000
 			default_cooldown = 300
 			default_seal_time = 2
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -1158,6 +1149,7 @@ skill
 			icon_state = "flame_control"
 			default_chakra_cost = 1450
 			default_cooldown = 300
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -1183,7 +1175,7 @@ skill
 			icon_state = "tsukuyomi"
 			default_chakra_cost = 900
 			default_cooldown = 200
-
+			displayskill=0
 
 
 			IsUsable(mob/user)
@@ -1245,90 +1237,3 @@ skill
 					user<<"No targets to Tsukuyomi!"
 					return
 
-obj/TsumiBlood
-	icon='icons/Tsukuyomi.dmi'
-	New()
-		src.icon_state=pick("1","2","3","4","5")
-
-obj/TsumiPuddle
-	icon='icons/Tsukuyomi.dmi'
-	icon_state="Puddle1"
-	New()
-		src.icon_state=pick("Puddle1","Puddle2","Puddle3")
-obj/TsumiPole
-	icon='icons/Tsukuyomi.dmi'
-	P1
-		icon_state="Pole1"
-		density=1
-	P2
-		icon_state="Pole2"
-obj/TsumiMoon
-	icon='icons/Tsukuyomi.dmi'
-	M1
-		icon_state="Moon1"
-		layer=500
-	M2
-		icon_state="Moon2"
-		layer=500
-	M3
-		icon_state="Moon3"
-		layer=500
-	M4
-		icon_state="Moon4"
-		layer=500
-obj/TsumiTarget
-	layer=500
-obj/TsumiUser
-	layer=500
-turf/Tsumi
-	icon='icons/Tsukuyomi.dmi'
-	icon_state="background"
-obj/TsumiUserEye
-obj/TsumiTargetEye
-
-/*obj
-	trigger
-		kamui_teleport
-			icon_state = "STM"
-
-			var
-				recall_x
-				recall_y
-				recall_z
-
-			New(loc, kx, ky, kz)
-				. = ..(loc)
-				recall_x = kx
-				recall_y = ky
-				recall_z = kz
-
-			Use(mob/u)
-				if(recall_z == user.z)
-					var/mob/human/player/etarget = user.MainTarget()
-					if(etarget)
-						new/obj/kamui(locate(etarget.x,etarget.y,etarget.z))
-						etarget.loc = locate(recall_x,recall_y,recall_z)
-						etarget.Dec_Stam((rand(1000,2000)+300))
-						explosion(50,etarget.x,etarget.y,etarget.z,u,1)
-						etarget.stunned=2
-						user.RemoveTrigger(src)
-					else
-						user.combat("Kamui failed because there was no target")
-						user.RemoveTrigger(src)
-						return
-*/
-obj/kamui
-	icon='icons/Kamuiv2.dmi'
-	icon_state=""
-	density=1
-	New()
-		src.icon_state="Action"
-		spawn(20)
-			del(src)
-
-
-turf
-	Susanoo
-		layer = 100
-		icon='pngs/Susanoo.png'
-		density = 0

@@ -377,6 +377,7 @@ skill
 			default_cooldown = 400
 			cost = 2500
 			skill_reqs = list(SIZEUP2)
+			displayskill=0
 
 			var
 				tmp
@@ -407,93 +408,4 @@ skill
 				user.overlays+='icons/aki_fist.dmi'
 
 				user.butterfly_bombing=1
-mob
-	proc
-		Chodan_Bakugeki()
-			var/mob/user=src
 
-			user.Timed_Stun(20)
-
-			var/skill/skill=user:GetSkill(BUTTERFLY_BOMBING)
-			if(!skill) return
-			var/stam_cost=skill:stam_cost
-			var/chakra_cost=skill:chakra_cost
-
-			skill:stam_cost=0
-			skill:chakra_cost=0
-
-			spawn()
-				spawn(4)new/obj/Aki_Explosion/Top_Left(user.loc)
-				spawn(4)new/obj/Aki_Explosion/Bottom_Left(user.loc)
-				spawn(4)new/obj/Aki_Explosion/Top_Middle(user.loc)
-				spawn(4)new/obj/Aki_Explosion/Bottom_Middle(user.loc)
-				spawn(4)new/obj/Aki_Explosion/Top_Right(user.loc)
-				spawn(4)new/obj/Aki_Explosion/Bottom_Right(user.loc)
-				spawn()
-					flick("PunchA-1",user)
-			spawn(4)
-				if(!user) return
-				spawn()user.Earthquake(20)
-				for(var/mob/M in oview(2,user))
-					if(M!=user&&!M.ko&&!istype(M,/mob/corpse))
-						spawn()
-							if(M)
-								M.Knockback(rand(5,8),user.dir)
-							spawn()
-								if(M)
-									flick(M,"hurt")
-							if(M)
-								Blood2(M)
-//								M.Wound(round((stam_cost+chakra_cost)/rand(300,750),1),xpierce=3,attacker=user)
-								M.Damage(stam_cost+chakra_cost,0,user, "Butterfly Bomb", "Normal")
-			user.butterfly_bombing=0
-
-obj
-	Aki_Explosion
-		pixel_y=-12
-		layer=MOB_LAYER+0.1
-		icon='aki_explosion.dmi'
-		Top_Left
-			icon_state="1,0"
-			New(location)
-				src.loc=location
-				src.loc=locate(src.x-1,src.y+1,src.z)
-				spawn(14)
-					src.loc=null
-		Bottom_Left
-			icon_state="0,0"
-			New(location)
-				src.loc=location
-				src.loc=locate(src.x-1,src.y,src.z)
-				spawn(14)
-					src.loc=null
-		Top_Middle
-			icon_state="1,1"
-			New(location)
-				src.loc=location
-				src.loc=locate(src.x+1,src.y,src.z)
-				spawn(14)
-					src.loc=null
-		Bottom_Middle
-			icon_state="0,1"
-			New(location)
-				src.loc=location
-				src.loc=locate(src.x,src.y,src.z)
-				spawn(14)
-					src.loc=null
-		Top_Right
-			icon_state="1,2"
-			New(location)
-				src.overlays+=image('aki_explosion.dmi',icon_state="l,3",pixel_x=32,layer=MOB_LAYER+0.1)
-				src.loc=location
-				src.loc=locate(src.x+1,src.y+1,src.z)
-				spawn(14)
-					src.loc=null
-		Bottom_Right
-			icon_state="0,2"
-			New(location)
-				src.overlays+=image('aki_explosion.dmi',icon_state="0,3",pixel_x=32,layer=MOB_LAYER+0.1)
-				src.loc=location
-				src.loc=locate(src.x+1,src.y,src.z)
-				spawn(14)
-					src.loc=null

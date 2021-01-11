@@ -17,6 +17,8 @@ skill
 			icon_state = "mindtransfer"
 			default_chakra_cost = 300
 			default_cooldown = 40
+			skill_reqs = list(YAMANAKA_CLAN)
+			cost = 500
 
 			Use(mob/user)
 				if(user.Transfered)
@@ -71,6 +73,9 @@ skill
 			icon_state = "minddisturbance"
 			default_chakra_cost = 140
 			default_cooldown = 80
+			stack = "false"//don't stack
+			skill_reqs = list(MIND_TRANSFER)
+			cost = 800
 
 			Use(mob/user)
 				viewers(user) << output("[user]: Mind Disturbance!", "combat_output")
@@ -105,6 +110,8 @@ skill
 			icon_state = "flower_bomb"
 			default_chakra_cost = 500
 			default_cooldown = 95
+			skill_reqs = list(WOLFBANE)
+			cost = 1400
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Flower Bomb!", "combat_output")
@@ -167,6 +174,8 @@ skill
 			icon_state = "petals"
 			default_chakra_cost = 300
 			default_cooldown = 65
+			skill_reqs = list(YAMANAKA_CLAN)
+			cost = 1000
 
 			Use(mob/user)
 				viewers(user) << output("[user]: Wolfbane!", "combat_output")
@@ -214,7 +223,9 @@ skill
 			icon_state="mindtag"
 			default_chakra_cost=100
 			default_cooldown = 120
-
+			skill_reqs = list(MIND_DISTURBANCE)
+			cost = 400
+			
 			Use(mob/user)
 				viewers(user) << output("[user]: Sensing Transmission!", "combat_output")
 				var/targets[] = user.NearestTargets(num=3)
@@ -240,6 +251,8 @@ skill
 			icon_state="cursed_doll"
 			default_chakra_cost=700
 			default_cooldown = 200
+			skill_reqs = list(MIND_DISTURBANCE)
+			cost = 2000
 
 			Use(mob/user)
 				user.cursing = 1

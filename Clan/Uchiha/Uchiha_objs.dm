@@ -260,4 +260,91 @@ obj/proc/
 					src.Acooldown=0
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+obj/TsumiBlood
+	icon='icons/Tsukuyomi.dmi'
+	New()
+		src.icon_state=pick("1","2","3","4","5")
+
+obj/TsumiPuddle
+	icon='icons/Tsukuyomi.dmi'
+	icon_state="Puddle1"
+	New()
+		src.icon_state=pick("Puddle1","Puddle2","Puddle3")
+obj/TsumiPole
+	icon='icons/Tsukuyomi.dmi'
+	P1
+		icon_state="Pole1"
+		density=1
+	P2
+		icon_state="Pole2"
+obj/TsumiMoon
+	icon='icons/Tsukuyomi.dmi'
+	M1
+		icon_state="Moon1"
+		layer=500
+	M2
+		icon_state="Moon2"
+		layer=500
+	M3
+		icon_state="Moon3"
+		layer=500
+	M4
+		icon_state="Moon4"
+		layer=500
+obj/TsumiTarget
+	layer=500
+obj/TsumiUser
+	layer=500
+turf/Tsumi
+	icon='icons/Tsukuyomi.dmi'
+	icon_state="background"
+obj/TsumiUserEye
+obj/TsumiTargetEye
+
+/*obj
+	trigger
+		kamui_teleport
+			icon_state = "STM"
+
+			var
+				recall_x
+				recall_y
+				recall_z
+
+			New(loc, kx, ky, kz)
+				. = ..(loc)
+				recall_x = kx
+				recall_y = ky
+				recall_z = kz
+
+			Use(mob/u)
+				if(recall_z == user.z)
+					var/mob/human/player/etarget = user.MainTarget()
+					if(etarget)
+						new/obj/kamui(locate(etarget.x,etarget.y,etarget.z))
+						etarget.loc = locate(recall_x,recall_y,recall_z)
+						etarget.Dec_Stam((rand(1000,2000)+300))
+						explosion(50,etarget.x,etarget.y,etarget.z,u,1)
+						etarget.stunned=2
+						user.RemoveTrigger(src)
+					else
+						user.combat("Kamui failed because there was no target")
+						user.RemoveTrigger(src)
+						return
+*/
+obj/kamui
+	icon='icons/Kamuiv2.dmi'
+	icon_state=""
+	density=1
+	New()
+		src.icon_state="Action"
+		spawn(20)
+			del(src)
+
+
+turf
+	Susanoo
+		layer = 100
+		icon='pngs/Susanoo.png'
+		density = 0
 
