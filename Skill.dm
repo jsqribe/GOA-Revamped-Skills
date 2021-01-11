@@ -31,6 +31,7 @@ skill
 		charge2 = 0
 		level=1//skills can now be leveled up
 		canlevel=1//default is 1 but can be set to 0 for skills that shouldn't level up e.g gates
+		maxlevel=5//default all skills can get to level 5
 
 		//Added for Skill Tree
 		cost=0 //cost to buy
