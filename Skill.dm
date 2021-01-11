@@ -593,6 +593,7 @@ mob
 				for(var/obj/earthcage/cage in usr.loc)
 					if(cage.owner == usr)
 						return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && !Tank && pk
+			//world << "[!cantreact] && [!spectate] && [!frozen] && [!sleeping] && [!ko] && [canattack] && [!stunned] && [!Tank] && [pk]"
 			return !cantreact && !spectate && !frozen && !sleeping && !ko && canattack && !stunned && !Tank && pk
 
 

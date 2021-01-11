@@ -12,34 +12,7 @@ skill
 			canbuy=0
 
 
-		stab_self
-			id = MASOCHISM
-			name = "Stab Self"
-			description = "Stab yourself to do internal damage to a bound enemy."
-			icon_state = "masachism"
-			default_chakra_cost = 0
-			default_cooldown = 5
-			wound_damage_fixed = list(10, 10)
-			wound_damage_con = list(0, 0)
-
-
-			IsUsable(mob/user)
-				. = ..()
-				if(.)
-					if(user.gate)
-						Error(user, "Cannot use Masochism in gates")
-						return 0
-
-
-			Use(mob/user)
-				oviewers(user) << output("[user] stabbed himself!", "combat_output")
-				user.combat("You stabbed yourself!")
-				user.Damage(150, 10, user, "Stab Self", "Internal")
-				Blood2(user)
-
-
-
-
+		
 		blood_possession
 			id = BLOOD_BIND
 			name = "Sorcery: Death-Ruling Possession Blood"
@@ -47,7 +20,8 @@ skill
 			icon_state = "blood contract"
 			default_chakra_cost = 450
 			default_cooldown = 200
-
+			cost = 1200
+			skill_reqs = list(JASHIN_CLAN)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -101,7 +75,32 @@ skill
 					return 1
 
 
+		stab_self
+			id = MASOCHISM
+			name = "Stab Self"
+			description = "Stab yourself to do internal damage to a bound enemy."
+			icon_state = "masachism"
+			default_chakra_cost = 0
+			default_cooldown = 5
+			wound_damage_fixed = list(10, 10)
+			wound_damage_con = list(0, 0)
+			stack = "false"//don't stack
+			cost = 500
+			skill_reqs = list(BLOOD_BIND)
 
+			IsUsable(mob/user)
+				. = ..()
+				if(.)
+					if(user.gate)
+						Error(user, "Cannot use Masochism in gates")
+						return 0
+
+
+			Use(mob/user)
+				oviewers(user) << output("[user] stabbed himself!", "combat_output")
+				user.combat("You stabbed yourself!")
+				user.Damage(150, 10, user, "Stab Self", "Internal")
+				Blood2(user)
 
 		wound_regeneration
 			id = WOUND_REGENERATION
@@ -110,7 +109,8 @@ skill
 			icon_state = "wound regeneration"
 			default_chakra_cost = 100
 			default_cooldown = 90
-
+			cost = 800
+			skill_reqs = list(BLOOD_BIND)
 
 
 			Use(mob/user)
@@ -138,7 +138,8 @@ skill
 			icon_state = "imortality"
 			default_chakra_cost = 400
 			default_cooldown = 1200
-
+			cost = 1500
+			skill_reqs = list(MASOCHISM)
 
 			Use(mob/user)
 				var/timer = (user.blevel*2)*10

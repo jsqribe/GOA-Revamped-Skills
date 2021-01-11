@@ -1,3 +1,15 @@
+
+mob/proc
+	CheckBonesword()
+		if(boneuses<=0)
+			hasbonesword=0
+			boneuses=0
+			for(var/obj/items/weapons/xox in contents)
+				if(istype(xox,/obj/items/weapons/melee/sword/Bone_Sword))
+					weapon=new/list
+					xox.loc = null
+			Load_Overlays()
+			
 proc
 	SpireCircle(bx, by, bz, finrad, mob/cause)
 		var/rad = 0

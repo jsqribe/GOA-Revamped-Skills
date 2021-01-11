@@ -23,8 +23,8 @@ skill
 			stamina_damage_con = list(75, 75)
 			wound_damage_fixed = list(1, 1)
 			wound_damage_con = list(0, 0)
-
-
+			cost = 1500
+			skill_reqs = list(KAGUYA_CLAN)
 
 			Use(mob/human/user)
 				viewers(user) << output("[user]: Piercing Finger Bullets!", "combat_output")
@@ -66,8 +66,8 @@ skill
 			icon_state = "bone_harden"
 			default_chakra_cost = 20
 			default_cooldown = 80
-
-
+			cost = 1000
+			skill_reqs = list(KAGUYA_CLAN)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -113,7 +113,8 @@ skill
 			icon_state = "bone_sword"
 			default_chakra_cost = 100
 			default_cooldown = 200
-
+			cost = 1000
+			skill_reqs = list(KAGUYA_CLAN)
 
 
 			Use(mob/user)
@@ -140,7 +141,8 @@ skill
 			stamina_damage_con = list(700, 700)
 			wound_damage_fixed = list(10, 10)
 			wound_damage_con = list(0, 0)
-
+			cost = 2000
+			skill_reqs = list(BONE_BULLETS)
 
 
 			Use(mob/user)
@@ -165,6 +167,8 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(5, 10)
 			wound_damage_con = list(0, 0)
+			cost = 800
+			skill_reqs = list(BONE_SWORD)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -212,7 +216,9 @@ skill
 			icon_state = "flower"
 			default_chakra_cost = 800
 			default_cooldown = 100
-
+			cost = 1800
+			skill_reqs = list(BONE_HARDEN)
+			
 			Use(mob/user)
 		/*		if(user.bonedrill)
 					user << "You retract your bone drill."
@@ -228,13 +234,3 @@ skill
 
 
 
-mob/proc
-	CheckBonesword()
-		if(boneuses<=0)
-			hasbonesword=0
-			boneuses=0
-			for(var/obj/items/weapons/xox in contents)
-				if(istype(xox,/obj/items/weapons/melee/sword/Bone_Sword))
-					weapon=new/list
-					xox.loc = null
-			Load_Overlays()

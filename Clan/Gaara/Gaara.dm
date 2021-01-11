@@ -18,7 +18,10 @@ skill
 			icon_state = "sand_control"
 			default_chakra_cost = 300
 			default_cooldown = 10
-
+			stack = "false"//don't stack
+			cost = 100
+			skill_reqs = list(GAARA_CLAN)
+			
 			IsUsable(mob/human/user)
 				. = ..()
 				if(.)
@@ -64,7 +67,7 @@ skill
 			icon_state = "sand_unsummon"
 			default_chakra_cost = 20
 			default_cooldown = 3
-
+			displayskill=0
 
 
 			Use(mob/human/user)
@@ -83,7 +86,8 @@ skill
 			icon_state = "sand_shield"
 			default_chakra_cost = 100
 			default_cooldown = 20
-
+			cost = 800
+			skill_reqs = list(SAND_SUMMON)
 
 
 			IsUsable(mob/user)
@@ -152,7 +156,8 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(5, 15)
 			wound_damage_con = list(0, 0)
-
+			cost = 2000
+			skill_reqs = list(SAND_SUMMON)
 
 
 			IsUsable(mob/user)
@@ -257,6 +262,8 @@ skill
 			icon_state = "sand_armor"
 			default_chakra_cost = 200
 			default_cooldown = 150
+			cost = 1500
+			skill_reqs = list(SAND_SHIELD)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -317,7 +324,8 @@ skill
 			icon_state = "sand_attack"
 			default_chakra_cost = 100
 			default_cooldown = 30
-
+			displayskill=0
+			
 			IsUsable(mob/user)
 				. = ..()
 				if(.) if(user.sandfist)
@@ -342,7 +350,8 @@ skill
 			stamina_damage_con = list(0, 0)
 			wound_damage_fixed = list(0, 1)
 			wound_damage_con = list(0, 0)
-
+			cost = 1750
+			skill_reqs = list(SAND_SUMMON)
 
 
 			IsUsable(mob/user)

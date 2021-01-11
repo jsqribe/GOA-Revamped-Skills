@@ -17,6 +17,7 @@ skill
 			icon_state = "ridable bird"
 			default_chakra_cost = 1
 			default_cooldown = 60
+			displayskill=0
 
 			Cooldown(mob/user)
 				return default_cooldown
@@ -41,8 +42,9 @@ skill
 			default_cooldown = 15
 			stamina_damage_fixed = list(500, 1000)
 			stamina_damage_con = list(200, 200)
+			stack = "false"//don't stack
 			cost = 800
-			skill_reqs = list(EXPLODING_SPIDER)
+			skill_reqs = list(DEIDARA_CLAN)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -76,6 +78,7 @@ skill
 			icon_state="small bird"
 			default_chakra_cost = 800
 			default_cooldown = 150
+			displayskill=0
 
 			Use(mob/human/user)
 				for(var/time = 5 to 10)
@@ -206,7 +209,8 @@ skill
 			default_cooldown = 320
 			cost = 1500
 			skill_reqs = list(C0)
-
+			displayskill=0
+			
 			IsUsable(mob/user)
 				. = ..()
 				if(.)
@@ -234,7 +238,7 @@ skill
 			default_cooldown = 160
 			var/used_chakra
 			cost = 3500
-			skill_reqs = list(EXPLODING_BIRD)
+			skill_reqs = list(EXPLODING_SPIDER)
 
 
 			EstimateStaminaDamage(mob/human/user)
@@ -335,6 +339,7 @@ skill
 			var/used_chakra
 			cost = 1500
 			skill_reqs = list(C3)
+			displayskill=0
 
 			ChakraCost(mob/user)
 				used_chakra = user.curchakra
@@ -452,6 +457,7 @@ skill
 			var/used_chakra
 			cost = 1500
 			skill_reqs = list(C4)
+			displayskill=0
 
 			ChakraCost(mob/user)
 				used_chakra = user.curchakra

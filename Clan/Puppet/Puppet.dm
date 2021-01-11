@@ -15,12 +15,9 @@ skill
 		puppet_summoning
 			default_cooldown = 60
 			description = "Summons a puppet with hidden weapons."
-
-
-
 			var
 				puppet_num
-
+			
 
 
 			Cooldown(mob/user)
@@ -67,8 +64,9 @@ skill
 				name = "Summoning: First Puppet"
 				icon_state = "puppet1"
 				puppet_num = 1
-
-
+				cost = 700
+				stack = "false"//don't stack
+				skill_reqs = list(PUPPET_CLAN)
 
 
 			second
@@ -76,7 +74,8 @@ skill
 				name = "Summoning: Second Puppet"
 				icon_state = "puppet2"
 				puppet_num = 2
-
+				cost = 2000
+				skill_reqs = list(PUPPET_SUMMON1)
 
 
 
@@ -87,8 +86,9 @@ skill
 			icon_state = "puppethenge"
 			default_chakra_cost = 50
 			default_cooldown = 25
-
-
+			cost = 350
+			skill_reqs = list(PUPPET_SUMMON1)
+	
 
 			IsUsable(mob/user)
 				. = ..()
@@ -136,7 +136,8 @@ skill
 			icon_state = "puppetswap"
 			default_chakra_cost = 100
 			default_cooldown = 45
-
+			cost = 350
+			skill_reqs = list(PUPPET_SUMMON1)
 
 
 			IsUsable(mob/user)
@@ -178,7 +179,7 @@ skill
 			icon_state = "human_puppet"
 			default_chakra_cost = 800
 			default_cooldown = 600
-
+			displayskill=0
 
 			IsUsable(mob/user)
 				. = ..()
@@ -217,7 +218,7 @@ skill
 
 		puppet_weapons
 			default_cooldown = 20
-
+			displayskill=0
 
 
 			var

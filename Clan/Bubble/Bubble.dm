@@ -11,12 +11,52 @@ skill
 			clan=1
 			canbuy=0
 
+			
+
+		bubblebarrage
+			id = BUBBLE_BARRAGE
+			name = "Bubble Barrage"
+			icon_state = "barrage"
+			default_chakra_cost = 200
+			default_cooldown = 180
+			stack = "false"//don't stack
+			cost = 1500
+			skill_reqs = list(BUBBLE_CLAN)
+
+			Use(mob/human/user)
+				viewers(user) << output("[user]: Secret Art: Bubble Control!", "combat_output")
+				var/eicon='icons/projectiles.dmi'
+				var/estate="bubble-m"
+
+				if(!user.icon_state)
+					user.icon_state="Seal"
+					spawn(20)
+						user.icon_state=""
+
+				var/angle
+				var/speed = 20
+				var/spread = 18
+				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
+				else angle = dir2angle(user.dir)
+
+				var/damage = 65*user.ControlDamageMultiplier()
+
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*3, distance=10, damage=damage, wounds=0)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*2, distance=10, damage=damage, wounds=1)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=1)
+				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=1)
+
+	
+
 		blinding_bubbles
 			id = BLINDING_BUBBLES
 			name = "Bubble Jutsu: Blinding Bubbles"
 			icon_state = "blinding"
 			default_chakra_cost = 150
 			default_cooldown = 120
+			cost = 1200
+			skill_reqs = list(BUBBLE_BARRAGE)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -47,40 +87,7 @@ skill
 						if(A)
 							spawn() A.Explode()
 
-
-
-		bubblebarrage
-			id = BUBBLE_BARRAGE
-			name = "Bubble Jutsu: Bubble Control"
-			icon_state = "barrage"
-			default_chakra_cost = 200
-			default_cooldown = 180
-
-			Use(mob/human/user)
-				viewers(user) << output("[user]: Secret Art: Bubble Control!", "combat_output")
-				var/eicon='icons/projectiles.dmi'
-				var/estate="bubble-m"
-
-				if(!user.icon_state)
-					user.icon_state="Seal"
-					spawn(20)
-						user.icon_state=""
-
-				var/angle
-				var/speed = 20
-				var/spread = 18
-				if(user.MainTarget()) angle = get_real_angle(user, user.MainTarget())
-				else angle = dir2angle(user.dir)
-
-				var/damage = 65*user.ControlDamageMultiplier()
-
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*4, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*3, distance=10, damage=damage, wounds=0)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+spread*2, distance=10, damage=damage, wounds=1)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle, distance=10, damage=damage, wounds=1)
-				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle-spread, distance=10, damage=damage, wounds=1)
-
-
+		
 
 
 		exploding_bubbles
@@ -89,6 +96,8 @@ skill
 			icon_state = "exploding"
 			default_chakra_cost = 200
 			default_cooldown = 30
+			cost = 2900
+			skill_reqs = list(BUBBLE_BARRAGE)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -144,7 +153,8 @@ skill
 			icon_state = "kaiten"
 			default_chakra_cost = 200
 			default_cooldown = 500
-
+			cost = 1500
+			skill_reqs = list(BUBBLE_CLAN)
 
 
 			Use(mob/human/user)

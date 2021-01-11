@@ -463,3 +463,586 @@ skill
 				else angle = dir2angle(user.dir)
 				spawn() advancedprojectile_angle(eicon, estate, usr, speed, angle+1*rand(-4,4), distance=10, damage=damage, wounds=0)
 				sleep(2)
+
+				
+
+	Bursting_Water_Collision_Waves
+		id = SUITON_BAKUSHOUHA
+		name = "Water: Bursting Water Collision Waves"
+		icon_state = "exploading_water_shockwave"
+		default_chakra_cost = 500
+		default_cooldown = 120
+		default_seal_time = 10
+		base_charge = 500
+		copyable = 0
+		displayskill=0
+
+
+		Use(mob/human/user)
+			var/conmult = (user.ControlDamageMultiplier()/3)
+			Make_Water(user.loc)
+			if(charge<=500)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,1,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return
+
+			if(charge<=1000)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,3,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+
+				user.icon_state=""
+
+				return
+			if(charge<=1500)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),6)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),6)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),6)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),6)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,5,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return
+			if(charge<=2000)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),8)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),8)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),8)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),8)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),2)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,7,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return
+			if(charge<=2500)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),10)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),10)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),10)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),10)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),3)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,9,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return
+			if(charge<3500)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),12)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-10,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+10,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-11,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+11,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),12)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-10,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+10,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-11,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+11,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),12)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-10,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+10,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-11,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+11,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),12)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),4)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-10,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+10,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-11,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+11,user.z,'icons/watershockwave.dmi',"",user,11,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return
+			if(charge>=3500)
+
+				user.Timed_Stun(50)
+				user.icon_state="HandSeals"
+
+				user.dir=SOUTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),14)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x-10,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+10,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-11,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+11,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-12,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+12,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-13,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+13,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=NORTH
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),14)
+				spawn()wet_proj(user.x-1,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+1,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-2,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+2,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-3,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+3,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-4,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+4,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-5,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+5,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-6,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+6,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-7,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+7,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-8,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+8,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-9,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x+9,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x-10,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+10,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-11,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+11,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-12,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+12,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x-13,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x+13,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+				sleep(5)
+				user.dir=EAST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),14)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x,user.y-10,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+10,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-11,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+11,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-12,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+12,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-13,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+13,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				sleep(5)
+				user.dir=WEST
+				spawn()wet_proj(user.x,user.y,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),14)
+				spawn()wet_proj(user.x,user.y-1,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+1,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-2,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+2,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-3,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+3,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-4,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+4,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-5,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+5,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-6,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+6,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-7,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+7,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-8,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+8,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-9,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x,user.y+9,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),5)
+				spawn()wet_proj(user.x,user.y-10,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+10,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-11,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+11,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-12,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+12,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y-13,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+				spawn()wet_proj(user.x,user.y+13,user.z,'icons/watershockwave.dmi',"",user,13,(charge+(0.1*(user.con+user.conbuff)*conmult)),0)
+
+
+				user.icon_state=""
+
+				return

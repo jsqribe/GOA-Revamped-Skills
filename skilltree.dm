@@ -109,19 +109,7 @@
 			Detachment
 				sindex = CUBICAL_VARIANT
 				cost = 4500
-		paper
-			clan_reqs = list("Paper")
-			Paper_Shuriken
-				sindex = PAPER_SHURIKEN
-				cost = 1400
-			Paper_Bomb
-				sindex = PAPER_BOMB
-				cost = 800
-				skill_reqs = list(PAPER_SHURIKEN)
-			Paper_Chasm
-				sindex = PAPER_CHASM
-				cost = 2500
-				skill_reqs = list(PAPER_BOMB)
+
 	/*	scavenger
 			clan_reqs = list("Scavenger")
 			Heart_Extraction
@@ -151,19 +139,6 @@
 				sindex = FANG_OVER_FANG
 				cost = 1700
 				skill_reqs = list(WHISTLE)
-		bubble
-			clan_reqs = list("Bubble")
-			Blinding_Bubble
-				sindex = BLINDING_BUBBLES
-				cost = 1200
-				skill_reqs = list(BUBBLE_BARRAGE)
-			Exploding_Bubble
-				sindex = EXPLODING_BUBBLES
-				cost = 2900
-				skill_reqs = list(BLINDING_BUBBLES)
-			Bubble_Barrage
-				sindex = BUBBLE_BARRAGE
-				cost = 1500
 		hozuki
 			clan_reqs = list("Hozuki")
 			Water_Gun
@@ -178,91 +153,5 @@
 				cost = 1900
 				skill_reqs = list(WATER_ARM)
 
-		haku
-			clan_reqs = list("Haku")
-			Sensatsusuisho
-				sindex = ICE_NEEDLES
-				cost = 800
-			Ice_Explosion
-				sindex = ICE_SPIKE_EXPLOSION
-				cost = 1500
-				skill_reqs = list(ICE_NEEDLES)
-			Demonic_Ice_Crystal_Mirrors
-				sindex = DEMONIC_ICE_MIRRORS
-				cost = 2500
-				skill_reqs = list(ICE_SPIKE_EXPLOSION)
 
-		jashin
-			clan_reqs = list("Jashin")
-			Stab_Self
-				sindex = MASOCHISM
-				cost = 500
-				skill_reqs = list(BLOOD_BIND)
-			Death_Ruling_Possession_Blood
-				sindex = BLOOD_BIND
-				cost = 1200
-			Wound_Regeneration
-				sindex = WOUND_REGENERATION
-				cost = 800
-				skill_reqs = list(MASOCHISM)
-			Immortality
-				sindex = IMMORTALITY
-				cost = 1500
-		kaguya
-			clan_reqs = list("Kaguya")
-			Piercing_Finger_Bullets
-				sindex = BONE_BULLETS
-				cost = 1500
-			Bone_Harden
-				sindex = BONE_HARDEN
-				cost = 1000
-			Camellia_Dance
-				sindex = BONE_SWORD
-				cost = 500
-			Larch_Dance
-				sindex = BONE_SPINES
-				cost = 800
-				skill_reqs = list(BONE_SWORD)
-			Young_Bracken_Dance
-				sindex = SAWARIBI
-				cost = 2000
-				skill_reqs = list(BONE_SPINES, BONE_BULLETS)
 
-		puppet
-			clan_reqs = list("Puppeteer")
-			First_Puppet
-				sindex = PUPPET_SUMMON1
-				cost = 700
-			Second_Puppet
-				sindex = PUPPET_SUMMON2
-				cost = 2000
-				skill_reqs = list(PUPPET_SUMMON1)
-			Puppet_Transform
-				sindex = PUPPET_HENGE
-				cost = 350
-				skill_reqs = list(PUPPET_SUMMON1)
-			Puppet_Swap
-				sindex = PUPPET_SWAP
-				cost = 350
-				skill_reqs = list(PUPPET_SUMMON1)
-		sand
-			clan_reqs = list("Sand Control")
-			Sand_Control
-				sindex = SAND_SUMMON
-				cost = 100
-			Desert_Funeral
-				sindex = DESERT_FUNERAL
-				cost = 2000
-				skill_reqs = list(SAND_SUMMON)
-			Sand_Shield
-				sindex = SAND_SHIELD
-				cost = 800
-				skill_reqs = list(SAND_SUMMON)
-			Sand_Armor
-				sindex = SAND_ARMOR
-				cost = 1500
-				skill_reqs = list(SAND_SHIELD)
-			Sand_Shuriken
-				sindex = SAND_SHURIKEN
-				cost = 1750
-				skill_reqs = list(SAND_SUMMON)

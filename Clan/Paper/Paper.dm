@@ -50,6 +50,9 @@ skill
 			icon_state = "paper_bomb"
 			default_cooldown = 15
 			default_chakra_cost = 200
+			cost = 800
+			stack = "false"//don't stack
+			skill_reqs = list(PAPER_CLAN)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -87,6 +90,9 @@ skill
 			icon_state = "paper_shuriken"
 			default_chakra_cost = 250
 			default_cooldown = 60
+			cost = 1400
+			stack = "false"//don't stack
+			skill_reqs = list(PAPER_CLAN)
 
 			Use(mob/user)
 				viewers(user) << output("[user]: Paper Shuriken!", "combat_output")
@@ -143,6 +149,8 @@ skill
 			icon_state = "paper_chasm"
 			default_chakra_cost = 650
 			default_cooldown = 200
+			cost = 2500
+			skill_reqs = list(PAPER_BOMB)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -175,6 +183,8 @@ skill
 			icon_state = "paper_armor"
 			default_chakra_cost = 350
 			default_cooldown = 240
+			cost = 2500
+			skill_reqs = list(PAPER_BOMB)
 
 			IsUsable(mob/user)
 				. = ..()
@@ -233,7 +243,7 @@ skill
 			icon_state = "sharingan1"
 			default_chakra_cost = 950
 			default_cooldown = 0//150
-
+			displayskill=0
 
 
 		/*	IsUsable(mob/user)
@@ -259,75 +269,3 @@ skill
 					user.papermode=1
 					user.Affirm_Icon()
 					ChangeIconState("sharingan1_cancel")
-
-
-obj/paper_spear
-	icon = 'paper_bomb.dmi'
-	icon_state = "1"
-	density = 0
-
-client
-	Click(object,location,control,params)
-		..()
-
-		for(var/obj/paper_bomb/p in location)
-			if(p.owner == mob)
-				p.Explode(mob)
-				return
-
-		for(var/obj/paper_bomb/p in view(1,object))
-			if(p.owner == mob)
-				p.Explode(mob)
-				return
-obj
-	black
-		icon='icons/black.dmi'
-
-
-
-//moved paper_bomb to use deidara logic.
-obj
-	paper_bomb
-
-		icon = 'paper_bomb.dmi'
-		icon_state = "1"
-
-		layer = MOB_LAYER + 0.1
-
-		Click(location,control,params)
-			if(owner == usr)
-				Explode(usr)
-
-		New(location)
-
-			var
-				state = "[rand(1,14)]"
-				time = 120
-
-			loc = location
-			pixel_x = rand(-12,12)
-			pixel_y = rand(-12,12)
-
-			icon_state = state
-
-			spawn()
-				while(time > 0 && loc != null)
-					for(var/mob/m in oview(1,src))
-						if(m != owner)
-							m.movepenalty = 20
-					time--
-					sleep(10)
-				loc = null
-
-		proc
-			Explode(mob/user)
-				if(user) user.RemoveTrigger(src)
-				if(owner != user || user.ko || user.stunned)
-					return
-
-				explosion(150*user:ControlDamageMultiplier(),x,y,z,user,dist = 4)
-
-			//	user.protected+=1
-				//spawn(10)user.protected=0
-
-				loc = null
