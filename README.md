@@ -21,6 +21,3 @@ submodule with all the skills and passives code
 
 ##BOT
 	- Make all bot functions await so they are non blocking!
-	
-TEST
-RANDOM TEXT 
